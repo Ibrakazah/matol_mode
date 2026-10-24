@@ -23,6 +23,13 @@ for f in sorted(glob.glob(os.path.join(ROOT, "annotations", "*.json"))):
     except Exception as e:
         print("bad annotation file", f, e)
 
+insights = {}
+for f in sorted(glob.glob(os.path.join(ROOT, "insights", "*.json"))):
+    try:
+        insights.update(json.load(open(f, encoding="utf-8")))
+    except Exception as e:
+        print("bad insight file", f, e)
+
 raw = json.load(open(os.path.join(ROOT, "raw", "olympiads_all.json"), encoding="utf-8"))
 olympiads, problems = [], []
 for t in raw:
@@ -40,7 +47,7 @@ for t in raw:
         ))
         details[pid] = dict(
             skills=a.get("skills", []), hints=a.get("hints", []), solution=a.get("solution", ""),
-            answer=a.get("answer"), comments=[dict(author=c["author"], votes=c["votes"], level=c["level"], html=c["html"]) for c in p["comments"]],
+            answer=a.get("answer"), insight=insights.get(pid, ""), comments=[dict(author=c["author"], votes=c["votes"], level=c["level"], html=c["html"]) for c in p["comments"]],
             cid=p["cid"],
         )
     json.dump(details, open(os.path.join(OUT, "o", f"{t['oid']}.json"), "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))

@@ -143,6 +143,7 @@
             if (p.src === 'ai' && p.conf !== 'high') body += '<div class="warn-box">Решение написано ИИ' + (p.conf === 'low' ? ' и, скорее всего, неполное' : ' — некоторые места стоит перепроверить') + '. Сверься с обсуждением на matol.</div>';
             body += md(d.solution);
             h += spoiler('Решение', body, p.src === 'ai' ? ' <span class="muted">(ИИ)</span>' : ' <span class="muted">(по matol)</span>');
+            if (d.insight) h += spoiler('Как можно было догадаться', md(d.insight));
         } else if (isGeo) {
             h += '<div class="rv"><div class="rv-title"><span class="muted">Геометрия: подсказки и решение ИИ не пишутся — см. обсуждение на matol ниже.</span></div></div>';
         }
