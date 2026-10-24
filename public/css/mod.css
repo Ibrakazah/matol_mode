@@ -89,3 +89,6 @@ body { padding-top: 110px; background: #fff; }
 .skill-index a { display: inline-block; margin: 0 14px 6px 0; }
 .skill-index .cnt { color: #999; font-size: 11px; }
 .stat-grid .panel-body { font-size: 13px; }
+
+.theory-note { font-size: 15px; line-height: 1.6; }
+.theory-note h2 { font-size: 18px; color: #19C; margin-top: 22px; }

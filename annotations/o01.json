@@ -38,7 +38,7 @@
       "простые числа",
       "взаимная простота"
     ],
-    "difficulty": 5,
+    "difficulty": 6,
     "skills": [],
     "hints": [],
     "solution": "",
@@ -68,7 +68,7 @@
       "геометрические места точек",
       "прямоугольники"
     ],
-    "difficulty": 7,
+    "difficulty": 8,
     "skills": [],
     "hints": [],
     "solution": "",
@@ -83,7 +83,7 @@
       "раскраски",
       "графы"
     ],
-    "difficulty": 7,
+    "difficulty": 9,
     "skills": [],
     "hints": [],
     "solution": "",
@@ -113,7 +113,7 @@
       "неравенства",
       "факториалы"
     ],
-    "difficulty": 5,
+    "difficulty": 6,
     "skills": [
       {
         "name": "Разбиение произведения на пары",
@@ -160,7 +160,7 @@
       "разбиения",
       "комбинаторные условия"
     ],
-    "difficulty": 5,
+    "difficulty": 8,
     "skills": [],
     "hints": [],
     "solution": "",
@@ -175,7 +175,7 @@
       "неравенства",
       "треугольник"
     ],
-    "difficulty": 6,
+    "difficulty": 9,
     "skills": [
       {
         "name": "Замена переменных через корни",
@@ -276,7 +276,7 @@
       "экстремальные задачи",
       "процессы"
     ],
-    "difficulty": 6,
+    "difficulty": 9,
     "skills": [],
     "hints": [],
     "solution": "",
@@ -306,7 +306,7 @@
       "степени двойки",
       "бесконечный спуск"
     ],
-    "difficulty": 5,
+    "difficulty": 6,
     "skills": [
       {
         "name": "Бесконечный спуск по сумме $a+b$",
@@ -334,7 +334,7 @@
       "неравенства",
       "неравенство Чебышёва"
     ],
-    "difficulty": 6,
+    "difficulty": 7,
     "skills": [
       {
         "name": "Нормировка $abc=1$",
@@ -370,7 +370,7 @@
       "подобие",
       "медианы"
     ],
-    "difficulty": 6,
+    "difficulty": 8,
     "skills": [],
     "hints": [],
     "solution": "",
@@ -385,7 +385,7 @@
       "наименьшее общее кратное",
       "простые числа"
     ],
-    "difficulty": 8,
+    "difficulty": 9,
     "skills": [
       {
         "name": "Число $420=\\mathrm{lcm}(1,\\dots,7)$",
@@ -417,7 +417,7 @@
       "арифметические прогрессии",
       "целые числа"
     ],
-    "difficulty": 6,
+    "difficulty": 5,
     "skills": [],
     "hints": [],
     "solution": "",
@@ -432,7 +432,7 @@
       "неравенства",
       "последовательности"
     ],
-    "difficulty": 5,
+    "difficulty": 6,
     "skills": [],
     "hints": [],
     "solution": "",
@@ -462,7 +462,7 @@
       "диофантовы уравнения",
       "точные квадраты"
     ],
-    "difficulty": 6,
+    "difficulty": 8,
     "skills": [],
     "hints": [],
     "solution": "",
@@ -477,7 +477,7 @@
       "комбинаторная геометрия",
       "чётность"
     ],
-    "difficulty": 8,
+    "difficulty": 9,
     "skills": [],
     "hints": [],
     "solution": "",

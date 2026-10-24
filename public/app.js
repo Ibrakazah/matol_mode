@@ -218,6 +218,7 @@
         h += '</div>';
         h += '<p><a class="btn btn-primary" href="#/problems">Все задачи с фильтрами</a> ' +
             '<a class="btn btn-default" href="#/olympiads">Олимпиады по годам</a> ' +
+            '<a class="btn btn-default" href="#/theory">Теория (конспекты)</a> ' +
             '<a class="btn btn-default" href="#/skills">Теоремы и приёмы</a> ' +
             '<a class="btn btn-default" href="#/random">Случайная задача</a></p>';
         h += '<p class="text-muted" style="font-size:13px">Под каждой задачей скрыты блоки «Какие теоремы и приёмы нужны», подсказки и решение. Нажми на размытый блок, чтобы его открыть. ' +
@@ -430,6 +431,55 @@
         fillReveals(app);
     }
 
+
+    // ---------- theory ----------
+    var THEORY = null;
+    function loadTheory() {
+        if (!THEORY) THEORY = fetch('/data/theory.json').then(function (r) { return r.json(); });
+        return THEORY;
+    }
+    function pageTheory() {
+        loadTheory().then(function (th) {
+            var h = crumbs([['Главная', '#/'], ['Теория', '']]);
+            h += '<p class="text-muted">Конспекты по темам. В каждой теме есть задачи из базы по возрастанию сложности. Конспекты написаны ИИ, проверяй важные утверждения. Геометрия в этот блок пока не входит.</p>';
+            ['algebra', 'number_theory', 'combinatorics'].forEach(function (a) {
+                h += '<h4 style="color:#19C">' + TOPICS[a] + '</h4><div class="skill-index">' +
+                    th.filter(function (t) { return t.area === a; }).map(function (t) {
+                        return '<a href="#/theory/' + t.id + '">' + esc(t.title) + ' <span class="cnt">' + t.problems.length + (t.note ? '' : ' · конспект готовится') + '</span></a>';
+                    }).join('') + '</div>';
+            });
+            app.innerHTML = h;
+        });
+    }
+    function pageTheoryTopic(id) {
+        loadTheory().then(function (th) {
+            var t = th.filter(function (x) { return x.id === id; })[0];
+            if (!t) return notFound();
+            var h = crumbs([['Главная', '#/'], ['Теория', '#/theory'], [t.title, '']]);
+            h += '<h3>' + esc(t.title) + '</h3>';
+            if (t.note) {
+                var body = md(t.note).replace(/\[\[(m[\w\-.]+)\]\]/g, function (_, pid) {
+                    return PROB[pid] ? '<a href="#/p/' + pid + '">' + esc(olyName(OLY[PROB[pid].oid])) + ', №' + esc(PROB[pid].num) + '</a>' : pid;
+                });
+                h += '<div class="theory-note">' + body + '</div>';
+            } else {
+                h += '<p class="text-muted">Конспект по этой теме ещё не написан.</p>';
+            }
+            h += '<h4 style="margin-top:25px">Задачи по теме (от лёгких к сложным)</h4>';
+            var ps = t.problems.filter(function (p) { return PROB[p.id]; });
+            if (!ps.length) h += '<p class="text-muted">Пока нет размеченных задач.</p>';
+            var cur = null;
+            ps.forEach(function (p) {
+                var d = p.diff || 0;
+                if (d !== cur) { cur = d; h += '<div class="rv-title" style="margin-top:12px">' + (d ? 'сложность ' + d + '/10' : 'сложность не указана') + '</div>'; }
+                var q = PROB[p.id];
+                h += '<div style="margin:3px 0"><a href="#/p/' + q.id + '">' + esc(olyName(OLY[q.oid])) + ', №' + esc(q.num) + '</a> ' + metaHtml(q) + '</div>';
+            });
+            app.innerHTML = h;
+            typeset(app);
+        });
+    }
+
     function notFound() {
         app.innerHTML = '<p style="margin-top:30px">Страница не найдена. <a href="#/">На главную</a></p>';
     }
@@ -447,6 +497,7 @@
         else if (parts[0] === 'p') pageProblem(decodeURIComponent(parts[1]));
         else if (parts[0] === 'problems') pageProblems(f);
         else if (parts[0] === 'skills') pageSkills();
+        else if (parts[0] === 'theory') { if (parts[1]) pageTheoryTopic(parts[1]); else pageTheory(); }
         else if (parts[0] === 'random') pageRandom(f);
         else if (parts[0] === 'marked') pageMarked();
         else notFound();
