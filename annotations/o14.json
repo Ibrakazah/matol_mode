@@ -1,0 +1,465 @@
+[
+  {
+    "id": "m127-1",
+    "topic": "algebra",
+    "subtopics": [
+      "системы уравнений",
+      "произведения разностей"
+    ],
+    "difficulty": 3,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m127-2",
+    "topic": "combinatorics",
+    "subtopics": [
+      "двузначные числа",
+      "квадраты",
+      "наибольшее подмножество"
+    ],
+    "difficulty": 4,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m127-3",
+    "topic": "geometry",
+    "subtopics": [
+      "вписанные четырёхугольники",
+      "радиусы окружностей",
+      "биссектриса"
+    ],
+    "difficulty": 5,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m127-4",
+    "topic": "number_theory",
+    "subtopics": [
+      "делимость",
+      "оценки",
+      "показатели"
+    ],
+    "difficulty": 6,
+    "skills": [
+      {
+        "name": "Сведение к делимости на $8^n-1$",
+        "note": "$80^n-10^n=10^n(8^n-1)$, поэтому $8^n-1\\mid10^n-1$"
+      },
+      {
+        "name": "Разность",
+        "note": "$10^n-8^n=2^n(5^n-4^n)$ и взаимная простота с $8^n-1$ дают $8^n-1\\mid5^n-4^n$, что невозможно"
+      }
+    ],
+    "hints": [
+      "Вычтите $10^n-1$ из $80^n-1$.",
+      "Используйте $0<5^n-4^n<8^n-1$."
+    ],
+    "solution": "Ответ: таких $n$ не существует.\n\nПусть $8^n-1\\mid80^n-1$. Тогда $8^n-1$ делит $(80^n-1)-(10^n-1)=10^n(8^n-1)$ (это верно) и значит $8^n-1$ делит $10^n-1$. Далее $10^n-1-(8^n-1)=10^n-8^n=2^n(5^n-4^n)$. Число $8^n-1$ нечётно и взаимно просто с $2^n$, поэтому $8^n-1\\mid5^n-4^n$. Но $0<5^n-4^n<8^n-1$ при $n\\ge1$ (например, $5^n-4^n\\le5^n<8^n-1$), противоречие.",
+    "answer": null,
+    "solution_source": "matol",
+    "confidence": "high"
+  },
+  {
+    "id": "m127-5",
+    "topic": "geometry",
+    "subtopics": [
+      "трапеция",
+      "равносторонний треугольник",
+      "вписанный четырёхугольник"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m127-6",
+    "topic": "number_theory",
+    "subtopics": [
+      "делимость",
+      "сравнения",
+      "наименьшее общее кратное"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m127-7",
+    "topic": "algebra",
+    "subtopics": [
+      "ряды",
+      "целая часть",
+      "разложение экспоненты"
+    ],
+    "difficulty": 7,
+    "skills": [
+      {
+        "name": "Разложение экспоненты",
+        "note": "$\\sum_{k\\ge1}\\frac{2^k}{k!}=e^2-1$"
+      },
+      {
+        "name": "Оценка остатка",
+        "note": "хвост $\\sum_{k>100}\\frac{2^k}{k!}$ меньше $10^{-100}$"
+      }
+    ],
+    "hints": [
+      "Сравните сумму с рядом Тейлора для $e^2$.",
+      "Оцените хвост ряда, начиная с $k=101$."
+    ],
+    "solution": "Ответ: $6$.\n\nИмеем $\\sum_{k\\ge0}\\frac{2^k}{k!}=e^2$, поэтому $S=\\sum_{k=1}^{100}\\frac{2^k}{k!}=e^2-1-T$, где $T=\\sum_{k\\ge101}\\frac{2^k}{k!}$ — положительный остаток, очень малый ($0<T<\\frac{2^{101}}{101!}\\cdot2<10^{-100}$). Так как $e^2-1\\approx6{,}389$, получаем $6<S<7$, и $[S]=6$.",
+    "answer": "6",
+    "solution_source": "matol",
+    "confidence": "high"
+  },
+  {
+    "id": "m127-8",
+    "topic": "combinatorics",
+    "subtopics": [
+      "точки на окружности",
+      "хорды",
+      "максимум"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m128-1",
+    "topic": "algebra",
+    "subtopics": [
+      "системы уравнений",
+      "произведения разностей"
+    ],
+    "difficulty": 3,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m128-2",
+    "topic": "algebra",
+    "subtopics": [
+      "неравенства",
+      "неравенство Шура",
+      "замена переменных"
+    ],
+    "difficulty": 4,
+    "skills": [
+      {
+        "name": "Замена",
+        "note": "$\\frac1{a+1}+\\frac1{b+1}+\\frac1{c+1}=1$ при условии $a+b+c+2=abc$"
+      },
+      {
+        "name": "Неравенство Шура",
+        "note": "после замены $a=\\frac{y+z}x$ и т.д. неравенство равносильно $x^3+y^3+z^3+3xyz\\ge\\sum xy(x+y)$"
+      }
+    ],
+    "hints": [
+      "Проверьте, что условие равносильно $\\sum\\frac1{a+1}=1$.",
+      "Выразите $a,b,c$ через $x=\\frac1{a+1}$ и т.д."
+    ],
+    "solution": "Из $a+b+c+2=abc$ следует $\\sum_{\\text{cyc}}\\frac1{a+1}=1$ (раскрытие скобок). Положим $x=\\frac1{a+1}$, $y=\\frac1{b+1}$, $z=\\frac1{c+1}$, $x+y+z=1$. Тогда $a=\\frac{1-x}x=\\frac{y+z}x$, и аналогично $b=\\frac{z+x}y$, $c=\\frac{x+y}z$.\n\nПодставим в $ab+bc+ca\\ge2(a+b+c)$ и умножим на $xyz>0$: получится эквивалентное неравенство $x^3+y^3+z^3+3xyz\\ge xy(x+y)+yz(y+z)+zx(z+x)$ (с учётом $x+y+z=1$ в однородной записи). Это неравенство Шура степени $1$, которое верно для положительных $x,y,z$. Следовательно, исходное неравенство доказано.",
+    "answer": null,
+    "solution_source": "matol",
+    "confidence": "high"
+  },
+  {
+    "id": "m128-3",
+    "topic": "algebra",
+    "subtopics": [
+      "функциональные уравнения",
+      "инъективность",
+      "сюръективность"
+    ],
+    "difficulty": 5,
+    "skills": [
+      {
+        "name": "Сначала $f(0)=0$",
+        "note": "$P(x,0)$ даёт $f(f(x))=xf(0)+f(x)$; инъективность при $f(0)\\ne0$ приводит к противоречию"
+      },
+      {
+        "name": "Значение $f(-1)=-1$",
+        "note": "$P(f(t),-1)$ даёт $f(t)(f(-1)+1)=0$ при $f(t)\\ne0$"
+      }
+    ],
+    "hints": [
+      "Покажите сначала, что $f(0)=0$ и $f(f(x))=f(x)$.",
+      "При $x\\ne0$ подставьте $y=\\frac{x-f(x)}x$."
+    ],
+    "solution": "Ответ: $f\\equiv0$ и $f(x)=x$.\n\nПроверка: $f\\equiv0$: $0=0$. $f(x)=x$: $xy+x=xy+x$.\n\nРешение. $P(x,0)$: $f(f(x))=f(x)+xf(0)$. При $f(0)\\ne0$ из инъективности $f$ (которая следует из этого соотношения) получаем противоречие с $P(0,0)$, поэтому $f(0)=0$ и $f(f(x))=f(x)$. Если $f\\not\\equiv0$, то $f(-1)=-1$ (из $P(f(t),-1)$), и $f(1)\\ne0$. Для $x\\ne0$ при $y=\\frac{x-f(x)}{x}$ имеем $f(y)=0$, а затем $P(y,1)$ даёт $y\\,f(1)=0$, откуда $y=0$, т.е. $f(x)=x$ (при всех $x\\ne0$, а также $f(0)=0$).",
+    "answer": "$f\\equiv0$ и $f(x)=x$",
+    "solution_source": "matol",
+    "confidence": "high"
+  },
+  {
+    "id": "m128-4",
+    "topic": "number_theory",
+    "subtopics": [
+      "простые числа",
+      "сравнения",
+      "арифметическая прогрессия простых"
+    ],
+    "difficulty": 6,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m128-5",
+    "topic": "geometry",
+    "subtopics": [
+      "ортоцентр",
+      "середина отрезка",
+      "прямая через вершину"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m128-6",
+    "topic": "number_theory",
+    "subtopics": [
+      "делимость",
+      "сравнения",
+      "тройки чисел"
+    ],
+    "difficulty": 8,
+    "skills": [
+      {
+        "name": "Делимость произведения",
+        "note": "$abc\\mid ab+bc+ca-1$"
+      },
+      {
+        "name": "Оценка и перебор",
+        "note": "$a=2$, $c=2b-1$, $b\\mid3$, откуда $(2,3,5)$"
+      }
+    ],
+    "hints": [
+      "Заметьте, что все числа не меньше $2$.",
+      "Используйте $ab+bc+ca-1<3bc$, чтобы получить $a<3$."
+    ],
+    "solution": "Ответ: $\\{2,3,5\\}$ (в любом порядке).\n\nВсе числа не меньше $2$ (остаток по модулю $1$ всегда $0$). Пусть $a\\le b\\le c$. Тогда $(ab-1)(ac-1)(bc-1)$ делится на $abc$, и поскольку $(ab-1)(ac-1)(bc-1)=abc(abc-a-b-c)+(ab+bc+ca)-1$, получаем $abc\\mid ab+bc+ca-1<3bc$, откуда $a<3$, т.е. $a=2$.\n\nТогда $bc$ нечётно, $c\\mid2b-1$ и $b\\mid2c-1$. Из $c\\le2b-1$ и $2c\\le\\dots$ следует $c=2b-1$. Тогда $b\\mid2c-1=4b-3$, т.е. $b\\mid3$, $b=3$, $c=5$.",
+    "answer": "$\\{2,3,5\\}$",
+    "solution_source": "matol",
+    "confidence": "high"
+  },
+  {
+    "id": "m128-7",
+    "topic": "combinatorics",
+    "subtopics": [
+      "подмножества",
+      "инъективные отображения",
+      "включение"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m128-8",
+    "topic": "geometry",
+    "subtopics": [
+      "точки на окружности",
+      "хорды",
+      "максимум"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m129-1",
+    "topic": "algebra",
+    "subtopics": [
+      "системы уравнений",
+      "произведения разностей"
+    ],
+    "difficulty": 3,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m129-2",
+    "topic": "algebra",
+    "subtopics": [
+      "неравенства",
+      "неравенство Шура",
+      "замена переменных"
+    ],
+    "difficulty": 4,
+    "skills": [
+      {
+        "name": "Замена",
+        "note": "$\\frac1{a+1}+\\frac1{b+1}+\\frac1{c+1}=1$ при условии $a+b+c+2=abc$"
+      },
+      {
+        "name": "Неравенство Шура",
+        "note": "после замены неравенство равносильно $x^3+y^3+z^3+3xyz\\ge\\sum xy(x+y)$"
+      }
+    ],
+    "hints": [
+      "Проверьте, что условие равносильно $\\sum\\frac1{a+1}=1$.",
+      "Выразите $a,b,c$ через $x=\\frac1{a+1}$ и т.д."
+    ],
+    "solution": "Из $a+b+c+2=abc$ следует $\\sum\\frac1{a+1}=1$. Положим $x=\\frac1{a+1}$, $y=\\frac1{b+1}$, $z=\\frac1{c+1}$; тогда $a=\\frac{y+z}x$, $b=\\frac{z+x}y$, $c=\\frac{x+y}z$. Подставляя в $ab+bc+ca\\ge2(a+b+c)$ и умножая на $xyz>0$, получаем неравенство Шура $x^3+y^3+z^3+3xyz\\ge xy(x+y)+yz(y+z)+zx(z+x)$, верное для положительных $x,y,z$.",
+    "answer": null,
+    "solution_source": "matol",
+    "confidence": "high"
+  },
+  {
+    "id": "m129-3",
+    "topic": "geometry",
+    "subtopics": [
+      "симметрия",
+      "равнобедренный треугольник",
+      "хорошие множества точек"
+    ],
+    "difficulty": 5,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m129-4",
+    "topic": "algebra",
+    "subtopics": [
+      "функциональные уравнения",
+      "линейные функции"
+    ],
+    "difficulty": 6,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m129-5",
+    "topic": "algebra",
+    "subtopics": [
+      "тригонометрические уравнения",
+      "показательные уравнения",
+      "оценки"
+    ],
+    "difficulty": 7,
+    "skills": [
+      {
+        "name": "Правая часть",
+        "note": "при $|\\tan x|\\le\\frac12$ правая часть равна $1$; при больших $|\\tan x|$ она $\\ge1$"
+      },
+      {
+        "name": "Левая часть",
+        "note": "при $|x|\\ge\\arctan\\frac12$ левая часть меньше $1$; для $|x|\\le\\arctan\\frac12$ решение только $|x|=\\frac14$"
+      }
+    ],
+    "hints": [
+      "Найдите значения правой части при $|\\tan x|\\le\\frac12$ и при больших $|\\tan x|$.",
+      "Сравните левую часть с $1$ при $|x|\\ge\\arctan\\frac12$."
+    ],
+    "solution": "Ответ: $x=\\pm\\dfrac14$.\n\nПравая часть $g(x)=|\\tan x+\\frac12|+|\\tan x-\\frac12|$. При $|\\tan x|\\le\\frac12$ она равна $1$; при $|\\tan x|>\\frac12$ равна $2|\\tan x|>1$. Левая часть $f(x)=2^{1/2-2|x|}$ убывает по $|x|$.\n\nЕсли $|x|\\ge\\arctan\\frac12$ (т.е. $|\\tan x|\\ge\\frac12$ на $(0,\\pi/2)$ и далее по периоду), то $f(x)\\le2^{1/2-2\\arctan(1/2)}<2^{0}=1$, а $g(x)\\ge1$, решений нет. Значит, решения лежат в $|x|<\\arctan\\frac12$, где $g=1$, и уравнение $2^{1/2-2|x|}=1$ даёт $|x|=\\frac14$ (и $\\frac14<\\arctan\\frac12$). Итак, $x=\\pm\\frac14$.",
+    "answer": "$x=\\pm\\dfrac14$",
+    "solution_source": "matol",
+    "confidence": "high"
+  },
+  {
+    "id": "m129-6",
+    "topic": "geometry",
+    "subtopics": [
+      "прямоугольный треугольник",
+      "биссектриса",
+      "вписанный четырёхугольник"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m129-7",
+    "topic": "combinatorics",
+    "subtopics": [
+      "таблица 2005×2005",
+      "числа -1, 0, 1",
+      "прямоугольники"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m129-8",
+    "topic": "algebra",
+    "subtopics": [
+      "многочлены",
+      "рациональные значения"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  }
+]

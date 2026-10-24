@@ -1,0 +1,479 @@
+[
+  {
+    "id": "m121-1",
+    "topic": "algebra",
+    "subtopics": [
+      "неравенство Коши",
+      "вогнутая функция",
+      "уравнения"
+    ],
+    "difficulty": 3,
+    "skills": [
+      {
+        "name": "Оценка корня",
+        "note": "$\\sqrt{4x-1}\\le2x$, так как $(2x-1)^2\\ge0$; значит $\\sum\\sqrt{4x-1}\\le2(x+y+z)=3$"
+      },
+      {
+        "name": "Условие равенства",
+        "note": "$2+3^{\\sqrt{t-2}}\\le3$ даёт $t=2$, а равенство $\\sqrt{4x-1}=2x$ означает $x=y=z=\\frac12$"
+      }
+    ],
+    "hints": [
+      "Сравните $\\sqrt{4x-1}$ с $2x$.",
+      "Используйте $x+y+z=\\frac32$ и требуемое неравенство для $3^{\\sqrt{t-2}}$."
+    ],
+    "solution": "Из $4x^2\\ge4x-1$ (т.е. $(2x-1)^2\\ge0$) и $4x-1\\ge0$ получаем $\\sqrt{4x-1}\\le2x$. Аналогично для $y,z$. Тогда\n$$2+3^{\\sqrt{t-2}}\\le\\sqrt{4x-1}+\\sqrt{4y-1}+\\sqrt{4z-1}\\le2(x+y+z)=3.$$\nЗначит, $3^{\\sqrt{t-2}}\\le1$, т.е. $\\sqrt{t-2}\\le0$, и с учётом $\\sqrt{t-2}\\ge0$ получаем $t=2$. Тогда все неравенства — равенства: $\\sqrt{4x-1}=2x$, т.е. $(2x-1)^2=0$, и $x=y=z=\\frac12$ (их сумма $\\frac32$ верна).\n\nОтвет: $x=y=z=\\frac12$, $t=2$.",
+    "answer": "$x=y=z=\\frac12$, $t=2$",
+    "solution_source": "matol",
+    "confidence": "high"
+  },
+  {
+    "id": "m121-2",
+    "topic": "number_theory",
+    "subtopics": [
+      "биномиальные коэффициенты",
+      "делимость"
+    ],
+    "difficulty": 4,
+    "skills": [
+      {
+        "name": "Тождество Вандермонда",
+        "note": "$\\binom{2p}{p}=\\sum_{k=0}^p\\binom pk^2$, поэтому $\\binom{2p}p-2=\\sum_{k=1}^{p-1}\\binom pk^2$"
+      },
+      {
+        "name": "Делимость на $p$",
+        "note": "для $1\\le k\\le p-1$ число $\\binom pk$ делится на $p$, значит каждый квадрат делится на $p^2$"
+      }
+    ],
+    "hints": [
+      "Запишите $\\binom{2p}{p}$ как сумму квадратов биномиальных коэффициентов.",
+      "Проверьте, что $p\\mid\\binom pk$ при $0<k<p$."
+    ],
+    "solution": "По тождеству Вандермонда $\\binom{2p}{p}=\\sum_{k=0}^{p}\\binom pk\\binom p{p-k}=\\sum_{k=0}^p\\binom pk^2$. Так как $\\binom p0=\\binom pp=1$, получаем\n$$\\binom{2p}p-2=\\sum_{k=1}^{p-1}\\binom pk^2.$$\nДля $1\\le k\\le p-1$ число $\\binom pk=\\dfrac{p!}{k!(p-k)!}$ делится на $p$ (в числителе есть $p$, а в знаменателе — нет). Значит, каждый квадрат делится на $p^2$, и вся сумма делится на $p^2$.",
+    "answer": null,
+    "solution_source": "matol",
+    "confidence": "high"
+  },
+  {
+    "id": "m121-3",
+    "topic": "geometry",
+    "subtopics": [
+      "углы треугольника",
+      "окружности Микеля",
+      "точка пересечения"
+    ],
+    "difficulty": 5,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m121-4",
+    "topic": "algebra",
+    "subtopics": [
+      "функциональные множества",
+      "модуль",
+      "квадратичная функция"
+    ],
+    "difficulty": 6,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m121-5",
+    "topic": "combinatorics",
+    "subtopics": [
+      "перестановки",
+      "делимость"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m121-6",
+    "topic": "geometry",
+    "subtopics": [
+      "остроугольный треугольник",
+      "высоты",
+      "описанная окружность"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m121-7",
+    "topic": "number_theory",
+    "subtopics": [
+      "иррациональные числа",
+      "рациональность",
+      "целые значения"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m121-8",
+    "topic": "combinatorics",
+    "subtopics": [
+      "дороги между городами",
+      "диаметр графа",
+      "степень вершины"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m122-1",
+    "topic": "algebra",
+    "subtopics": [
+      "неравенства",
+      "неравенство Коши–Буняковского"
+    ],
+    "difficulty": 3,
+    "skills": [
+      {
+        "name": "Титу",
+        "note": "$\\sum\\frac{x^4}{x(x+y)}\\ge\\frac{(x^2+y^2+z^2)^2}{\\sum x(x+y)}$"
+      },
+      {
+        "name": "Оценка знаменателя",
+        "note": "$\\sum x(x+y)=\\sum x^2+\\sum xy\\le2\\sum x^2$"
+      }
+    ],
+    "hints": [
+      "Представьте $\\frac{x^3}{x+y}$ как $\\frac{x^4}{x(x+y)}$ и примените неравенство Коши–Буняковского.",
+      "Оцените знаменатель суммой $x^2+y^2+z^2$ и $xy+yz+zx$."
+    ],
+    "solution": "Так как $\\frac{x^3}{x+y}=\\frac{x^4}{x(x+y)}$, по неравенству Коши–Буняковского (форма Энгеля, или Титу):\n$$\\sum\\frac{x^4}{x(x+y)}\\ \\ge\\ \\frac{(x^2+y^2+z^2)^2}{x(x+y)+y(y+z)+z(z+x)}=\\frac{(x^2+y^2+z^2)^2}{(x^2+y^2+z^2)+(xy+yz+zx)}.$$\nПоскольку $xy+yz+zx\\le x^2+y^2+z^2$, знаменатель не больше $2(x^2+y^2+z^2)$, и сумма не меньше $\\frac{x^2+y^2+z^2}{2}\\ge\\frac{xy+yz+zx}{2}$. Что и требовалось.",
+    "answer": null,
+    "solution_source": "matol",
+    "confidence": "high"
+  },
+  {
+    "id": "m122-2",
+    "topic": "geometry",
+    "subtopics": [
+      "описанные окружности",
+      "серединный перпендикуляр",
+      "центр описанной окружности"
+    ],
+    "difficulty": 4,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m122-3",
+    "topic": "algebra",
+    "subtopics": [
+      "рекуррентные последовательности",
+      "индукция",
+      "сравнение"
+    ],
+    "difficulty": 5,
+    "skills": [
+      {
+        "name": "Индуктивное неравенство",
+        "note": "$a_n>b_n+2^n$ для $n\\ge3$"
+      },
+      {
+        "name": "Переход",
+        "note": "$a_{k+1}=a_k^2+3>(b_k+2^k)^2+3$ и $b_{k+1}+2^{k+1}=b_k^2+2^{k+2}$"
+      }
+    ],
+    "hints": [
+      "Докажите по индукции $a_n>b_n+2^n$.",
+      "В шаге перехода используйте $b_k\\ge2$ и раскройте квадрат суммы."
+    ],
+    "solution": "Докажем индукцией, что $a_n>b_n+2^n$ при $n\\ge3$. База: $a_3=147>b_3+8=80$ (здесь $a_1=3$, $a_2=12$, $a_3=147$; $b_1=2$, $b_2=8$, $b_3=72$).\n\nПереход. Пусть $a_k>b_k+2^k$, $k\\ge3$. Тогда\n$$a_{k+1}=a_k^2+3>(b_k+2^k)^2+3=b_k^2+2^{k+1}b_k+2^{2k}+3.$$\nПоскольку $b_k\\ge2$, имеем $2^{k+1}b_k\\ge2^{k+2}$, и\n$$a_{k+1}>b_k^2+2^{k+2}=b_{k+1}+2^{k+1}\\quad(\\text{ здесь }b_{k+1}=b_k^2+2^{k+1}).$$\nИтак, $a_{2003}>b_{2003}$.",
+    "answer": "$a_{2003}>b_{2003}$ (больше $a_{2003}$)",
+    "solution_source": "matol",
+    "confidence": "high"
+  },
+  {
+    "id": "m122-4",
+    "topic": "combinatorics",
+    "subtopics": [
+      "бумажные квадраты",
+      "прокалывание",
+      "паросочетания"
+    ],
+    "difficulty": 6,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m122-5",
+    "topic": "geometry",
+    "subtopics": [
+      "прямоугольник в треугольнике",
+      "центр симметрии",
+      "конкуррентность"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m122-6",
+    "topic": "number_theory",
+    "subtopics": [
+      "биномиальные коэффициенты",
+      "гармонические суммы",
+      "делимость"
+    ],
+    "difficulty": 8,
+    "skills": [
+      {
+        "name": "Сведение к $\\binom{2p-1}{p}\\equiv1\\pmod{p^3}$",
+        "note": "$\\binom{2p}p-2=2\\left(\\binom{2p-1}p-1\\right)$"
+      },
+      {
+        "name": "Гармонические суммы",
+        "note": "$\\sum_{i=1}^{p-1}\\frac1i\\equiv0\\pmod{p^2}$ и $\\sum_{i<j}\\frac1{ij}\\equiv0\\pmod p$"
+      }
+    ],
+    "hints": [
+      "Запишите $\\binom{2p-1}{p}$ как $\\prod_{j=1}^{p-1}(1+p/j)$.",
+      "Используйте $\\sum 1/i\\equiv0\\pmod{p^2}$ и $\\sum 1/i^2\\equiv0\\pmod p$."
+    ],
+    "solution": "Так как $\\binom{2p}{p}=2\\binom{2p-1}{p}$, достаточно доказать $\\binom{2p-1}p\\equiv1\\pmod{p^3}$.\n\nИмеем $\\binom{2p-1}{p}=\\dfrac{(p+1)(p+2)\\cdots(2p-1)}{(p-1)!}=\\prod_{j=1}^{p-1}\\left(1+\\dfrac pj\\right)$. Раскрывая скобки, с точностью до $p^3$:\n$$\\prod_{j=1}^{p-1}\\left(1+\\frac pj\\right)\\equiv1+pH+p^2e_2\\pmod{p^3},$$\nгде $H=\\sum_{j=1}^{p-1}\\frac1j$ и $e_2=\\sum_{i<j}\\frac1{ij}$.\n\n1) $H\\equiv0\\pmod{p^2}$: группируем $\\frac1i+\\frac1{p-i}=\\frac p{i(p-i)}$, так что $H=\\sum_{i=1}^{(p-1)/2}\\frac{p}{i(p-i)}\\equiv-p\\sum_{i=1}^{(p-1)/2}\\frac1{i^2}\\pmod{p^2}$. Далее $\\sum_{i=1}^{p-1}\\frac1{i^2}\\equiv\\sum_{i=1}^{p-1}i^2=\\frac{(p-1)p(2p-1)}6\\equiv0\\pmod p$ (для $p\\ge5$), откуда $H\\equiv0\\pmod{p^2}$.\n\n2) $e_2=\\frac{H^2-\\sum_j\\frac1{j^2}}2$, поэтому $e_2\\equiv0\\pmod p$ (так как $H^2\\equiv0$ и $\\sum\\frac1{j^2}\\equiv0\\pmod p$).\n\nЗначит, $pH\\equiv0\\pmod{p^3}$ и $p^2e_2\\equiv0\\pmod{p^3}$, и $\\binom{2p-1}p\\equiv1\\pmod{p^3}$. Отсюда $p^3\\mid\\binom{2p}p-2$.",
+    "answer": null,
+    "solution_source": "matol",
+    "confidence": "high"
+  },
+  {
+    "id": "m122-7",
+    "topic": "algebra",
+    "subtopics": [
+      "функциональные уравнения",
+      "положительные числа"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m122-8",
+    "topic": "combinatorics",
+    "subtopics": [
+      "уголки",
+      "шахматная раскраска",
+      "покрытие"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m123-1",
+    "topic": "number_theory",
+    "subtopics": [
+      "однородные уравнения",
+      "дроби",
+      "бесконечный спуск"
+    ],
+    "difficulty": 3,
+    "skills": [
+      {
+        "name": "Пример",
+        "note": "$(x_1,\\dots,x_{n+1})=(4,\\dots,4,3,3,6,4)$ ($n-3$ четвёрок) для $n\\ge3$: $\\sum\\frac1{x_i^2}=\\frac{n-3}{16}+\\frac14=\\frac{n+1}{16}$"
+      },
+      {
+        "name": "Невозможность $n=1,2$",
+        "note": "при $n=1$ получаем $x_2^2=2x_1^2$; при $n=2$ — спуск по модулю $3$ (набросок в комментариях)"
+      }
+    ],
+    "hints": [
+      "Найдите решение для $n=3$, затем добавляйте четвёрки.",
+      "Для $n=1$ используйте иррациональность $\\sqrt2$."
+    ],
+    "solution": "Ответ: все $n\\ge3$.\n\nПример. Для $n=3$: $(x_1,x_2,x_3,x_4)=(3,3,6,4)$ — $\\frac19+\\frac19+\\frac1{36}=\\frac14=\\frac4{16}$. Для $n\\ge3$ возьмём $x_1=\\dots=x_{n-3}=4$, $x_{n-2}=x_{n-1}=3$, $x_n=6$, $x_{n+1}=4$. Тогда\n$$\\sum_{i=1}^n\\frac1{x_i^2}=\\frac{n-3}{16}+\\frac29+\\frac1{36}=\\frac{n-3}{16}+\\frac14=\\frac{n+1}{16}=\\frac{n+1}{x_{n+1}^2}.$$\n\nНевозможность для $n=1$: $\\frac1{x_1^2}=\\frac2{x_2^2}$ даёт $x_2^2=2x_1^2$, что невозможно в натуральных числах. Для $n=2$ решений нет (в комментариях дан спуск по модулю $3$, изложен кратко; проверка малых значений подтверждает отсутствие решений).",
+    "answer": "все $n\\ge3$",
+    "solution_source": "matol",
+    "confidence": "medium"
+  },
+  {
+    "id": "m123-2",
+    "topic": "algebra",
+    "subtopics": [
+      "неравенства",
+      "неравенство Коши–Буняковского"
+    ],
+    "difficulty": 4,
+    "skills": [
+      {
+        "name": "Титу",
+        "note": "$\\sum\\frac{x^4}{x(x+y)}\\ge\\frac{(x^2+y^2+z^2)^2}{\\sum x(x+y)}$"
+      },
+      {
+        "name": "Оценка знаменателя",
+        "note": "$\\sum x(x+y)=\\sum x^2+\\sum xy\\le2\\sum x^2$"
+      }
+    ],
+    "hints": [
+      "Представьте $\\frac{x^3}{x+y}$ как $\\frac{x^4}{x(x+y)}$ и примените неравенство Коши–Буняковского.",
+      "Оцените знаменатель суммой $x^2+y^2+z^2$ и $xy+yz+zx$."
+    ],
+    "solution": "Так как $\\frac{x^3}{x+y}=\\frac{x^4}{x(x+y)}$, по неравенству Коши–Буняковского (форма Энгеля, или Титу):\n$$\\sum\\frac{x^4}{x(x+y)}\\ \\ge\\ \\frac{(x^2+y^2+z^2)^2}{x(x+y)+y(y+z)+z(z+x)}=\\frac{(x^2+y^2+z^2)^2}{(x^2+y^2+z^2)+(xy+yz+zx)}.$$\nПоскольку $xy+yz+zx\\le x^2+y^2+z^2$, знаменатель не больше $2(x^2+y^2+z^2)$, и сумма не меньше $\\frac{x^2+y^2+z^2}{2}\\ge\\frac{xy+yz+zx}{2}$. Что и требовалось.",
+    "answer": null,
+    "solution_source": "matol",
+    "confidence": "high"
+  },
+  {
+    "id": "m123-3",
+    "topic": "combinatorics",
+    "subtopics": [
+      "бумажные квадраты",
+      "прокалывание",
+      "паросочетания"
+    ],
+    "difficulty": 5,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m123-4",
+    "topic": "geometry",
+    "subtopics": [
+      "вписанная окружность",
+      "касательные",
+      "отношения отрезков"
+    ],
+    "difficulty": 6,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m123-5",
+    "topic": "number_theory",
+    "subtopics": [
+      "биномиальные коэффициенты",
+      "делимость"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m123-6",
+    "topic": "geometry",
+    "subtopics": [
+      "окружность",
+      "касательная",
+      "описанная окружность"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m123-7",
+    "topic": "combinatorics",
+    "subtopics": [
+      "уголки",
+      "шахматная раскраска",
+      "покрытие"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m123-8",
+    "topic": "algebra",
+    "subtopics": [
+      "функциональные уравнения",
+      "сюръективность"
+    ],
+    "difficulty": 8,
+    "skills": [
+      {
+        "name": "Сюръективность и нуль",
+        "note": "$P(x,-f(x))$ даёт, что $f$ принимает все значения; значит есть $x_0$ с $f(x_0)=0$"
+      },
+      {
+        "name": "Вид функции",
+        "note": "при $x=x_0$ получаем $f(w)=w-x_0$ для всех $w$"
+      },
+      {
+        "name": "Проверка",
+        "note": "$f(x)=x+C$: обе части равны $x+y+2C$"
+      }
+    ],
+    "hints": [
+      "Найдите $x$, при котором левая часть не зависит от $y$.",
+      "Докажите сюръективность и существование нуля."
+    ],
+    "solution": "Ответ: $f(x)=x+C$, где $C$ — любая константа.\n\nПроверка: $f(f(x)+y)=x+y+2C$ и $2x+f(f(y)-x)=2x+(y+C-x)+C=x+y+2C$.\n\nРешение. Положим $y=-f(x)$: $f(f(-f(x))-x)=f(0)-2x$, поэтому $f$ принимает все вещественные значения (сюръективность). Значит, существует $x_0$ с $f(x_0)=0$. Подставим $x=x_0$: $f(y)=2x_0+f(f(y)-x_0)$. Так как $f$ сюръективна, $z=f(y)$ пробегает все $\\mathbb R$, и $f(z-x_0)=z-2x_0$ для всех $z$, т.е. $f(w)=w-x_0$ для всех $w$. Значит, $f(x)=x+C$ с $C=-x_0$.",
+    "answer": "$f(x)=x+C$, где $C$ — любая константа",
+    "solution_source": "matol",
+    "confidence": "high"
+  }
+]

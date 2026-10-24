@@ -395,7 +395,7 @@
     "difficulty": 5,
     "skills": [
       {
-        "name": "Замена $a_k=\frac1{1+x_k}$",
+        "name": "Замена $a_k=\\frac1{1+x_k}$",
         "note": "$x_k=\\frac{1-a_k}{a_k}$ и $\\sum a_k=1$, поэтому $1-a_k=\\sum_{j\\ne k}a_j$"
       },
       {
