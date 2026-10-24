@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <title>Олимпиады по математике, задачи, решения</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/matol.css" />
+    <link rel="stylesheet" href="/css/mod.css" />
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true },
+            svg: { fontCache: 'global' },
+            startup: { typeset: false }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-svg.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+</head>
+<body>
+<div class="navbar navbar-default navbar-fixed-top" role="navigation"
+     style="background: linear-gradient(rgb(220, 220, 220) 0%, rgb(255, 255, 255) 100%);" id="topmenu">
+    <div class="container">
+        <div style="text-align: center" id="caption">
+            <div class="hidden-xs"><h3><b>Казахстан на предметных олимпиадах</b></h3></div>
+        </div>
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" id="navtoggle">
+                <span class="sr-only">Меню</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand visible-xs" href="#/">matol mod</a>
+        </div>
+        <div class="navbar-collapse collapse" id="navmenu">
+            <ul class="nav navbar-nav">
+                <li><a href="#/">Главная</a></li>
+                <li><a href="#/olympiads">Олимпиады</a></li>
+                <li><a href="#/problems">Задачи</a></li>
+                <li><a href="#/skills">Теоремы и приёмы</a></li>
+                <li><a href="#/random">Случайная задача</a></li>
+                <li><a href="#/marked">Мои отметки</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="https://matol.kz" target="_blank" rel="noopener">matol.kz ↗</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<main class="container" id="app">
+    <p class="text-muted" style="margin-top:40px">Загрузка…</p>
+</main>
+
+<footer class="container mod-footer">
+    Личная копия задач с <a href="https://matol.kz" target="_blank" rel="noopener">matol.kz</a> (только математика) с разметкой тем, сложности, подсказками и решениями.
+    Решения с пометкой «ИИ» написаны автоматически и могут содержать ошибки.
+</footer>
+
+<script src="/app.js"></script>
+</body>
+</html>

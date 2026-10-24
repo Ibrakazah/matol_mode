@@ -1,0 +1,91 @@
+body { padding-top: 110px; background: #fff; }
+@media (max-width: 767px) { body { padding-top: 64px; } }
+#caption h3 { margin: 8px 0 0; }
+.mod-footer { color: #999; font-size: 12px; border-top: 1px solid #eee; padding: 15px; margin-top: 40px; }
+
+/* problem blocks, as on matol */
+.problem { padding: 4px 0 10px; }
+.problem .stmt { font-size: 15px; line-height: 1.55; }
+.problem .stmt img { max-width: 100%; }
+.problem hr { margin: 10px 0; }
+.pmeta { margin: 6px 0 4px; font-size: 12px; }
+.pmeta .label { font-weight: normal; margin-right: 4px; display: inline-block; margin-bottom: 3px; }
+.t-algebra { background: #3c8dbc; }
+.t-combinatorics { background: #8e44ad; }
+.t-geometry { background: #16a085; }
+.t-number_theory { background: #d35400; }
+.diff { background: #777; }
+.diff-1, .diff-2 { background: #5cb85c; }
+.diff-3, .diff-4 { background: #8bb33a; }
+.diff-5, .diff-6 { background: #f0ad4e; }
+.diff-7, .diff-8 { background: #e8743b; }
+.diff-9, .diff-10 { background: #d9534f; }
+.src-ai { background: #fff; color: #a94442; border: 1px solid #ebccd1; }
+.src-matol { background: #fff; color: #3c763d; border: 1px solid #d6e9c6; }
+.sub-tag { background: #f5f5f5; color: #555; border: 1px solid #e3e3e3; }
+.sub-tag:hover, .skill-link:hover { text-decoration: none; background: #e9f3fb; }
+.pmarks { float: right; font-size: 12px; }
+.pmarks a { color: #999; margin-left: 10px; cursor: pointer; text-decoration: none; }
+.pmarks a.on { color: #19C; font-weight: bold; }
+
+/* reveal blocks */
+.reveals { margin-top: 6px; }
+.rv { margin: 6px 0; }
+.rv-title { font-size: 12px; color: #19C; font-weight: bold; margin-bottom: 3px; }
+.rv-title .muted { color: #999; font-weight: normal; }
+
+/* Telegram-style spoiler */
+.spoiler {
+    position: relative; border-radius: 4px; cursor: pointer;
+    background: #fafafa; border: 1px solid #eee; padding: 8px 12px;
+    overflow: hidden;
+}
+.spoiler > .sp-body { filter: blur(7px); opacity: .55; user-select: none; pointer-events: none; transition: filter .35s, opacity .35s; min-height: 18px; }
+.spoiler::after {
+    content: ""; position: absolute; inset: 0;
+    background-image:
+        radial-gradient(circle, rgba(90,90,90,.55) 0.8px, transparent 1.4px),
+        radial-gradient(circle, rgba(90,90,90,.35) 0.7px, transparent 1.3px);
+    background-size: 7px 7px, 11px 11px;
+    background-position: 0 0, 3px 5px;
+    animation: sp-dust 1.6s linear infinite;
+    transition: opacity .35s;
+}
+.spoiler:hover::after { opacity: .8; }
+@keyframes sp-dust {
+    0% { background-position: 0 0, 3px 5px; }
+    100% { background-position: 7px -7px, -8px 16px; }
+}
+.spoiler:not(.open) { max-height: 64px; }
+.spoiler.open { cursor: auto; background: #fff; }
+.spoiler.open > .sp-body { filter: none; opacity: 1; user-select: text; pointer-events: auto; }
+.spoiler.open::after { opacity: 0; pointer-events: none; animation: none; }
+.sp-body p:last-child { margin-bottom: 0; }
+.sp-body ul { padding-left: 20px; margin-bottom: 0; }
+.sp-body .mjx-container[display="true"] { overflow-x: auto; overflow-y: hidden; }
+.hide-btn { font-size: 11px; color: #999; cursor: pointer; margin-left: 6px; }
+
+.skill-list li { margin-bottom: 4px; }
+.skill-list .note { color: #666; }
+.answer-box { background: #f4faf2; border-left: 3px solid #5cb85c; padding: 6px 10px; margin-bottom: 8px; }
+.warn-box { background: #fcf8e3; border-left: 3px solid #f0ad4e; padding: 6px 10px; margin-bottom: 8px; font-size: 12px; }
+
+.mat-comment .chead { font-size: 11px; color: #999; margin-bottom: 4px; }
+.mat-comment { border-bottom: 1px solid #f0f0f0; }
+
+/* olympiad tree */
+.otree h4 { margin-top: 22px; color: #19C; }
+.years a { display: inline-block; min-width: 140px; margin: 3px 10px 3px 0; }
+.grades a { margin-right: 10px; }
+
+/* filters */
+.filters { background: #f9f9f9; border: 1px solid #eee; border-radius: 4px; padding: 12px 12px 4px; margin-bottom: 15px; }
+.filters .form-group { margin-bottom: 10px; }
+.filters label { font-size: 12px; color: #666; font-weight: normal; margin-bottom: 2px; }
+.chips .btn { margin: 0 4px 4px 0; }
+.result-count { color: #777; font-size: 13px; margin: 6px 0 10px; }
+.pager-row { text-align: center; margin: 20px 0; }
+.src-line a { color: #999; font-size: 11px; }
+.skill-index a { display: inline-block; margin: 0 14px 6px 0; }
+.skill-index .cnt { color: #999; font-size: 11px; }
+.stat-grid .panel-body { font-size: 13px; }
