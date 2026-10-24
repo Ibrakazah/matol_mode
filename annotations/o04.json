@@ -1,0 +1,463 @@
+[
+  {
+    "id": "m287-1",
+    "topic": "algebra",
+    "subtopics": [
+      "функциональные уравнения",
+      "рекуррентные соотношения"
+    ],
+    "difficulty": 5,
+    "skills": [
+      {
+        "name": "Замена $b_n=a_n-n-1$",
+        "note": "исходное соотношение принимает вид $2b_{m+n}+2b_{m-n}=b_{2m}+b_{2n}$, при этом $b_0=0$, $b_1=1$"
+      },
+      {
+        "name": "Соотношение $b_{2m}=4b_m$",
+        "note": "при $n=0$ получаем $b_{2m}=4b_m$; в частности $b_2=4$"
+      },
+      {
+        "name": "Рекуррентность для $b_k$",
+        "note": "при $n=1$, $m=k$ получаем $b_{k+1}=2b_k-b_{k-1}+2$, откуда $b_k=k^2$ по индукции"
+      }
+    ],
+    "hints": [
+      "Положите $b_n=a_n-n-1$ и упростите соотношение.",
+      "Подставьте $n=0$ и выведите $b_{2m}=4b_m$.",
+      "Подставьте $n=1$ и получите рекуррентность второго порядка для $b_k$."
+    ],
+    "solution": "Положим $b_n=a_n-n-1$. Тогда $a_{m+n}+a_{m-n}-m+n-1=\\dfrac{a_{2m}+a_{2n}}2$ переписывается как\n$$2b_{m+n}+2b_{m-n}=b_{2m}+b_{2n}\\qquad(m\\ge n\\ge0).$$\nПри $m=n=0$ получаем $4b_0=2b_0$, т.е. $b_0=0$. При $n=0$ получаем $4b_m=b_{2m}$, в частности $b_2=4b_1=4$ (и $b_1=a_1-2=1$).\n\nПри $n=1$, $m=k\\ge1$: $2b_{k+1}+2b_{k-1}=b_{2k}+b_2=4b_k+4$, т.е. $b_{k+1}=2b_k-b_{k-1}+2$. С $b_0=0$, $b_1=1$ по индукции $b_k=k^2$: если $b_{k-1}=(k-1)^2$, $b_k=k^2$, то $b_{k+1}=2k^2-(k-1)^2+2=(k+1)^2$.\n\nЗначит, $a_n=n^2+n+1$ и $a_{2004}=2004\\cdot2005+1=4018021$.",
+    "answer": "4018021",
+    "solution_source": "matol",
+    "confidence": "high"
+  },
+  {
+    "id": "m287-2",
+    "topic": "number_theory",
+    "subtopics": [
+      "диофантовы уравнения",
+      "малая теорема Ферма",
+      "делимость"
+    ],
+    "difficulty": 6,
+    "skills": [
+      {
+        "name": "Малая теорема Ферма",
+        "note": "$x^y\\equiv x\\pmod y$ и $y^x\\equiv y\\pmod x$ для простых $x,y$"
+      },
+      {
+        "name": "Делимость на $x+19$ и $y-19$",
+        "note": "сравнения по модулям $y$ и $x$ дают $y\\mid x+19$ и $x\\mid y-19$"
+      },
+      {
+        "name": "Перебор по малым простым",
+        "note": "из $x\\,(1+kt)=19(k-1)$ и $tx<18$ остаются пары $(2,3)$, $(2,7)$ и отвергаемые кандидаты"
+      }
+    ],
+    "hints": [
+      "Примените малую теорему Ферма к обеим степеням по модулям $y$ и $x$.",
+      "Из полученных делимостей запишите $x+19=ky$ и $y-19=-tx$.",
+      "Переберите простые $x$ с $tx<18$ и проверьте кандидатов в исходном уравнении."
+    ],
+    "solution": "Ответ: $(x,y)=(2,3)$ и $(2,7)$.\n\nПроверка: $2^3-3^2=-1=2\\cdot3^2-19$ и $2^7-7^2=79=2\\cdot7^2-19$.\n\nПусть $x,y$ — простые. При $x=y$ получаем $x^3-19=0$, решений нет, поэтому $x\\ne y$. По малой теореме Ферма $x^y\\equiv x\\pmod y$ и $y^x\\equiv y\\pmod x$.\n\nПо модулю $y$: $x^y-y^x\\equiv x$, а правая часть $xy^2-19\\equiv-19$. Значит, $y\\mid x+19$.\nПо модулю $x$: $x^y-y^x\\equiv-y$, а правая часть $\\equiv-19$. Значит, $x\\mid y-19$.\n\nЕсли $y=19$, то $19\\mid x+19$, т.е. $x=19=y$, что исключено. Итак, $y-19=-tx$ для некоторого целого $t\\ne0$. Пусть $x+19=ky$ с натуральным $k$. Если $k=1$, то $y=x+19$: при нечётном $x$ число $y$ чётно и больше $2$, при $x=2$ получаем $y=21$; оба случая невозможны. Значит, $k\\ge2$, и $y\\le\\frac{x+19}2$. Если $t\\le-1$ (т.е. $y-19>0$), то $y\\ge19+x>\\frac{x+19}2$, противоречие. Значит, $t\\ge1$, $y=19-tx$ и $tx\\le17$.\n\nПодставив $y$ в $x+19=ky$, получаем $x(1+kt)=19(k-1)$.\n\nРазбор по простым $x$ с $tx\\le17$:\n- $x=2$: $k(19-2t)=21$; это даёт $t=6$, $k=3$, $y=7$ и $t=8$, $k=7$, $y=3$.\n- $x=3$: $k(19-3t)=22$ при $t\\le5$ решений нет.\n- $x=5$: $k(19-5t)=24$ при $t\\le3$ даёт $t=3$, $k=6$, $y=4$ — не простое.\n- $x=7$: $k(19-7t)=26$ при $t\\le2$ решений нет.\n- $x=11$: $8k=30$; $x=13$: $6k=32$ — решений нет.\n- $x=17$: $t=1$, $k=18$, $y=2$; но $17^2-2^{17}\\ne 17\\cdot4-19$, не подходит.\n\nИтак, решения: $(2,3)$ и $(2,7)$.",
+    "answer": "$(x,y)=(2,3),\\ (2,7)$",
+    "solution_source": "matol",
+    "confidence": "medium"
+  },
+  {
+    "id": "m287-3",
+    "topic": "geometry",
+    "subtopics": [
+      "вписанная окружность",
+      "описанная окружность",
+      "середины сторон"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m287-4",
+    "topic": "combinatorics",
+    "subtopics": [
+      "комбинаторная геометрия",
+      "разбиение плоскости"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m288-1",
+    "topic": "geometry",
+    "subtopics": [
+      "вписанная окружность",
+      "равносторонний треугольник"
+    ],
+    "difficulty": 5,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m288-2",
+    "topic": "number_theory",
+    "subtopics": [
+      "диофантовы уравнения",
+      "кубы"
+    ],
+    "difficulty": 6,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m288-3",
+    "topic": "algebra",
+    "subtopics": [
+      "неравенства",
+      "неравенство Коши–Буняковского",
+      "условия равенства"
+    ],
+    "difficulty": 7,
+    "skills": [
+      {
+        "name": "Неравенство Коши–Буняковского для векторов",
+        "note": "$\\vec x=\\left(\\frac{|a-b|}{\\sqrt b},\\frac{|b-c|}{\\sqrt c},\\frac{|c-a|}{\\sqrt a}\\right)$, $\\vec y=(\\sqrt b,\\sqrt c,\\sqrt a)$ дают $\\langle\\vec x,\\vec y\\rangle=|a-b|+|b-c|+|c-a|$"
+      },
+      {
+        "name": "Оценка суммы модулей",
+        "note": "$|b-c|+|c-a|\\ge|a-b|$, поэтому $(|a-b|+|b-c|+|c-a|)^2\\ge4(a-b)^2$"
+      },
+      {
+        "name": "Условие равенства",
+        "note": "равенство требует пропорциональности $\\vec x$ и $\\vec y$ и того, что $c$ лежит между $a$ и $b$"
+      }
+    ],
+    "hints": [
+      "Введите $\\vec x$ и $\\vec y$ так, чтобы $|\\vec x|^2=\\sum\\frac{a^2}b-(a+b+c)$ и $|\\vec y|^2=a+b+c$.",
+      "Оцените $(|a-b|+|b-c|+|c-a|)^2$ снизу через $4(a-b)^2$.",
+      "Для равенства решите систему $\\frac{|a-b|}b=\\frac{|b-c|}c=\\frac{|c-a|}a$ при порядке, в котором $c$ между $a$ и $b$."
+    ],
+    "solution": "Введём $\\vec x=\\left(\\dfrac{|a-b|}{\\sqrt b},\\dfrac{|b-c|}{\\sqrt c},\\dfrac{|c-a|}{\\sqrt a}\\right)$ и $\\vec y=(\\sqrt b,\\sqrt c,\\sqrt a)$. Тогда\n$$\\langle\\vec x,\\vec y\\rangle=|a-b|+|b-c|+|c-a|,\\qquad |\\vec y|^2=a+b+c,$$\n$$|\\vec x|^2=\\sum_{\\text{cyc}}\\frac{(a-b)^2}{b}=\\frac{a^2}b+\\frac{b^2}c+\\frac{c^2}a-(a+b+c).$$\nПо неравенству Коши–Буняковского $\\langle\\vec x,\\vec y\\rangle^2\\le|\\vec x|^2|\\vec y|^2$:\n$$\\frac{a^2}b+\\frac{b^2}c+\\frac{c^2}a\\ \\ge\\ a+b+c+\\frac{\\bigl(|a-b|+|b-c|+|c-a|\\bigr)^2}{a+b+c}.$$\nТак как $|b-c|+|c-a|\\ge|a-b|$, то $|a-b|+|b-c|+|c-a|\\ge2|a-b|$, и правая часть не меньше $a+b+c+\\dfrac{4(a-b)^2}{a+b+c}$. Неравенство доказано.\n\nРавенство. Нужны два условия: (i) $\\vec x\\parallel\\vec y$, т.е. $\\frac{|a-b|}b=\\frac{|b-c|}c=\\frac{|c-a|}a=\\lambda$; (ii) $|b-c|+|c-a|=|a-b|$, т.е. $c$ лежит между $a$ и $b$.\n\nПусть $a\\ge c\\ge b$. Тогда $a-b=\\lambda b$, $c-b=\\lambda c$, $a-c=\\lambda a$. Отсюда $c=\\frac b{1-\\lambda}$, $a=\\frac c{1-\\lambda}$ и $a=b(1+\\lambda)$, значит $(1+\\lambda)(1-\\lambda)^2=1$, т.е. $\\lambda(\\lambda^2-\\lambda-1)=0$. При $\\lambda\\ge0$, $\\lambda<1$ получаем $\\lambda=0$, $a=b=c$.\n\nПусть $b\\ge c\\ge a$. Тогда $b-a=\\lambda b$, $b-c=\\lambda c$, $c-a=\\lambda a$. Отсюда $a=b(1-\\lambda)$, $c=\\frac b{1+\\lambda}$ и $c=a(1+\\lambda)$, значит $(1+\\lambda)^2(1-\\lambda)=1$, т.е. $\\lambda(\\lambda^2+\\lambda-1)=0$. Берём $\\lambda=\\frac{\\sqrt5-1}2=\\varepsilon$ (и $\\lambda=0$ даёт $a=b=c$). Тогда $1-\\varepsilon=\\varepsilon^2$, $1+\\varepsilon=\\frac1\\varepsilon$, и $a=\\varepsilon^2b$, $c=\\varepsilon b$. Проверка: при $a=\\varepsilon^2$, $b=1$, $c=\\varepsilon$ имеем $a+b+c=2$, LHS $=\\varepsilon^4+\\frac1\\varepsilon+1=4-2\\varepsilon$ и RHS $=2+\\frac{4\\varepsilon^2}{2}=4-2\\varepsilon$.\n\nИтог: равенство достигается при $a=b=c$ и при $a:b:c=\\varepsilon^2:1:\\varepsilon$, где $\\varepsilon=\\frac{\\sqrt5-1}2$ (с точностью до пропорционального масштаба).",
+    "answer": null,
+    "solution_source": "matol",
+    "confidence": "high"
+  },
+  {
+    "id": "m288-4",
+    "topic": "combinatorics",
+    "subtopics": [
+      "экстремальные множества",
+      "делимость",
+      "взаимная простота"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m289-1",
+    "topic": "algebra",
+    "subtopics": [
+      "неравенства",
+      "среднее арифметическое и геометрическое"
+    ],
+    "difficulty": 5,
+    "skills": [
+      {
+        "name": "Тождество для $\\frac{1+abc}{a(1+b)}$",
+        "note": "$\\frac{1+abc}{a(1+b)}=\\frac{1+a}{a(1+b)}+\\frac{b(1+c)}{1+b}-1$"
+      },
+      {
+        "name": "Парные обратные величины",
+        "note": "шесть слагаемых разбиваются на три пары взаимно обратных чисел, каждая пара даёт сумму не меньше $2$"
+      }
+    ],
+    "hints": [
+      "Выразите $\\frac{1+abc}{a(1+b)}$ через сумму двух дробей, одна из которых вида $\\frac{1+a}{a(1+b)}$.",
+      "Сложите три получившихся равенства и сведите неравенство к сумме шести слагаемых.",
+      "Найдите три пары взаимно обратных слагаемых."
+    ],
+    "solution": "Заметим тождество\n$$\\frac{1+abc}{a(1+b)}=\\frac{1+a}{a(1+b)}+\\frac{b(1+c)}{1+b}-1,$$\nкоторое проверяется приведением к общему знаменателю: $1+a+ab(1+c)-a(1+b)=1+abc$.\n\nПросуммируем по циклу. Исходное неравенство эквивалентно $\\sum\\frac{1+abc}{a(1+b)}\\ge3$, т.е.\n$$\\frac{1+a}{a(1+b)}+\\frac{1+b}{b(1+c)}+\\frac{1+c}{c(1+a)}+\\frac{b(1+c)}{1+b}+\\frac{c(1+a)}{1+c}+\\frac{a(1+b)}{1+a}\\ \\ge\\ 6.$$\nСлагаемые разбиваются на три пары взаимно обратных чисел:\n$$\\frac{1+a}{a(1+b)}\\cdot\\frac{a(1+b)}{1+a}=1,\\qquad \\frac{1+b}{b(1+c)}\\cdot\\frac{b(1+c)}{1+b}=1,\\qquad \\frac{1+c}{c(1+a)}\\cdot\\frac{c(1+a)}{1+c}=1.$$\nДля положительных $u$ выполнено $u+\\frac1u\\ge2$, поэтому сумма шести слагаемых не меньше $6$. Неравенство доказано; равенство при $a=b=c=1$.",
+    "answer": null,
+    "solution_source": "matol",
+    "confidence": "high"
+  },
+  {
+    "id": "m289-2",
+    "topic": "geometry",
+    "subtopics": [
+      "описанная окружность",
+      "параллельные прямые",
+      "пересечение прямых в одной точке"
+    ],
+    "difficulty": 6,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m289-3",
+    "topic": "number_theory",
+    "subtopics": [
+      "рациональные числа",
+      "делимость"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m289-4",
+    "topic": "combinatorics",
+    "subtopics": [
+      "процессы",
+      "периодичность"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m290-1",
+    "topic": "geometry",
+    "subtopics": [
+      "равнобедренные треугольники",
+      "вычисления в геометрии"
+    ],
+    "difficulty": 5,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m290-2",
+    "topic": "algebra",
+    "subtopics": [
+      "функциональные уравнения",
+      "квадратичные функции"
+    ],
+    "difficulty": 6,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m290-3",
+    "topic": "algebra",
+    "subtopics": [
+      "вложенные радикалы",
+      "иррациональность"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m290-4",
+    "topic": "geometry",
+    "subtopics": [
+      "выпуклые многоугольники",
+      "пересечение границ"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m291-1",
+    "topic": "geometry",
+    "subtopics": [
+      "ортоцентр",
+      "описанная окружность",
+      "симметрия"
+    ],
+    "difficulty": 5,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m291-2",
+    "topic": "algebra",
+    "subtopics": [
+      "неравенства",
+      "последовательности",
+      "неравенство Коши–Буняковского"
+    ],
+    "difficulty": 6,
+    "skills": [
+      {
+        "name": "Неравенство Коши–Буняковского для сумм обратных величин",
+        "note": "$\\sum_{i=k+1}^{2k}\\frac1{a_i}\\ge\\frac{k^2}{\\sum_{i=k+1}^{2k}a_i}$"
+      },
+      {
+        "name": "Блоки индексов $2^j+1,\\dots,2^{j+1}$",
+        "note": "каждый блок даёт сумму обратных величин больше $\\frac14$, поэтому сумма растёт неограниченно"
+      }
+    ],
+    "hints": [
+      "Оцените $a_{k+1}+\\dots+a_{2k}$ сверху через условие (i) при $n=2k$.",
+      "Примените неравенство Коши–Буняковского к сумме обратных величин на том же отрезке.",
+      "Разбейте индексы на блоки $(2^j,2^{j+1}]$ и сложите оценки."
+    ],
+    "solution": "Ответ: нет, не существует.\n\nПредположим, что такая последовательность есть. Для натурального $k$ по условию (i) при $n=2k$ имеем\n$$a_{k+1}+\\dots+a_{2k}<a_1+\\dots+a_{2k}\\le(2k)^2=4k^2,$$\nгде строгое неравенство верно, так как $a_1,\\dots,a_k>0$. По неравенству Коши–Буняковского для $k$ чисел\n$$\\frac1{a_{k+1}}+\\dots+\\frac1{a_{2k}}\\ \\ge\\ \\frac{k^2}{a_{k+1}+\\dots+a_{2k}}\\ >\\ \\frac{k^2}{4k^2}=\\frac14.$$\nВозьмём $k=2^j$ ($j=0,1,\\dots$): блоки индексов $\\{2^j+1,\\dots,2^{j+1}\\}$ дают сумму обратных величин больше $\\frac14$. Поэтому при любом $J$\n$$\\frac1{a_1}+\\frac1{a_2}+\\dots+\\frac1{a_{2^{J+1}}}>\\sum_{j=0}^{J}\\frac14=\\frac{J+1}4.$$\nПри $J$ с $\\frac{J+1}4>2008$ сумма из условия (ii) при $n=2^{J+1}$ превосходит $2008$. Противоречие.",
+    "answer": "нет",
+    "solution_source": "matol",
+    "confidence": "high"
+  },
+  {
+    "id": "m291-3",
+    "topic": "combinatorics",
+    "subtopics": [
+      "подсчёт прямых",
+      "решётка",
+      "делимость"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m291-4",
+    "topic": "number_theory",
+    "subtopics": [
+      "степени",
+      "делимость",
+      "рекуррентные последовательности"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m292-1",
+    "topic": "number_theory",
+    "subtopics": [
+      "показательные диофантовы уравнения",
+      "лемма о подъёме порядка"
+    ],
+    "difficulty": 5,
+    "skills": [
+      {
+        "name": "Разложение разности квадратов",
+        "note": "из $3^{2b}-z^2=5^y$ следует $(3^b-z)(3^b+z)=5^y$, и оба множителя — степени $5$"
+      },
+      {
+        "name": "Лемма о подъёме порядка (LTE)",
+        "note": "для нечётного $y$ выполнено $v_3(5^y+1)=1+v_3(y)$"
+      }
+    ],
+    "hints": [
+      "Сначала покажите по модулю $4$, что $x$ чётно.",
+      "Разложите $3^{2b}-z^2=5^y$ на множители и используйте, что оба множителя — степени $5$.",
+      "Сравните $2\\cdot3^b=5^y+1$ с оценкой $6y$ для $3$-адического порядка."
+    ],
+    "solution": "Ответ: $(x,y,z)=(2,1,2)$.\n\nПроверка: $3^2-5^1=4=2^2$.\n\nМодуль $4$: $3^x-z^2=5^y\\equiv1\\pmod4$. Если $x$ нечётно, то $3^x\\equiv-1$, и $-1-z^2\\equiv1$, т.е. $z^2\\equiv2\\pmod 4$, невозможно. Значит, $x=2b$, $b\\ge1$.\n\nТогда $(3^b-z)(3^b+z)=5^y$. Оба множителя — степени $5$: $3^b-z=5^p$, $3^b+z=5^q$, $p+q=y$, $p\\le q$. Складывая, $2\\cdot3^b=5^p+5^q$. Если $p\\ge1$, то $5$ делит $2\\cdot3^b$, невозможно; значит $p=0$, $z=3^b-1$ и\n$$2\\cdot3^b=5^y+1.$$\nЛевая часть делится на $3$, поэтому $5^y\\equiv-1\\pmod 3$, т.е. $y$ нечётно. По лемме о подъёме порядка (для нечётного $y$) $v_3(5^y+1)=v_3(5+1)+v_3(y)=1+v_3(y)$, так что $b=1+v_3(y)$. Тогда $3^b=3\\cdot3^{v_3(y)}\\le3y$ и $5^y+1=2\\cdot3^b\\le6y$. Это возможно только при $y=1$ (при $y\\ge2$: $5^y+1>6y$; $y=1$ даёт $6\\le6$). Итак, $y=1$, $b=1$, $x=2$, $z=3-1=2$.",
+    "answer": "$(x,y,z)=(2,1,2)$",
+    "solution_source": "matol",
+    "confidence": "high"
+  },
+  {
+    "id": "m292-2",
+    "topic": "geometry",
+    "subtopics": [
+      "лемма Микеля",
+      "симедиана",
+      "параллельные прямые"
+    ],
+    "difficulty": 6,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m292-3",
+    "topic": "geometry",
+    "subtopics": [
+      "правильные ломаные",
+      "центр симметрии",
+      "решётка"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m292-4",
+    "topic": "algebra",
+    "subtopics": [
+      "функциональные уравнения",
+      "инъективность"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  }
+]
