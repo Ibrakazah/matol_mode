@@ -1,0 +1,334 @@
+[
+  {
+    "id": "m209-1",
+    "topic": "number_theory",
+    "subtopics": [
+      "сравнения",
+      "суммы степеней",
+      "теорема Вильсона"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m209-2",
+    "topic": "combinatorics",
+    "subtopics": [
+      "раскраски",
+      "графы соседства"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m209-3",
+    "topic": "geometry",
+    "subtopics": [
+      "вписанные окружности",
+      "лемма Фусса",
+      "углы"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m209-4",
+    "topic": "combinatorics",
+    "subtopics": [
+      "рекуррентные последовательности",
+      "неравенства для последовательностей"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m210-1",
+    "topic": "algebra",
+    "subtopics": [
+      "функциональные уравнения",
+      "инъективность",
+      "сюръективность"
+    ],
+    "difficulty": 7,
+    "skills": [
+      {
+        "name": "Проверка ответа",
+        "note": "$f(x)=x$ подставляется в обе части и даёт $x^2+xy+y$"
+      },
+      {
+        "name": "Структура решения",
+        "note": "$P(0,x)$ даёт $f(f(x))=x+f(0)^2$"
+      }
+    ],
+    "hints": [
+      "Проверьте $f(x)=x$.",
+      "Подставьте $x=0$ в исходное уравнение и выведите инъективность."
+    ],
+    "solution": "⚠️ Решение неполное: приведена проверка ответа и первый шаг вывода.\n\nОтвет: $f(x)=x$.\n\nПроверка: при $f(x)=x$ левая часть $x^2+xy+y$, правая $x^2+xy+y$.\n\nОбозначим $C=f(0)$. Подстановка $x=0$ даёт $f(f(y))=y+C^2$, откуда $f$ — биекция. Дальнейшее доказательство (вычисление $f(0)$ и $f(-1)$ и приведение к линейному виду) здесь не выписано.",
+    "answer": "f(x) = x",
+    "solution_source": "matol",
+    "confidence": "low"
+  },
+  {
+    "id": "m210-2",
+    "topic": "algebra",
+    "subtopics": [
+      "неравенство о средних",
+      "замена переменных"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m210-3",
+    "topic": "number_theory",
+    "subtopics": [
+      "вычеты",
+      "простые числа"
+    ],
+    "difficulty": 9,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m210-4",
+    "topic": "combinatorics",
+    "subtopics": [
+      "прямые общего положения",
+      "геометрия расположения"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m211-1",
+    "topic": "combinatorics",
+    "subtopics": [
+      "игры с числами",
+      "простые числа"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m211-2",
+    "topic": "geometry",
+    "subtopics": [
+      "вписанная окружность",
+      "касание окружностей",
+      "вневписанная окружность"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m211-3",
+    "topic": "algebra",
+    "subtopics": [
+      "неравенства",
+      "кубические формы"
+    ],
+    "difficulty": 7,
+    "skills": [
+      {
+        "name": "Разложение",
+        "note": "$a^3+b^3+c^3-3abc=\\tfrac12(a+b+c)\\sum(a-b)^2$"
+      },
+      {
+        "name": "Оценка модулей",
+        "note": "$|a-b|\\le a$ для $a\\ge b\\ge c$, поэтому $|x|^3\\le a\\,x^2$"
+      }
+    ],
+    "hints": [
+      "Разложите $a^3+b^3+c^3-3abc$ как сумму квадратов.",
+      "Рассмотрите случай $b,c\\to0$, чтобы получить верхнюю границу $M$."
+    ],
+    "solution": "Ответ: $M=\\dfrac12$.\n\nГраница: при $b,c\\to0^+$ и $a=1$ левая часть стремится к $1$, правая к $2M$, значит $M\\le\\tfrac12$.\n\nДокажем для $M=\\tfrac12$. Без ограничения общности $a\\ge b\\ge c$. Тогда\n$$a^3+b^3+c^3-3abc=\\tfrac12(a+b+c)S,\\qquad S=(a-b)^2+(b-c)^2+(c-a)^2.$$\nЧисла $x\\in\\{a-b,\\,b-c,\\,a-c\\}$ неотрицательны и не превосходят $a$, поэтому $|x|^3\\le a x^2$, и $\\sum|x|^3\\le a\\sum x^2=aS$. Тогда\n$$a^3+b^3+c^3-3abc\\ge\\tfrac12 aS\\ge\\tfrac12\\sum|x|^3,$$\nчто и требовалось.",
+    "answer": "1/2",
+    "solution_source": "matol",
+    "confidence": "high"
+  },
+  {
+    "id": "m211-4",
+    "topic": "algebra",
+    "subtopics": [
+      "многочлены",
+      "вещественные корни"
+    ],
+    "difficulty": 9,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m212-1",
+    "topic": "number_theory",
+    "subtopics": [
+      "сравнения",
+      "делимость степеней"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m212-2",
+    "topic": "geometry",
+    "subtopics": [
+      "средние линии",
+      "теорема Менелая",
+      "медианы"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m212-3",
+    "topic": "combinatorics",
+    "subtopics": [
+      "графы",
+      "раскраски рёбер"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m212-4",
+    "topic": "algebra",
+    "subtopics": [
+      "многочлены",
+      "рациональные значения"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m213-1",
+    "topic": "algebra",
+    "subtopics": [
+      "неравенство о средних",
+      "условие abc≤1"
+    ],
+    "difficulty": 5,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m213-2",
+    "topic": "geometry",
+    "subtopics": [
+      "биссектрисы",
+      "описанная окружность",
+      "серединная точка"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m213-3",
+    "topic": "combinatorics",
+    "subtopics": [
+      "гиперкуб",
+      "гамильтоновы пути",
+      "двоичные записи"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m213-4",
+    "topic": "number_theory",
+    "subtopics": [
+      "уравнение Пелля",
+      "квадраты",
+      "делимость"
+    ],
+    "difficulty": 9,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  }
+]

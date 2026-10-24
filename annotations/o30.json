@@ -1,0 +1,469 @@
+[
+  {
+    "id": "m95-1",
+    "topic": "number_theory",
+    "subtopics": [
+      "делители числа",
+      "разложение на простые"
+    ],
+    "difficulty": 5,
+    "skills": [
+      {
+        "name": "Структура $n$",
+        "note": "четыре делителя означают $n=pq$ или $n=p^3$"
+      },
+      {
+        "name": "Уравнение",
+        "note": "$(p+1)(q+1)=108$"
+      }
+    ],
+    "hints": [
+      "Какие числа имеют ровно четыре делителя?",
+      "Переберите разложения $108=(p+1)(q+1)$ и проверьте простоту $p$, $q$."
+    ],
+    "solution": "Ответ: $n=85$.\n\nЧисло с четырьмя делителями имеет вид $pq$ или $p^3$. Для $p^3$ сумма делителей $1+p+p^2+p^3=108$ не даёт простого $p$ (при $p=3$ сумма $40$).\n\nДля $n=pq$: $1+p+q+pq=(p+1)(q+1)=108$. Разложения $108=ab$ с $a=p+1$, $b=q+1$, $a<b$: $(2,54)$, $(3,36)$, $(4,27)$, $(6,18)$, $(9,12)$. Соответствующие $(p,q)$: $(1,53)$, $(2,35)$, $(3,26)$, $(5,17)$, $(8,11)$. Простые пары: только $(5,17)$, так что $n=85$.",
+    "answer": "85",
+    "solution_source": "matol",
+    "confidence": "high"
+  },
+  {
+    "id": "m95-2",
+    "topic": "algebra",
+    "subtopics": [
+      "неравенство о средних",
+      "взвешенное AM-GM"
+    ],
+    "difficulty": 6,
+    "skills": [
+      {
+        "name": "Взвешенное AM-GM",
+        "note": "$ax^2+bx+c\\ge x^{2a+b}$ при $a+b+c=1$"
+      },
+      {
+        "name": "Произведение",
+        "note": "$\\prod x_i^{2a+b}=1$"
+      }
+    ],
+    "hints": [
+      "Выпишите взвешенное неравенство о средних для $ax^2+bx+c\\cdot1$ с весами $a,b,c$.",
+      "Используйте $x_1\\cdots x_n=1$."
+    ],
+    "solution": "По взвешенному неравенству о средних с весами $a,b,c$ (сумма весов $1$):\n$$ax^2+bx+c\\cdot 1\\ge (x^2)^a\\,x^{b}\\,1^{c}=x^{2a+b}.$$\nЗначит, $\\prod_{i}(ax_i^2+bx_i+c)\\ge\\prod_i x_i^{2a+b}=\\bigl(\\prod_i x_i\\bigr)^{2a+b}=1$.",
+    "answer": null,
+    "solution_source": "ai",
+    "confidence": "high"
+  },
+  {
+    "id": "m95-3",
+    "topic": "geometry",
+    "subtopics": [
+      "трапеция",
+      "вписанная окружность",
+      "изогональное сопряжение"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m95-4",
+    "topic": "number_theory",
+    "subtopics": [
+      "целая часть",
+      "оценки сумм",
+      "корни"
+    ],
+    "difficulty": 6,
+    "skills": [
+      {
+        "name": "Оценка корней",
+        "note": "$2010<\\sqrt{2010^2+k}<2011$ и приближение арифметической прогрессией"
+      },
+      {
+        "name": "Сумма прогрессии",
+        "note": "сумма почти равна $\\dfrac{2010{,}00025+2010{,}99975}{2}\\cdot4020$"
+      }
+    ],
+    "hints": [
+      "Оцените $\\sqrt{2010^2+k}-2010$ через $\\dfrac{k}{2\\cdot2010+\\dots}$.",
+      "Сумма $\\sqrt{2010^2+k}$ по $k$ почти арифметическая."
+    ],
+    "solution": "Ответ: $8082210$.\n\nДля $1\\le k\\le 4020$ имеем $\\sqrt{2010^2+k}-2010=\\dfrac{k}{\\sqrt{2010^2+k}+2010}$, и знаменатель лежит между $4020$ и $4021$. Значит\n$$\\frac{k}{4021}<\\sqrt{2010^2+k}-2010<\\frac{k}{4020}.$$\nСумма по $k$ от $1$ до $4020$ заключена между $2010\\cdot4020+\\dfrac{4020\\cdot4021}{2\\cdot4021}=8080200+2010$ и $8080200+\\dfrac{4020\\cdot4021}{2\\cdot4020}=8080200+2010,5$. Значит, целая часть равна $8082210$.",
+    "answer": "8082210",
+    "solution_source": "matol",
+    "confidence": "high"
+  },
+  {
+    "id": "m95-5",
+    "topic": "geometry",
+    "subtopics": [
+      "описанная окружность",
+      "серединные перпендикуляры",
+      "теорема Чевы"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m95-6",
+    "topic": "combinatorics",
+    "subtopics": [
+      "инварианты",
+      "линейная алгебра над $\\mathbb F_2$",
+      "циклические последовательности"
+    ],
+    "difficulty": 8,
+    "skills": [
+      {
+        "name": "Пространство ходов",
+        "note": "ходы порождают идеал, порождённый $1+x+x^2$ в $\\mathbb F_2[x]/(x^n-1)$"
+      },
+      {
+        "name": "Делимость на 3",
+        "note": "$1+x+x^2\\mid x^n-1$ над $\\mathbb F_2$ тогда и только тогда, когда $3\\mid n$"
+      }
+    ],
+    "hints": [
+      "Представьте конфигурацию вектором над $\\mathbb F_2$.",
+      "Найдите $\\gcd(1+x+x^2,\\,x^n-1)$ над $\\mathbb F_2$."
+    ],
+    "solution": "Ответ: $2^n$ при $3\\nmid n$ и $2^{n-2}$ при $3\\mid n$.\n\nКонфигурацию записываем вектором над $\\mathbb F_2$ (отметка — перевёрнутые шашки). Ход — прибавление $e_i+e_{i+1}+e_{i+2}$ (индексы по модулю $n$). Пространство ходов — образ умножения на $1+x+x^2$ в $R=\\mathbb F_2[x]/(x^n-1)$, его размерность равна $n-\\deg\\gcd(1+x+x^2,x^n-1)$.\n\nКорни $1+x+x^2$ — первообразные корни третьей степени из единицы $\\omega$. Значит $1+x+x^2\\mid x^n-1$ тогда и только тогда, когда $\\omega^n=1$, т.е. $3\\mid n$. Тогда $\\gcd$ имеет степень $2$, и число достижимых конфигураций $2^{n-2}$; иначе $\\gcd=1$ и достижимы все $2^n$.\n\nПроверка: $n=3$ даёт $2^{1}=2$ (исходная и полностью перевёрнутая).",
+    "answer": "2^n при 3∤n; 2^{n−2} при 3|n",
+    "solution_source": "ai",
+    "confidence": "high"
+  },
+  {
+    "id": "m96-1",
+    "topic": "algebra",
+    "subtopics": [
+      "оценки корней",
+      "средние арифметические",
+      "целая часть"
+    ],
+    "difficulty": 5,
+    "skills": [
+      {
+        "name": "Оценка корня",
+        "note": "$i+1{,}5<\\sqrt{i^2+3i+3}<i+2$"
+      },
+      {
+        "name": "Среднее",
+        "note": "среднее лежит строго между $\\dfrac{a+b+3}{2}$ и $\\dfrac{a+b+4}{2}$"
+      }
+    ],
+    "hints": [
+      "Сравните $\\sqrt{i^2+3i+3}$ с $i+1{,}5$ и с $i+2$.",
+      "Рассмотрите чётность $a+b$."
+    ],
+    "solution": "Ответ: $[M(a,b)]=\\left\\lfloor\\dfrac{a+b+3}{2}\\right\\rfloor$.\n\nДля каждого $i$: $i^2+3i+3=(i+1{,}5)^2+0{,}75>(i+1{,}5)^2$, и $i^2+3i+3<(i+2)^2$. Значит $i+1{,}5<\\sqrt{i^2+3i+3}<i+2$.\n\nУсредняя по $i=a,\\dots,b$: $\\dfrac{a+b+3}{2}<M(a,b)<\\dfrac{a+b+4}{2}$.\n\nЕсли $a+b$ нечётно, то $\\dfrac{a+b+3}{2}$ — целое, и $M\\in\\bigl(\\tfrac{a+b+3}{2},\\tfrac{a+b+3}{2}+\\tfrac12\\bigr)$, значит $[M]=\\tfrac{a+b+3}{2}$. Если $a+b$ чётно, то $M\\in\\bigl(\\tfrac{a+b+2}{2}+\\tfrac12,\\ \\tfrac{a+b+2}{2}+1\\bigr)$, и $[M]=\\tfrac{a+b+2}{2}$. В обоих случаях $[M]=\\lfloor\\tfrac{a+b+3}{2}\\rfloor$.\n\nПроверка: $a=0$, $b=1$: $M=\\tfrac{\\sqrt3+\\sqrt7}{2}\\approx2{,}19$, формула даёт $2$.",
+    "answer": "[M(a,b)] = ⌊(a+b+3)/2⌋",
+    "solution_source": "matol",
+    "confidence": "high"
+  },
+  {
+    "id": "m96-2",
+    "topic": "combinatorics",
+    "subtopics": [
+      "простые числа",
+      "разности",
+      "конструкция"
+    ],
+    "difficulty": 6,
+    "skills": [
+      {
+        "name": "Конструкция",
+        "note": "числа $\\equiv1 \\pmod 4$ дают разности, кратные $4$"
+      },
+      {
+        "name": "Оценка",
+        "note": "разности $2,3$ запрещены, нужна оценка для блоков"
+      }
+    ],
+    "hints": [
+      "Рассмотрите числа, сравнимые с $1$ по модулю $4$.",
+      "Разности $2$ и $3$ запрещены: оцените число элементов в блоках из четырёх подряд идущих чисел."
+    ],
+    "solution": "⚠️ Решение неполное: приведена конструкция и ответ, оценка сверху не доведена.\n\nОтвет: $503$.\n\nКонструкция: $A=\\{1,5,9,\\dots,2009\\}$ содержит $503$ элемента, все разности делятся на $4$ и потому составные либо нули.\n\nОценка: в каждом блоке из четырёх подряд идущих чисел $\\{x,x+1,x+2,x+3\\}$ разности $2$ и $3$ запрещены, поэтому в блоке не более двух элементов. Точная оценка $503$ требует более тонкого разбиения, которое здесь не выписано.",
+    "answer": "503",
+    "solution_source": "ai",
+    "confidence": "low"
+  },
+  {
+    "id": "m96-3",
+    "topic": "geometry",
+    "subtopics": [
+      "трапеция",
+      "вписанная окружность",
+      "перпендикуляры"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m96-4",
+    "topic": "algebra",
+    "subtopics": [
+      "функциональные уравнения",
+      "замена переменных"
+    ],
+    "difficulty": 6,
+    "skills": [
+      {
+        "name": "Преобразование",
+        "note": "$\\dfrac1{f(x+y)}=\\dfrac1{f(x)}+y$"
+      },
+      {
+        "name": "Линейность обратной функции",
+        "note": "$1/f(x)=x+c$ при $c\\ge0$"
+      }
+    ],
+    "hints": [
+      "Раскройте скобки и разделите на $y f(x)f(x+y)$.",
+      "Полученное уравнение означает, что $1/f$ аддитивно сдвигается на $y$."
+    ],
+    "solution": "Ответ: $f(x)=\\dfrac1{x+c}$, где $c\\ge0$.\n\nРаскрываем: $(1+yf(x))(1-yf(x+y))=1$ равносильно $yf(x)-yf(x+y)-y^2f(x)f(x+y)=0$. Делим на $y f(x)f(x+y)>0$: $\\dfrac1{f(x+y)}-\\dfrac1{f(x)}-y=0$.\n\nЗначит $g=1/f$ удовлетворяет $g(x+y)=g(x)+y$. Тогда $g(x)=g(1)+(x-1)$ при $x>0$ (полагая $y=x-1$ при $x>1$ и аналогично для $x<1$), т.е. $g(x)=x+c$ с $c=g(1)-1$. Так как $f>0$, $g>0$ на $\\mathbb R^+$, отсюда $c\\ge0$.\n\nПроверка: $g(x+y)=x+y+c=g(x)+y$, и уравнение выполняется.",
+    "answer": "f(x) = 1/(x+c), c ≥ 0",
+    "solution_source": "ai",
+    "confidence": "high"
+  },
+  {
+    "id": "m96-5",
+    "topic": "combinatorics",
+    "subtopics": [
+      "инварианты",
+      "линейная алгебра над $\\mathbb F_2$"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m96-6",
+    "topic": "number_theory",
+    "subtopics": [
+      "степени",
+      "делимость",
+      "простые делители"
+    ],
+    "difficulty": 9,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m206-1",
+    "topic": "geometry",
+    "subtopics": [
+      "биссектриса",
+      "описанная окружность",
+      "касательная"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m206-2",
+    "topic": "algebra",
+    "subtopics": [
+      "неравенство КБШ"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m206-3",
+    "topic": "combinatorics",
+    "subtopics": [
+      "сравнения",
+      "делимость сумм"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m206-4",
+    "topic": "number_theory",
+    "subtopics": [
+      "периоды десятичных дробей",
+      "первообразные корни"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m207-1",
+    "topic": "algebra",
+    "subtopics": [
+      "ведущие элементы",
+      "сумма последовательности"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m207-2",
+    "topic": "geometry",
+    "subtopics": [
+      "полупериметр",
+      "диаметр описанной окружности",
+      "вписанная окружность"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m207-3",
+    "topic": "algebra",
+    "subtopics": [
+      "неравенства"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m207-4",
+    "topic": "algebra",
+    "subtopics": [
+      "сумма ряда",
+      "степени натуральных чисел"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m208-1",
+    "topic": "algebra",
+    "subtopics": [
+      "функциональные уравнения",
+      "многочлены"
+    ],
+    "difficulty": 6,
+    "skills": [
+      {
+        "name": "Подстановка",
+        "note": "$y=0$ даёт $f(0)=0$"
+      },
+      {
+        "name": "Квадратичные решения",
+        "note": "$f(x)=ax^2+bx$ удовлетворяют условию"
+      }
+    ],
+    "hints": [
+      "Подставьте $y=0$ и $x=y$.",
+      "Проверьте $f(x)=x$ и $f(x)=x^2$."
+    ],
+    "solution": "Ответ: $f(x)=ax^2+bx$, где $a,b$ — любые действительные числа.\n\nПри $y=0$: $x\\,f(x)=x\\,(f(x)-f(0))$, откуда $xf(0)=0$ и $f(0)=0$.\n\nПроверка: для $f(x)=x$ обе части равны $(x+y)(x-y)$; для $f(x)=x^2$ обе части равны $(x+y)^2(x-y)$. Линейность условия по $f$ даёт все функции вида $ax^2+bx$.\n\nОбратно, из условия при $y=1$ и других подстановок выводится, что $f$ квадратична; полный вывод здесь не выписан.",
+    "answer": "f(x) = ax² + bx",
+    "solution_source": "matol",
+    "confidence": "medium"
+  },
+  {
+    "id": "m208-2",
+    "topic": "number_theory",
+    "subtopics": [
+      "сравнения",
+      "суммы квадратов",
+      "простые числа"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m208-3",
+    "topic": "geometry",
+    "subtopics": [
+      "вписанная окружность",
+      "касание окружностей",
+      "ортоцентр"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m208-4",
+    "topic": "combinatorics",
+    "subtopics": [
+      "графы",
+      "клики",
+      "экстремальные задачи"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  }
+]
