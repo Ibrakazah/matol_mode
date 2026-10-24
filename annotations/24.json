@@ -1,0 +1,395 @@
+[
+  {
+    "id": "m1154-1",
+    "topic": "number_theory",
+    "subtopics": [
+      "диофантовы уравнения",
+      "показательные уравнения"
+    ],
+    "difficulty": 6,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1154-2",
+    "topic": "algebra",
+    "subtopics": [
+      "функциональные уравнения",
+      "монотонность"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1154-3",
+    "topic": "geometry",
+    "subtopics": [
+      "вписанные и вневписанные окружности",
+      "гармонические четвёрки",
+      "коллинеарность"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1154-4",
+    "topic": "algebra",
+    "subtopics": [
+      "неравенства",
+      "целая часть"
+    ],
+    "difficulty": 6,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1154-5",
+    "topic": "geometry",
+    "subtopics": [
+      "касательные к окружности",
+      "лемма о трезубце",
+      "вписанные четырёхугольники"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1154-6",
+    "topic": "combinatorics",
+    "subtopics": [
+      "скобочные последовательности",
+      "последовательности"
+    ],
+    "difficulty": 6,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1228-1",
+    "topic": "geometry",
+    "subtopics": [
+      "вписанные четырёхугольники",
+      "прямоугольный треугольник",
+      "вычисления в геометрии"
+    ],
+    "difficulty": 5,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1228-2",
+    "topic": "number_theory",
+    "subtopics": [
+      "показательные уравнения",
+      "сравнения по модулю",
+      "делимость"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1228-3",
+    "topic": "combinatorics",
+    "subtopics": [
+      "экстремальные задачи",
+      "расстояния на доске"
+    ],
+    "difficulty": 5,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1228-4",
+    "topic": "combinatorics",
+    "subtopics": [
+      "экстремальные задачи",
+      "неравенства"
+    ],
+    "difficulty": 5,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1228-5",
+    "topic": "algebra",
+    "subtopics": [
+      "многочлены",
+      "теорема Виета",
+      "экстремальные задачи"
+    ],
+    "difficulty": 6,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1228-6",
+    "topic": "geometry",
+    "subtopics": [
+      "гомотетия",
+      "степень точки",
+      "касательные к окружности"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1229-1",
+    "topic": "number_theory",
+    "subtopics": [
+      "делимость",
+      "НОД",
+      "взаимная простота"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1229-2",
+    "topic": "geometry",
+    "subtopics": [
+      "вписанные четырёхугольники",
+      "углы в геометрии",
+      "вычисления в геометрии"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1229-3",
+    "topic": "combinatorics",
+    "subtopics": [
+      "игры",
+      "графы",
+      "раскраски"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1229-4",
+    "topic": "combinatorics",
+    "subtopics": [
+      "раскраски",
+      "связность",
+      "двудольные графы"
+    ],
+    "difficulty": 5,
+    "skills": [
+      {
+        "name": "Связный двудольный граф",
+        "note": "у связного двудольного графа доли определяются однозначно, поэтому цвета пары $c_1,c_2$ лежат в одной клеточной половине шахматной раскраски."
+      },
+      {
+        "name": "Согласование шахматной раскраски",
+        "note": "все три пары цветов дают согласованные половины, и в итоге два цвета оказываются в одной доле."
+      },
+      {
+        "name": "Изолированность",
+        "note": "цвета $c_1$ и $c_3$ не имеют соседей друг с другом, поэтому их объединение несвязно."
+      }
+    ],
+    "hints": [
+      "Введи шахматную раскраску: соседние клетки всегда в разных классах $B$ и $W$.",
+      "Для пары цветов, например $c_1,c_2$, их клетки образуют связный двудольный граф, поэтому все клетки одного цвета лежат в одном классе.",
+      "Из этого следует, что $c_1$ и $c_3$ лежат в одном классе, и их объединение не содержит соседних клеток, что противоречит связности."
+    ],
+    "solution": "Ответа «да» не существует: такой раскраски нет.\n\nВведём шахматную раскраску доски в классы $B$ и $W$. Соседние клетки всегда принадлежат разным классам.\n\nПредположим, что раскраска в цвета $c_1,c_2,c_3$ существует. Рассмотрим множество $S_{12}$ клеток цветов $c_1$ и $c_2$. Оно связно по условию, и соседних клеток одного цвета в нём нет, поэтому $S_{12}$ — связный двудольный граф с долями «цвет $c_1$» и «цвет $c_2$». У связного двудольного графа доли определяются однозначно, и шахматная раскраска тоже задаёт разбиение, согласованное с соседством. Значит, все клетки цвета $c_1$ лежат в одном классе, а клетки цвета $c_2$ — в другом. Пусть для определённости $c_1\\subset B$, тогда $c_2\\subset W$.\n\nАналогично для связного множества $S_{23}$: клетки $c_2$ лежат в $W$, поэтому все клетки $c_3$ лежат в $B$.\n\nТогда в множестве $S_{13}$ клеток цветов $c_1$ и $c_3$ нет ни одной клетки из $W$. Соседи клетки из $B$ лежат в $W$, поэтому в $S_{13}$ нет соседних клеток. Но по условию есть хотя бы одна клетка $c_1$ и хотя бы одна клетка $c_3$, и они не соседствуют, так что $S_{13}$ несвязно. Это противоречит условию. $\\blacksquare$",
+    "answer": "не существует",
+    "solution_source": "matol",
+    "confidence": "high"
+  },
+  {
+    "id": "m1229-5",
+    "topic": "algebra",
+    "subtopics": [
+      "неравенства",
+      "оценки сумм"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1229-6",
+    "topic": "geometry",
+    "subtopics": [
+      "вписанные окружности",
+      "степень точки",
+      "радикальная ось"
+    ],
+    "difficulty": 9,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1230-1",
+    "topic": "number_theory",
+    "subtopics": [
+      "делимость",
+      "НОД",
+      "взаимная простота"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1230-2",
+    "topic": "geometry",
+    "subtopics": [
+      "вписанные четырёхугольники",
+      "углы в геометрии",
+      "вычисления в геометрии"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1230-3",
+    "topic": "combinatorics",
+    "subtopics": [
+      "игры",
+      "графы",
+      "раскраски"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1230-4",
+    "topic": "combinatorics",
+    "subtopics": [
+      "раскраски",
+      "связность",
+      "двудольные графы"
+    ],
+    "difficulty": 6,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1230-5",
+    "topic": "algebra",
+    "subtopics": [
+      "неравенства",
+      "оценки сумм"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1230-6",
+    "topic": "geometry",
+    "subtopics": [
+      "вписанные окружности",
+      "степень точки",
+      "радикальная ось"
+    ],
+    "difficulty": 9,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  }
+]

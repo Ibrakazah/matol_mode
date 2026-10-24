@@ -1,0 +1,404 @@
+[
+  {
+    "id": "m470-1",
+    "topic": "algebra",
+    "subtopics": [
+      "неравенства",
+      "неравенство о средних"
+    ],
+    "difficulty": 5,
+    "skills": [
+      {
+        "name": "Неравенство о средних (AM-GM)",
+        "note": "$(a-b)(b-c)\\le\\frac{(a-c)^2}{4}$ при одинаковых знаках множителей"
+      },
+      {
+        "name": "Оценка через разность крайних чисел",
+        "note": "$|a|+|b|+|c|\\ge|a-c|$ и $|(a-c)^3|\\ge4$"
+      }
+    ],
+    "hints": [
+      "Оцените $|(a-b)(b-c)|$ через $(a-c)^2/4$.",
+      "Оцените $|a|+|b|+|c|$ снизу через $|a-c|$ и найдите пример с равенством."
+    ],
+    "solution": "Ответ: $\\sqrt[3]{4}$.\n\nПусть $a\\ge c$ (иначе поменяем роли). По неравенству о средних для двух множителей с одинаковым знаком (или для их модулей)\n$$|(a-b)(b-c)|\\le\\frac{(a-b+b-c)^2}{4}=\\frac{(a-c)^2}{4}.$$\nЗначит $1=|(a-b)(b-c)(c-a)|\\le\\frac{|a-c|^3}{4}$, т.е. $|a-c|\\ge\\sqrt[3]4$.\n\nДалее $|a|+|b|+|c|\\ge|a|+|c|\\ge|a-c|\\ge\\sqrt[3]4$.\n\nПример: $a=\\frac1{\\sqrt[3]2}$, $b=0$, $c=-\\frac1{\\sqrt[3]2}$. Тогда $|(a-b)(b-c)(c-a)|=2\\cdot\\frac1{2}=1$ и $|a|+|b|+|c|=\\frac{2}{\\sqrt[3]2}=\\sqrt[3]4$.",
+    "answer": "$\\sqrt[3]{4}$",
+    "solution_source": "matol",
+    "confidence": "high"
+  },
+  {
+    "id": "m470-2",
+    "topic": "geometry",
+    "subtopics": [
+      "вписанные окружности",
+      "подобие",
+      "гармонические четвёрки"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m470-3",
+    "topic": "number_theory",
+    "subtopics": [
+      "последовательности",
+      "делимость"
+    ],
+    "difficulty": 9,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m470-4",
+    "topic": "combinatorics",
+    "subtopics": [
+      "разбиения",
+      "тождества"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m509-1",
+    "topic": "combinatorics",
+    "subtopics": [
+      "раскраски",
+      "счёт"
+    ],
+    "difficulty": 6,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m509-2",
+    "topic": "geometry",
+    "subtopics": [
+      "вписанный четырёхугольник",
+      "равнобокая трапеция"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m509-3",
+    "topic": "algebra",
+    "subtopics": [
+      "неравенства",
+      "принцип Дирихле"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m509-4",
+    "topic": "number_theory",
+    "subtopics": [
+      "сравнения по модулю",
+      "первообразный корень",
+      "многочлены по модулю"
+    ],
+    "difficulty": 6,
+    "skills": [
+      {
+        "name": "Элемент порядка 9 в мультипликативной группе",
+        "note": "так как $9\\mid p-1$, в циклической группе $\\mathbb Z_p^*$ есть $x$ с $x^9\\equiv1$, $x^3\\not\\equiv1$"
+      },
+      {
+        "name": "Тождество $(x+\\frac1x)^3-3(x+\\frac1x)+1=x^3+\\frac1{x^3}+1$",
+        "note": "$x^9-1=(x^3-1)(x^6+x^3+1)$ даёт нужную делимость"
+      }
+    ],
+    "hints": [
+      "Почему в $\\mathbb Z_p^*$ есть элемент порядка 9?",
+      "Положите $n\\equiv x+x^{-1}$ и раскройте $n^3-3n+1$."
+    ],
+    "solution": "Так как $p$ простое и $9\\mid p-1$, мультипликативная группа $\\mathbb Z_p^*$ циклическая порядка $p-1$ содержит элемент $x$ порядка 9. Тогда $x^9\\equiv1$ и $x^3\\not\\equiv1\\pmod p$.\n\nПусть $n$ — целое число, для которого $n\\equiv x+x^{-1}\\pmod p$. Тогда\n$$n^3-3n+1\\equiv\\left(x+\\frac1x\\right)^3-3\\left(x+\\frac1x\\right)+1=x^3+\\frac1{x^3}+1=\\frac{x^6+x^3+1}{x^3}\\pmod p.$$\nНо $x^9-1=(x^3-1)(x^6+x^3+1)\\equiv0\\pmod p$, и $x^3-1\\not\\equiv0$, поэтому $x^6+x^3+1\\equiv0$. Значит $p\\mid n^3-3n+1$.",
+    "answer": null,
+    "solution_source": "matol",
+    "confidence": "high"
+  },
+  {
+    "id": "m579-1",
+    "topic": "geometry",
+    "subtopics": [
+      "ортоцентр",
+      "подобие",
+      "высоты треугольника"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m579-2",
+    "topic": "algebra",
+    "subtopics": [
+      "функциональные уравнения"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m579-3",
+    "topic": "combinatorics",
+    "subtopics": [
+      "слова",
+      "расстояние Хэмминга"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m579-4",
+    "topic": "number_theory",
+    "subtopics": [
+      "делимость",
+      "количество делителей"
+    ],
+    "difficulty": 9,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m904-1",
+    "topic": "geometry",
+    "subtopics": [
+      "ортоцентр",
+      "параллельные прямые",
+      "подобие"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m904-2",
+    "topic": "algebra",
+    "subtopics": [
+      "неравенства"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m904-3",
+    "topic": "number_theory",
+    "subtopics": [
+      "функция Эйлера",
+      "диофантовы уравнения"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m904-4",
+    "topic": "combinatorics",
+    "subtopics": [
+      "рекуррентные последовательности",
+      "суммы квадратов",
+      "инволюции"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m940-1",
+    "topic": "number_theory",
+    "subtopics": [
+      "делимость",
+      "наибольший общий делитель",
+      "монотонные последовательности"
+    ],
+    "difficulty": 7,
+    "skills": [
+      {
+        "name": "Взаимная простота с $n$",
+        "note": "из $a_{n+1}\\mid n^3a_n-1$ следует $\\gcd(a_{n+1},n)=1$"
+      },
+      {
+        "name": "Выбор $n$ кратного $2021!$",
+        "note": "тогда $a_{n+1}-n\\in[2,2020]$ делит $n$, а значит $\\gcd(a_{n+1},n)>1$"
+      }
+    ],
+    "hints": [
+      "Докажите сначала, что $a_n\\ge n$ и последовательность растёт не медленнее, чем на единицу.",
+      "Если $a_i>i$ при некотором $i$, выберите $n\\ge i$ с $2021!\\mid n$ и рассмотрите $\\gcd(a_{n+1},n)$."
+    ],
+    "solution": "Так как последовательность строго возрастает в натуральных числах, $a_n\\ge n$ для всех $n$ (поскольку $a_1\\ge1$).\n\nПредположим, что $a_i>i$ для некоторого $i$. Тогда $a_n>n$ при всех $n\\ge i$, и значит $a_{n+1}\\ge n+2$.\n\nИз условия $a_{n+1}\\mid n^3a_n-1$ следует $\\gcd(a_{n+1},n)=1$. Выберем $n\\ge i$ с $2021!\\mid n$. Так как $a_{n+1}\\le n+2020$ и $a_{n+1}\\ge n+2$, число $d=a_{n+1}-n$ лежит в $[2,2020]$. Поскольку $2021!\\mid n$, $d\\mid n$, и значит $\\gcd(a_{n+1},n)=\\gcd(a_{n+1}-n,n)=d>1$. Противоречие.\n\nИтак, $a_n=n$ для всех $n$.",
+    "answer": null,
+    "solution_source": "matol",
+    "confidence": "high"
+  },
+  {
+    "id": "m940-2",
+    "topic": "geometry",
+    "subtopics": [
+      "радикальная ось",
+      "теорема Менелая",
+      "подобие"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m940-3",
+    "topic": "algebra",
+    "subtopics": [
+      "многочлены",
+      "неравенства для коэффициентов"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m940-4",
+    "topic": "geometry",
+    "subtopics": [
+      "выпуклая оболочка",
+      "комбинаторная геометрия"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m974-1",
+    "topic": "combinatorics",
+    "subtopics": [
+      "подсчёт вхождений",
+      "последовательности из нулей и единиц"
+    ],
+    "difficulty": 6,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m974-2",
+    "topic": "number_theory",
+    "subtopics": [
+      "дробная часть",
+      "неравенства"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m974-3",
+    "topic": "geometry",
+    "subtopics": [
+      "окружность",
+      "симедиана",
+      "подобие"
+    ],
+    "difficulty": 9,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m974-4",
+    "topic": "number_theory",
+    "subtopics": [
+      "диофантовы уравнения",
+      "бесконечный спуск"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  }
+]

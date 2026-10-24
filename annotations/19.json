@@ -1,0 +1,419 @@
+[
+  {
+    "id": "m570-1",
+    "topic": "geometry",
+    "subtopics": [
+      "трапеции",
+      "касательные к окружности"
+    ],
+    "difficulty": 5,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m570-2",
+    "topic": "combinatorics",
+    "subtopics": [
+      "рекуррентные последовательности",
+      "оценки"
+    ],
+    "difficulty": 6,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m570-3",
+    "topic": "algebra",
+    "subtopics": [
+      "функциональные уравнения"
+    ],
+    "difficulty": 6,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m570-4",
+    "topic": "algebra",
+    "subtopics": [
+      "неравенства"
+    ],
+    "difficulty": 6,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m570-5",
+    "topic": "number_theory",
+    "subtopics": [
+      "степени двойки",
+      "диофантовы уравнения"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m570-6",
+    "topic": "geometry",
+    "subtopics": [
+      "неравенства",
+      "углы",
+      "вписанные четырёхугольники"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m887-1",
+    "topic": "number_theory",
+    "subtopics": [
+      "делимость",
+      "арифметические выражения"
+    ],
+    "difficulty": 4,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m887-2",
+    "topic": "geometry",
+    "subtopics": [
+      "вписанные пятиугольники",
+      "ортоцентр"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m887-3",
+    "topic": "algebra",
+    "subtopics": [
+      "неравенства",
+      "неравенство о средних",
+      "неравенство Коши–Буняковского"
+    ],
+    "difficulty": 6,
+    "skills": [
+      {
+        "name": "Неравенство о средних (AM-GM) для трёх чисел 9a, 9a, 8b+1",
+        "note": "даёт оценку 1/∛(3a²(8b+1)) ≥ 9/(18a+8b+1) для каждого слагаемого"
+      },
+      {
+        "name": "Неравенство между средним арифметическим и средним гармоническим",
+        "note": "применяется к трём дробям с суммой знаменателей 81, что даёт сумму не меньше 1/9"
+      }
+    ],
+    "hints": [
+      "Перепишите 3a²(8b+1) так, чтобы под кубическим корнем стояло произведение трёх множителей 9a, 9a, 8b+1.",
+      "После оценки каждого слагаемого сложите знаменатели: их сумма равна 26(a+b+c)+3 = 81."
+    ],
+    "solution": "Для каждого слагаемого применим AM-GM к трём числам $9a,\\ 9a,\\ 8b+1$:\n$$\\sqrt[3]{\\frac{1}{3a^2(8b+1)}}=\\frac{3}{\\sqrt[3]{81a^2(8b+1)}}=\\frac{3}{\\sqrt[3]{9a\\cdot 9a\\cdot(8b+1)}}\\ \\ge\\ \\frac{3\\cdot 3}{18a+8b+1}=\\frac{9}{18a+8b+1}.$$\nАналогично для остальных двух слагаемых. Значит левая часть не меньше\n$$9\\left(\\frac{1}{18a+8b+1}+\\frac{1}{18b+8c+1}+\\frac{1}{18c+8a+1}\\right).$$\nПо неравенству между средним гармоническим и средним арифметическим сумма обратных величин трёх положительных чисел не меньше $\\dfrac{9}{\\text{сумма}}$. Сумма знаменателей равна $26(a+b+c)+3=26\\cdot 3+3=81$. Поэтому выражение в скобках не меньше $\\dfrac{9}{81}=\\dfrac19$, а всё выражение не меньше $9\\cdot\\dfrac19=1$.\n\nРавенство достигается при $a=b=c=1$.",
+    "answer": null,
+    "solution_source": "matol",
+    "confidence": "high"
+  },
+  {
+    "id": "m887-4",
+    "topic": "combinatorics",
+    "subtopics": [
+      "диагонали многоугольника",
+      "раскраски",
+      "экстремальные задачи"
+    ],
+    "difficulty": 5,
+    "skills": [
+      {
+        "name": "Максимум непересекающихся диагоналей выпуклого n-угольника равен n−3",
+        "note": "индукция: диагональ делит n-угольник на два многоугольника с n1 + n2 = n + 2 вершинами"
+      },
+      {
+        "name": "Разделение оставшихся диагоналей по цветам",
+        "note": "оставшиеся диагонали одного цвета не пересекаются, поэтому каждого цвета не больше n−3"
+      }
+    ],
+    "hints": [
+      "Заметьте, что после операций оставшиеся диагонали каждого цвета попарно не пересекаются.",
+      "Докажите индукцией, что непересекающихся диагоналей не больше n−3, затем постройте пример с двумя соседними вершинами."
+    ],
+    "solution": "Ответ: $2(n-3)$.\n\nОценка. После операций диагонали одного цвета попарно не пересекаются (иначе одну из пары удалили бы). Поэтому достаточно доказать, что в выпуклом $n$-угольнике набор попарно непересекающихся диагоналей содержит не более $n-3$ штук. Докажем это индукцией по $n$. При $n=3$ диагоналей нет. Если в наборе есть диагональ, она делит $n$-угольник на два выпуклых многоугольника с $n_1$ и $n_2$ вершинами, где $n_1+n_2=n+2$. Остальные диагонали лежат в этих частях и не пересекаются. По предположению индукции их не больше $(n_1-3)+(n_2-3)$, а с учётом самой диагонали получаем не более $n_1+n_2-6+1=n-3$. Значит каждого цвета не больше $n-3$ диагоналей, и всего не больше $2(n-3)$.\n\nПример. Пусть вершины $A_1,\\dots,A_n$ идут по порядку. Диагонали из $A_1$ (их $n-3$ штуки) красим в синий, диагонали из $A_2$ (тоже $n-3$ штуки) красим в красный. Диагонали из одной вершины не пересекаются внутри многоугольника, значит каждый цвет даёт $n-3$ непересекающихся диагоналей, и ни одна диагональ не удаляется. Всего остаётся $2(n-3)$ диагоналей.",
+    "answer": "$2(n-3)$",
+    "solution_source": "matol",
+    "confidence": "high"
+  },
+  {
+    "id": "m887-5",
+    "topic": "geometry",
+    "subtopics": [
+      "окружности",
+      "степень точки",
+      "касательные"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m887-6",
+    "topic": "number_theory",
+    "subtopics": [
+      "делимость",
+      "квадратичные вычеты"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m888-1",
+    "topic": "algebra",
+    "subtopics": [
+      "неравенства",
+      "симметрические функции"
+    ],
+    "difficulty": 5,
+    "skills": [
+      {
+        "name": "Условие 1/a+1/b+1/c = 1 как ab+bc+ca = abc",
+        "note": "позволяет выразить (a+b)(b+c)(c+a) = abc(a+b+c−1) и упростить знаменатели"
+      },
+      {
+        "name": "Тождество (a+b)(a+c) = a²+abc",
+        "note": "знаменатель каждой дроби раскладывается на (a+b)(a+c), после чего левая часть сводится к (a+b+c+3)/(a+b+c−1)"
+      },
+      {
+        "name": "Оценка a+b+c ≥ 9 через (Σ1/a)(Σa) ≥ 9",
+        "note": "дальше неравенство сводится к (s+3)/(s−1) ≥ 12/(s−1), то есть s ≥ 9"
+      }
+    ],
+    "hints": [
+      "Перепишите условие как ab+bc+ca = abc и выразите a²+abc через (a+b)(a+c).",
+      "Вычислите Σ a(b+c)² и (a+b)(b+c)(c+a) через s = a+b+c и abc; получите левую часть (s+3)/(s−1).",
+      "Используйте (1/a+1/b+1/c)(a+b+c) ≥ 9, то есть s ≥ 9."
+    ],
+    "solution": "Из условия $\\frac1a+\\frac1b+\\frac1c=1$ получаем $ab+bc+ca=abc$. Пусть $s=a+b+c$. Тогда $s>0$, и так как $(a+b)(b+c)(c+a)>0$, то $s>1$.\n\nШаг 1. Упростим знаменатели. Так как $a^2+abc=a^2+ab+bc+ca=(a+b)(a+c)$, имеем\n$$\\frac{b+c}{a+bc}=\\frac{a(b+c)}{a^2+abc}=\\frac{a(b+c)}{(a+b)(a+c)}=\\frac{a(b+c)^2}{(a+b)(b+c)(c+a)}.$$\nПоэтому левая часть равна $\\dfrac{\\sum a(b+c)^2}{(a+b)(b+c)(c+a)}$.\n\nШаг 2. Вычислим числитель и знаменатель. Имеем $\\sum a(b+c)^2=(ab+bc+ca)s+3abc=abc(s+3)$. Также $(a+b)(b+c)(c+a)=s(ab+bc+ca)-abc=abc(s-1)$. Значит левая часть равна\n$$\\frac{s+3}{s-1}.$$\n\nШаг 3. Оценка $s\\ge 9$. Из $\\left(\\frac1a+\\frac1b+\\frac1c\\right)(a+b+c)\\ge 9$ получаем $s\\ge 9$.\n\nИтак, нужно доказать $\\dfrac{s+3}{s-1}\\ge\\dfrac{12}{s-1}$, что равносильно $s+3\\ge 12$, то есть $s\\ge 9$. Это верно. Равенство достигается при $a=b=c=3$.",
+    "answer": null,
+    "solution_source": "matol",
+    "confidence": "high"
+  },
+  {
+    "id": "m888-2",
+    "topic": "number_theory",
+    "subtopics": [
+      "сравнения по модулю",
+      "целочисленные расстояния"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m888-3",
+    "topic": "geometry",
+    "subtopics": [
+      "покрытия",
+      "расстояния между точками"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m888-4",
+    "topic": "algebra",
+    "subtopics": [
+      "функциональные уравнения"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m888-5",
+    "topic": "geometry",
+    "subtopics": [
+      "окружности",
+      "касательные",
+      "степень точки"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m888-6",
+    "topic": "number_theory",
+    "subtopics": [
+      "простые числа",
+      "делимость",
+      "сравнения по модулю"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m889-1",
+    "topic": "algebra",
+    "subtopics": [
+      "неравенства",
+      "неравенство о средних"
+    ],
+    "difficulty": 4,
+    "skills": [
+      {
+        "name": "Взвешенное неравенство AM-GM для 15 слагаемых",
+        "note": "слагаемые (a/b)^{1/3} делятся на 3 равные части, (b/c)^{1/5} на 5, (c/a)^{1/7} на 7"
+      },
+      {
+        "name": "Замена x, y, z с xyz = 1",
+        "note": "x = (a/b)^{1/105}, y = (b/c)^{1/105}, z = (c/a)^{1/105} дают xyz = 1 и приводят слагаемые к степеням x, y, z"
+      }
+    ],
+    "hints": [
+      "Замените каждое слагаемое на степень x = (a/b)^{1/105}, y = (b/c)^{1/105}, z = (c/a)^{1/105}.",
+      "Разбейте сумму на 15 слагаемых: три одинаковых x^{35}/3, пять y^{21}/5 и семь z^{15}/7, и примените AM-GM."
+    ],
+    "solution": "Положим $x=\\sqrt[105]{a/b}$, $y=\\sqrt[105]{b/c}$, $z=\\sqrt[105]{c/a}$. Тогда $xyz=1$, и исходное неравенство принимает вид\n$$x^{35}+y^{21}+z^{15}>\\frac52.$$\nЗапишем левую часть как сумму 15 слагаемых:\n$$x^{35}+y^{21}+z^{15}=\\underbrace{\\frac{x^{35}}3+\\frac{x^{35}}3+\\frac{x^{35}}3}_{3}+\\underbrace{\\frac{y^{21}}5+\\dots+\\frac{y^{21}}5}_{5}+\\underbrace{\\frac{z^{15}}7+\\dots+\\frac{z^{15}}7}_{7}.$$\nПо неравенству AM-GM для 15 слагаемых сумма не меньше $15\\sqrt[15]{P}$, где\n$$P=\\left(\\frac{x^{35}}{3}\\right)^3\\left(\\frac{y^{21}}{5}\\right)^5\\left(\\frac{z^{15}}{7}\\right)^7=\\frac{(xyz)^{105}}{3^3\\cdot 5^5\\cdot 7^7}=\\frac{1}{3^3\\cdot 5^5\\cdot 7^7}.$$\nЗначит сумма не меньше $15\\cdot\\dfrac{1}{\\sqrt[15]{3^3\\cdot 5^5\\cdot 7^7}}$. Оценим знаменатель: $\\ln(3^3\\cdot 5^5\\cdot 7^7)\\approx 24.96$, так что $\\sqrt[15]{3^3 5^5 7^7}\\approx e^{1.664}\\approx 5.28$. Тогда $15/5.28\\approx 2.84>\\dfrac52$. Неравенство доказано.",
+    "answer": null,
+    "solution_source": "matol",
+    "confidence": "medium"
+  },
+  {
+    "id": "m889-2",
+    "topic": "geometry",
+    "subtopics": [
+      "покрытия",
+      "расстояния между точками"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m889-3",
+    "topic": "number_theory",
+    "subtopics": [
+      "сравнения по модулю",
+      "простые числа"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m889-4",
+    "topic": "number_theory",
+    "subtopics": [
+      "диофантовы уравнения",
+      "делимость"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m889-5",
+    "topic": "combinatorics",
+    "subtopics": [
+      "клетчатые фигуры",
+      "ломаные"
+    ],
+    "difficulty": 6,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m889-6",
+    "topic": "geometry",
+    "subtopics": [
+      "ортоцентр",
+      "касательные к окружности",
+      "вписанные окружности"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  }
+]

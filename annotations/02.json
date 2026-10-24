@@ -1,0 +1,429 @@
+[
+ {
+  "id": "m941-1",
+  "topic": "geometry",
+  "subtopics": [
+   "радикальная ось",
+   "вписанные четырёхугольники",
+   "касательная"
+  ],
+  "difficulty": 7,
+  "skills": [],
+  "hints": [],
+  "solution": "",
+  "answer": null,
+  "solution_source": "none",
+  "confidence": "low"
+ },
+ {
+  "id": "m941-2",
+  "topic": "algebra",
+  "subtopics": [
+   "последовательности",
+   "неравенства"
+  ],
+  "difficulty": 6,
+  "skills": [
+   {
+    "name": "Два случая $a_{n+1}\\le a_n$ и $a_n\\le a_{n+1}$",
+    "note": "при $r=2$ неравенство $a_{n+2}^2-a_n^2\\le 2a_{n+1}$ даёт либо $a_{n+2}=a_n$, либо $a_n\\le a_{n+2}\\le a_{n+1}$"
+   },
+   {
+    "name": "Ограниченная монотонная подпоследовательность",
+    "note": "чётные (или нечётные) члены неубывают и ограничены, поэтому стабилизируются"
+   }
+  ],
+  "hints": [
+   "Перепишите условие как $0\\le a_{n+2}^2-a_n^2\\le 2a_{n+1}$.",
+   "Рассмотрите два случая в зависимости от того, что больше: $a_n$ или $a_{n+1}$.",
+   "Покажите, что при $r>2$ можно построить последовательность без стабилизации."
+  ],
+  "solution": "**Часть 1: $r=2$ подходит.** Условие равносильно $0\\le a_{n+2}^2-a_n^2\\le 2a_{n+1}$.\n\n*Случай $a_{n+1}\\le a_n$.* Тогда $a_{n+2}^2-a_n^2\\le 2a_{n+1}\\le 2a_n<(a_n+1)^2-a_n^2$, значит $a_n^2\\le a_{n+2}^2<(a_n+1)^2$, и $a_{n+2}=a_n$.\n\n*Случай $a_n\\le a_{n+1}$.* Тогда $a_{n+2}^2\\le a_{n+1}^2+2a_{n+1}<(a_{n+1}+1)^2$, откуда $a_n\\le a_{n+2}\\le a_{n+1}$.\n\nПусть $a_{m+2}\\ne a_m$ для некоторого $m$. Тогда по первому случаю $a_{m+1}>a_m$, по второму $a_m<a_{m+2}\\le a_{m+1}$. Индукцией по $k$ показываем, что $a_{m+2k-1}=a_{m+1}$ и $a_{m+2k}\\le a_{m+1}$: переход от $k$ к $k+1$ даёт $a_{m+2k+1}=a_{m+2k-1}=a_{m+1}$ по первому случаю, и $a_{m+2k+2}\\le a_{m+2k+1}=a_{m+1}$ по второму. Значит подпоследовательность $a_{m+2k}$ неубывает и ограничена натуральным числом $a_{m+1}$, поэтому стабилизируется, и при больших $n$ имеем $a_{n+2}=a_n$.\n\n**Часть 2: при $r>2$ свойство не выполняется.** Пусть $\\varepsilon=r-2>0$ и $a_{2k-1}=a_{2k}=N+k$ при $N>1/\\varepsilon$ (с поправкой на случаи $a_n=l,a_{n+1}=l+1,a_{n+2}=l+1$, где нужно $1\\le\\varepsilon l+r$). Тогда неравенство $a_n\\le a_{n+2}\\le\\sqrt{a_n^2+ra_{n+1}}$ выполнено, но $a_{n+2}\\ne a_n$ для всех $n$, то есть условие на стабилизацию не выполняется. Проверка деталей — по комментарию, не полностью.",
+  "answer": "$r=2$",
+  "solution_source": "matol",
+  "confidence": "medium"
+ },
+ {
+  "id": "m941-3",
+  "topic": "combinatorics",
+  "subtopics": [
+   "подсчёт представлений",
+   "степени двойки"
+  ],
+  "difficulty": 7,
+  "skills": [],
+  "hints": [],
+  "solution": "",
+  "answer": null,
+  "solution_source": "none",
+  "confidence": "low"
+ },
+ {
+  "id": "m941-4",
+  "topic": "algebra",
+  "subtopics": [
+   "многочлены",
+   "последовательности"
+  ],
+  "difficulty": 8,
+  "skills": [],
+  "hints": [],
+  "solution": "",
+  "answer": null,
+  "solution_source": "none",
+  "confidence": "low"
+ },
+ {
+  "id": "m941-5",
+  "topic": "combinatorics",
+  "subtopics": [
+   "инварианты",
+   "НОД"
+  ],
+  "difficulty": 8,
+  "skills": [],
+  "hints": [],
+  "solution": "",
+  "answer": null,
+  "solution_source": "none",
+  "confidence": "low"
+ },
+ {
+  "id": "m975-1",
+  "topic": "algebra",
+  "subtopics": [
+   "уравнения с целой частью",
+   "монотонность"
+  ],
+  "difficulty": 5,
+  "skills": [
+   {
+    "name": "Разбиение на отрезки $[n,n+1)$",
+    "note": "на $[n,n+1)$ функция $f(x)=x^2/[x]$ непрерывна, возрастает и биективна на $[n,n+2+1/n)$"
+   },
+   {
+    "name": "Подсчёт пересечений области значений",
+    "note": "значение $r$ лежит в $[k,k+2+1/k)$ только для $k\\in\\{m-2,m-1,m\\}$, где $m=[r]$"
+   }
+  ],
+  "hints": [
+   "Заметьте, что $x<1$ невозможно, и рассмотрите $f(x)=x^2/[x]$ на $[n,n+1)$.",
+   "Найдите образ отрезка $[n,n+1)$ под действием $f$.",
+   "Определите, для каких $k$ образ содержит $r$."
+  ],
+  "solution": "Заметим, что при $0<x<1$ имеем $[x]=0$, и уравнение $x^2=0$ невозможно, поэтому $x\\ge1$. Положим $f(x)=x^2/[x]$ на $[1,\\infty)$; нужно найти число решений $f(x)=r$.\n\n**Лемма.** На $[n,n+1)$ функция $f(x)=x^2/n$ возрастает и непрерывна, её образ — $[n,\\,(n+1)^2/n)=[n,\\,n+2+1/n)$; значит $f$ биективна на отрезке $[n,n+1)$ в $b_n=[n,n+2+1/n)$.\n\nПусть $m=[r]\\ge2$, тогда $r\\in[m,m+1)$. Имеем $r\\in b_m$ (так как $m\\le r<m+1$) и $r\\in b_{m-1}$ (так как $r<m+1<m+1+\\frac{1}{m-1}$). Для $k\\ge m+1$ нижняя граница $b_k$ равна $k>r$, поэтому $r\\notin b_k$. Для $k\\le m-3$ верхняя граница $k+2+1/k\\le m$ при $m\\ge5$, поэтому $r\\notin b_k$. Остаются $k=m-2,m-1,m$, и на каждом из отрезков $[k,k+1)$ функция принимает значение $r$ не более одного раза (биекция). Значит, решений не меньше двух (на $[m-1,m)$ и $[m,m+1)$), и не больше трёх.\n\nМалые значения $m$ (для которых $k\\le m-3$ не работает) проверяются отдельно, в комментарии это не расписано.",
+  "answer": "ровно два или три решения",
+  "solution_source": "matol",
+  "confidence": "medium"
+ },
+ {
+  "id": "m975-2",
+  "topic": "algebra",
+  "subtopics": [
+   "многочлены",
+   "делимость"
+  ],
+  "difficulty": 9,
+  "skills": [],
+  "hints": [],
+  "solution": "",
+  "answer": null,
+  "solution_source": "none",
+  "confidence": "low"
+ },
+ {
+  "id": "m975-3",
+  "topic": "geometry",
+  "subtopics": [
+   "вневписанная окружность",
+   "гомотетия"
+  ],
+  "difficulty": 8,
+  "skills": [],
+  "hints": [],
+  "solution": "",
+  "answer": null,
+  "solution_source": "none",
+  "confidence": "low"
+ },
+ {
+  "id": "m975-4",
+  "topic": "combinatorics",
+  "subtopics": [
+   "игры",
+   "оценка и пример"
+  ],
+  "difficulty": 8,
+  "skills": [],
+  "hints": [],
+  "solution": "",
+  "answer": null,
+  "solution_source": "none",
+  "confidence": "low"
+ },
+ {
+  "id": "m975-5",
+  "topic": "algebra",
+  "subtopics": [
+   "функциональные уравнения",
+   "квадраты целых чисел"
+  ],
+  "difficulty": 9,
+  "skills": [],
+  "hints": [],
+  "solution": "",
+  "answer": null,
+  "solution_source": "none",
+  "confidence": "low"
+ },
+ {
+  "id": "m1002-1",
+  "topic": "number_theory",
+  "subtopics": [
+   "делимость",
+   "диофантовы уравнения"
+  ],
+  "difficulty": 5,
+  "skills": [
+   {
+    "name": "Из $b^2\\mid a^3$ следует $b\\mid a^2$",
+    "note": "$b^2\\mid a^4$, поэтому $b\\mid a^2$; пишем $a^2=bm$"
+   },
+   {
+    "name": "Сравнение $a^2-1$ по модулю $a-1$",
+    "note": "из $a-1\\mid b-1$ получаем $a-1\\mid m-1$, откуда $m\\ge a$ или $m=1$"
+   }
+  ],
+  "hints": [
+   "Из $b^2\\mid a^3$ выведите $b\\mid a^2$.",
+   "Запишите $a^2=bm$ и используйте $a-1\\mid b-1$, чтобы получить $a-1\\mid m-1$.",
+   "Разберите случаи $m=1$, $m=a$ и $m>a$; при $b=1$ все $a$ подходят."
+  ],
+  "solution": "Ответ: $(a,b)=(t,t)$ для любого натурального $t$, и $(a,b)=(t,1)$ для любого натурального $t$.\n\nИз $b^2\\mid a^3$ получаем $b^2\\mid a^4$, значит $b\\mid a^2$. Пишем $a^2=bm$ с натуральным $m$, и $b-1=(a-1)n$.\n\nТак как $a^2-1=(b-1)m+(m-1)$ и $a-1\\mid b-1$, имеем $a-1\\mid a^2-1$ и $a-1\\mid m-1$.\n\nЕсли $b=1$, то $b^2=1$ делит $a^3$, а $a-1\\mid 0$ — всё выполнено, так что все $a$ подходят. Далее $b>1$. Тогда $b-1=(a-1)n$ с $n\\ge1$ даёт $b\\ge a$.\n\n- $m=1$: $b=a^2$, тогда $b^2=a^4\\mid a^3$ возможно только при $a=1$, что даёт $b=1$.\n- $m\\ge2$: из $a-1\\mid m-1$ и $m-1\\ge1$ получаем $m-1\\ge a-1$, то есть $m\\ge a$. Если $m=a$, то $a^2=ab$, $b=a$. Если $m>a$, то $a^2=bm>ab\\ge a^2$ — противоречие.\n\nИтак, решения: $(t,t)$ и $(t,1)$. Подстановкой проверяется, что оба семейства подходят.",
+  "answer": "$(a,b)=(t,t)$ или $(t,1)$ при натуральном $t$",
+  "solution_source": "matol",
+  "confidence": "high"
+ },
+ {
+  "id": "m1002-2",
+  "topic": "geometry",
+  "subtopics": [
+   "вписанные окружности",
+   "симметрия"
+  ],
+  "difficulty": 7,
+  "skills": [],
+  "hints": [],
+  "solution": "",
+  "answer": null,
+  "solution_source": "none",
+  "confidence": "low"
+ },
+ {
+  "id": "m1002-3",
+  "topic": "number_theory",
+  "subtopics": [
+   "дробная часть",
+   "делимость"
+  ],
+  "difficulty": 6,
+  "skills": [],
+  "hints": [],
+  "solution": "",
+  "answer": null,
+  "solution_source": "none",
+  "confidence": "low"
+ },
+ {
+  "id": "m1002-4",
+  "topic": "combinatorics",
+  "subtopics": [
+   "игры",
+   "оценка и пример"
+  ],
+  "difficulty": 7,
+  "skills": [],
+  "hints": [],
+  "solution": "",
+  "answer": null,
+  "solution_source": "none",
+  "confidence": "low"
+ },
+ {
+  "id": "m1002-5",
+  "topic": "algebra",
+  "subtopics": [
+   "неравенства",
+   "четвёрки чисел"
+  ],
+  "difficulty": 7,
+  "skills": [],
+  "hints": [],
+  "solution": "",
+  "answer": null,
+  "solution_source": "none",
+  "confidence": "low"
+ },
+ {
+  "id": "m1116-1",
+  "topic": "geometry",
+  "subtopics": [
+   "квадраты на плоскости",
+   "конструкции"
+  ],
+  "difficulty": 5,
+  "skills": [],
+  "hints": [],
+  "solution": "",
+  "answer": null,
+  "solution_source": "none",
+  "confidence": "low"
+ },
+ {
+  "id": "m1116-2",
+  "topic": "number_theory",
+  "subtopics": [
+   "мультипликативные функции",
+   "делимость"
+  ],
+  "difficulty": 5,
+  "skills": [
+   {
+    "name": "Формула суммы делителей",
+    "note": "$\\sigma(n)=\\prod_i\\frac{p_i^{\\alpha_i+1}-1}{p_i-1}$ и $\\sigma(n)/n=p(n)-1$ дают оценку $p(n)-1<m+1$"
+   },
+   {
+    "name": "Оценка произведения $\\prod p_i/(p_i-1)$",
+    "note": "при $m$ различных простых множитель $\\prod p_i/(p_i-1)$ не больше $m+1$, что ограничивает $m\\le2$"
+   }
+  ],
+  "hints": [
+   "Запишите $\\sigma(n)/n$ через $\\prod(1+1/p_i+\\dots)$.",
+   "Покажите, что число различных простых делителей $m$ не больше 2.",
+   "Разберите случаи $m=1$ и $m=2$."
+  ],
+  "solution": "Ответ: $n=6$.\n\nПусть $n=\\prod_{i=1}^m p_i^{\\alpha_i}$ с $p_1<\\dots<p_m$, $p_m=p(n)$. Условие равносильно $\\sigma(n)/n=p_m-1$. Имеем\n$$\\frac{\\sigma(n)}{n}=\\prod_{i=1}^m\\frac{p_i^{\\alpha_i+1}-1}{(p_i-1)p_i^{\\alpha_i}}<\\prod_{i=1}^m\\frac{p_i}{p_i-1}=\\prod_{i=1}^m\\Big(1+\\frac1{p_i-1}\\Big).$$\nТак как $p_i\\ge i+1$, правая часть не больше $2\\cdot\\frac32\\cdots\\frac{m+1}{m}=m+1$. Значит $p_m-1<m+1$, то есть $p_m<m+2$.\n\nЕсли $m\\ge3$, то $p_m\\ge p_3\\ge5$ и $p_m\\ge m+2$ при $m\\ge3$ (для $m=3$: $p_3\\ge5=m+2$; для больших $m$ простые растут быстрее), что противоречит $p_m<m+2$. Значит $m\\le2$.\n\n- $m=1$: $n=2^\\alpha$, $\\sigma(n)/n=2-1/2^\\alpha<2$ и $p-1=1$, равенство $\\sigma(n)/n=1$ невозможно.\n- $m=2$: $n=2^\\alpha3^\\beta$, $p_2=3$, условие $\\sigma(n)=2n$: $(2^{\\alpha+1}-1)(3^{\\beta+1}-1)=2\\cdot2^\\alpha\\cdot3^\\beta\\cdot2$. Отсюда $\\alpha=\\beta=1$, $n=6$ (проверка: $\\sigma(6)=12=2\\cdot6$, $p(6)-1=2$).\n\nТакже в комментарии разбор случая $m=2$ дан коротко; «отсюда очевидно» — здесь проверено непосредственным перебором малых $\\alpha,\\beta$ по равенству сомножителей.",
+  "answer": "$n=6$",
+  "solution_source": "matol",
+  "confidence": "medium"
+ },
+ {
+  "id": "m1116-3",
+  "topic": "geometry",
+  "subtopics": [
+   "инцентр",
+   "параллелограмм"
+  ],
+  "difficulty": 7,
+  "skills": [],
+  "hints": [],
+  "solution": "",
+  "answer": null,
+  "solution_source": "none",
+  "confidence": "low"
+ },
+ {
+  "id": "m1116-4",
+  "topic": "algebra",
+  "subtopics": [
+   "функциональные уравнения"
+  ],
+  "difficulty": 8,
+  "skills": [],
+  "hints": [],
+  "solution": "",
+  "answer": null,
+  "solution_source": "none",
+  "confidence": "low"
+ },
+ {
+  "id": "m1116-5",
+  "topic": "combinatorics",
+  "subtopics": [
+   "комбинаторная геометрия",
+   "ориентация"
+  ],
+  "difficulty": 7,
+  "skills": [],
+  "hints": [],
+  "solution": "",
+  "answer": null,
+  "solution_source": "none",
+  "confidence": "low"
+ },
+ {
+  "id": "m1124-1",
+  "topic": "geometry",
+  "subtopics": [
+   "окружности",
+   "радикальная ось"
+  ],
+  "difficulty": 6,
+  "skills": [],
+  "hints": [],
+  "solution": "",
+  "answer": null,
+  "solution_source": "none",
+  "confidence": "low"
+ },
+ {
+  "id": "m1124-2",
+  "topic": "combinatorics",
+  "subtopics": [
+   "графы",
+   "достижимость"
+  ],
+  "difficulty": 7,
+  "skills": [],
+  "hints": [],
+  "solution": "",
+  "answer": null,
+  "solution_source": "none",
+  "confidence": "low"
+ },
+ {
+  "id": "m1124-3",
+  "topic": "algebra",
+  "subtopics": [
+   "неравенства"
+  ],
+  "difficulty": 7,
+  "skills": [],
+  "hints": [],
+  "solution": "",
+  "answer": null,
+  "solution_source": "none",
+  "confidence": "low"
+ },
+ {
+  "id": "m1124-4",
+  "topic": "number_theory",
+  "subtopics": [
+   "двоичная запись",
+   "биномиальные коэффициенты"
+  ],
+  "difficulty": 8,
+  "skills": [],
+  "hints": [],
+  "solution": "",
+  "answer": null,
+  "solution_source": "none",
+  "confidence": "low"
+ },
+ {
+  "id": "m1124-5",
+  "topic": "geometry",
+  "subtopics": [
+   "точка Микеля",
+   "радикальная ось",
+   "вписанные четырёхугольники"
+  ],
+  "difficulty": 9,
+  "skills": [],
+  "hints": [],
+  "solution": "",
+  "answer": null,
+  "solution_source": "none",
+  "confidence": "low"
+ }
+]

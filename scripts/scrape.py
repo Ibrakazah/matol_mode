@@ -7,7 +7,8 @@ BASE = "https://matol.kz"
 OUT = os.path.join(os.path.dirname(__file__), "..", "raw")
 CACHE = os.path.join(OUT, "cache")
 os.makedirs(CACHE, exist_ok=True)
-MIN_YEAR = 2010
+MIN_YEAR = int(os.environ.get("MIN_YEAR", "2010"))
+OUT_NAME = os.environ.get("OUT_NAME", "olympiads.json")
 
 
 def get(path):
@@ -117,5 +118,5 @@ with ThreadPoolExecutor(8) as ex:
 for t in targets:
     for p in t["problems"]:
         p["comments"] = comments.get(p["cid"], [])
-json.dump(targets, open(os.path.join(OUT, "olympiads.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+json.dump(targets, open(os.path.join(OUT, OUT_NAME), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 print(sum(len(t["problems"]) for t in targets), "problems", file=sys.stderr)

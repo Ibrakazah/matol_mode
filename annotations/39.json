@@ -1,0 +1,248 @@
+[
+  {
+    "id": "m1004-1",
+    "topic": "geometry",
+    "subtopics": [
+      "вписанный четырёхугольник",
+      "теорема Паскаля",
+      "касательные"
+    ],
+    "difficulty": 9,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1004-2",
+    "topic": "number_theory",
+    "subtopics": [
+      "уравнение Пелля",
+      "взаимная простота"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1004-3",
+    "topic": "number_theory",
+    "subtopics": [
+      "дробная часть",
+      "степени"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1004-4",
+    "topic": "combinatorics",
+    "subtopics": [
+      "последовательности букв",
+      "периодичность",
+      "оценки"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1110-1",
+    "topic": "geometry",
+    "subtopics": [
+      "площади",
+      "трапеция",
+      "барицентрические координаты"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1110-2",
+    "topic": "combinatorics",
+    "subtopics": [
+      "раскраски",
+      "доминошки"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1110-3",
+    "topic": "number_theory",
+    "subtopics": [
+      "функциональные графы",
+      "квадратичные вычеты"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1110-4",
+    "topic": "algebra",
+    "subtopics": [
+      "многочлены от нескольких переменных",
+      "делимость многочленов"
+    ],
+    "difficulty": 9,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1133-1",
+    "topic": "combinatorics",
+    "subtopics": [
+      "раскраски",
+      "графы",
+      "сравнения по модулю"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1133-2",
+    "topic": "geometry",
+    "subtopics": [
+      "трапеция",
+      "вписанные окружности",
+      "изогональное сопряжение"
+    ],
+    "difficulty": 9,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1133-3",
+    "topic": "combinatorics",
+    "subtopics": [
+      "распределение",
+      "принцип Дирихле"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1133-4",
+    "topic": "combinatorics",
+    "subtopics": [
+      "последовательности",
+      "суммы подмножеств"
+    ],
+    "difficulty": 9,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1205-1",
+    "topic": "algebra",
+    "subtopics": [
+      "рекуррентные последовательности",
+      "дробно-линейные отображения"
+    ],
+    "difficulty": 6,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1205-2",
+    "topic": "geometry",
+    "subtopics": [
+      "ортоцентр",
+      "точка Шалтая",
+      "симедиана"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1205-3",
+    "topic": "number_theory",
+    "subtopics": [
+      "делимость",
+      "игры"
+    ],
+    "difficulty": 6,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1205-4",
+    "topic": "number_theory",
+    "subtopics": [
+      "гармонические числа",
+      "сравнения по модулю"
+    ],
+    "difficulty": 9,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  }
+]

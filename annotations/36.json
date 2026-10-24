@@ -1,0 +1,441 @@
+[
+  {
+    "id": "m1146-1",
+    "topic": "combinatorics",
+    "subtopics": [
+      "игры",
+      "стратегия"
+    ],
+    "difficulty": 3,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1146-2",
+    "topic": "number_theory",
+    "subtopics": [
+      "сравнения по модулю",
+      "малая теорема Ферма"
+    ],
+    "difficulty": 5,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1146-3",
+    "topic": "geometry",
+    "subtopics": [
+      "ортоцентр",
+      "симметрия относительно прямой"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1146-4",
+    "topic": "geometry",
+    "subtopics": [
+      "ортоцентр",
+      "высоты треугольника"
+    ],
+    "difficulty": 6,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1146-5",
+    "topic": "algebra",
+    "subtopics": [
+      "квадратные трёхчлены",
+      "счёт областей"
+    ],
+    "difficulty": 6,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1146-6",
+    "topic": "number_theory",
+    "subtopics": [
+      "последовательности",
+      "делимость"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1214-1",
+    "topic": "combinatorics",
+    "subtopics": [
+      "графы",
+      "инварианты"
+    ],
+    "difficulty": 3,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1214-2",
+    "topic": "geometry",
+    "subtopics": [
+      "симметрия относительно биссектрисы",
+      "параллелограмм"
+    ],
+    "difficulty": 6,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1214-3",
+    "topic": "algebra",
+    "subtopics": [
+      "многочлены",
+      "делимость многочленов"
+    ],
+    "difficulty": 6,
+    "skills": [
+      {
+        "name": "Делимость многочленов через остатки",
+        "note": "условия делимости на $x^2-x+1$ и $x^2+x+1$ переводятся в равенства остатков"
+      },
+      {
+        "name": "Проверка коэффициентов",
+        "note": "найденные $P$ и $Q$ удовлетворяют $P(1)=5$, $Q(1)=6$ и обоим условиям делимости"
+      }
+    ],
+    "hints": [
+      "Замените $x$ на $-x$ во втором условии и сложите его с первым.",
+      "Выразите $P+Q$ через делимость на $x^2-x+1$ и найдите квадратичный многочлен с параметром."
+    ],
+    "solution": "Ответ: $P(x)=6x^2-6x+5$, $Q(x)=5x^2-5x+6$.\n\nПроверка. Сначала $P(1)=6-6+5=5$, $Q(1)=5-5+6=6$.\nПервое условие: $P(x)-xQ(x)+x+1=-5x^3+11x^2-11x+6=(x^2-x+1)(-5x+6)$.\nВторое условие: $xP(-x)+Q(-x)+x-1=6x^3+11x^2+11x+5=(x^2+x+1)(6x+5)$.\nОба делятся, как и требуется.\n\nЕдинственность (схема из комментария). Заменим $x$ на $-x$ во втором условии и сложим с первым. Получим, что $x^2-x+1$ делит $(1-x)(P(x)+Q(x))$. Так как $1-x$ и $x^2-x+1$ не имеют общих корней, $x^2-x+1\\mid P(x)+Q(x)$, откуда $P+Q=\\lambda(x^2-x+1)$ для некоторого $\\lambda\\in\\mathbb R$. Далее из первого условия выводится, что $P$ и $Q$ определены однозначно с учётом $P(1)=5$, $Q(1)=6$; подробные выкладки в комментариях опущены.",
+    "answer": "$P(x)=6x^2-6x+5,\\ Q(x)=5x^2-5x+6$",
+    "solution_source": "matol",
+    "confidence": "medium"
+  },
+  {
+    "id": "m1214-4",
+    "topic": "geometry",
+    "subtopics": [
+      "касательные к окружностям",
+      "радикальная ось"
+    ],
+    "difficulty": 6,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1214-5",
+    "topic": "combinatorics",
+    "subtopics": [
+      "игры",
+      "степени чисел",
+      "последняя цифра"
+    ],
+    "difficulty": 5,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1214-6",
+    "topic": "number_theory",
+    "subtopics": [
+      "диофантовы уравнения",
+      "сравнения по модулю",
+      "факториал"
+    ],
+    "difficulty": 4,
+    "skills": [
+      {
+        "name": "Сравнение по модулю 16",
+        "note": "четвёртые степени дают вычеты 0 и 1 по модулю 16, при $n\\ge6$ правая часть равна $10$"
+      },
+      {
+        "name": "Перебор малых случаев",
+        "note": "для $n\\le5$ правая часть ограничена, и проверка показывает отсутствие решений"
+      }
+    ],
+    "hints": [
+      "Какие остатки по модулю 16 могут давать $x^4+y^4$?",
+      "Что известно о $n!$ по модулю 16 при $n\\ge6$?",
+      "Для $n\\le5$ оцените $x,y$ и проверьте возможные значения."
+    ],
+    "solution": "Ответ: решений в натуральных числах нет.\n\nЕсли $n\\ge6$, то $16\\mid n!$, и $n!+2026\\equiv 10\\pmod{16}$ (так как $2026=16\\cdot126+10$). Четвёртая степень натурального числа по модулю 16 равна $0$ или $1$, поэтому $x^4+y^4\\equiv 0,1,2\\pmod{16}$. Значит $n\\ge6$ невозможно.\n\nПусть $n\\le5$. Тогда правая часть $n!+2026\\le 2146<2401=7^4$, значит $x,y\\le6$. Четвёртые степени: $1,16,81,256,625,1296$. Проверка:\n- $n=1,2,3,4$: числа $2027,2028,2032,2050$ не представляются суммой двух четвёртых степеней из этого списка;\n- $n=5$: $2146$ тоже не представляется (например, $2146-1296=850$, $2146-625=1521$, $2146-256=1890$, $2146-81=2065$, $2146-16=2130$, $2146-1=2145$ — ни одно не является четвёртой степенью).\n\nИтак, решений нет.",
+    "answer": "решений нет",
+    "solution_source": "matol",
+    "confidence": "high"
+  },
+  {
+    "id": "m1215-1",
+    "topic": "combinatorics",
+    "subtopics": [
+      "движение",
+      "инварианты"
+    ],
+    "difficulty": 4,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1215-2",
+    "topic": "algebra",
+    "subtopics": [
+      "неравенства",
+      "экстремальный принцип"
+    ],
+    "difficulty": 6,
+    "skills": [
+      {
+        "name": "Экстремальный элемент",
+        "note": "возьмём наименьший элемент $a_1$ и воспользуемся $a_1=1+a_j/a_k>1+a_1/a_k$"
+      },
+      {
+        "name": "Оценка через $a_1+a_k\\le4$",
+        "note": "подстановка даёт квадрат $(a_k-2)^2<0$, противоречие"
+      }
+    ],
+    "hints": [
+      "Возьмите наименьшее число набора и запишите для него представление $a_1=1+a_j/a_k$.",
+      "Предположите, что $a_1+a_k\\le4$, и сравните $\\frac1{a_k}$ с $1-\\frac1{a_1}$."
+    ],
+    "solution": "Пусть $a_1$ — наименьшее число набора. Для него найдутся $a_j,a_k$ (все три различны) с $a_1=1+\\frac{a_j}{a_k}>1+\\frac{a_1}{a_k}$, так как $a_j>a_1$.\n\nПредположим, что $a_1+a_k\\le4$. Тогда $a_1\\le4-a_k$. Из $a_1>1+\\frac{a_1}{a_k}$ получаем $\\frac1{a_k}<1-\\frac1{a_1}\\le1-\\frac1{4-a_k}=\\frac{3-a_k}{4-a_k}$. Отсюда $4-a_k<a_k(3-a_k)$, т.е. $(a_k-2)^2<0$, что невозможно.\n\nЗначит $a_1+a_k>4$, и в наборе есть два числа с суммой больше 4.",
+    "answer": null,
+    "solution_source": "matol",
+    "confidence": "high"
+  },
+  {
+    "id": "m1215-3",
+    "topic": "geometry",
+    "subtopics": [
+      "ортоцентр",
+      "радикальная ось",
+      "параллелограмм"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1215-4",
+    "topic": "number_theory",
+    "subtopics": [
+      "делимость",
+      "сравнения по модулю"
+    ],
+    "difficulty": 5,
+    "skills": [
+      {
+        "name": "Вывод $n\\mid b^3$",
+        "note": "из $n\\mid b^2-ab$ и $n\\mid a^2$ следует $n\\mid ab^2$, а затем $n\\mid b^3$"
+      },
+      {
+        "name": "Оценка каждого слагаемого",
+        "note": "$n\\mid a^2\\mid a^5$, $n\\mid ab^2\\mid ab^4$, $n\\mid b^3\\mid b^5$"
+      }
+    ],
+    "hints": [
+      "Сначала покажите, что $n\\mid a^2b$ и $n\\mid ab^2$.",
+      "Выразите $b^3$ через $b(b^2-ab)$ и докажите, что $n\\mid b^3$."
+    ],
+    "solution": "Из условий $n\\mid b^2-ab$ и $n\\mid a^2$:\n- умножив первое на $a$, получаем $n\\mid ab^2-a^2b$, а так как $n\\mid a^2$, то $n\\mid ab^2$;\n- умножив первое на $b$, получаем $n\\mid b^3-ab^2$, а так как $n\\mid ab^2$, то $n\\mid b^3$.\n\nТеперь $n\\mid a^5$ (так как $n\\mid a^2$), $n\\mid ab^4$ (так как $n\\mid ab^2$), $n\\mid b^5$ (так как $n\\mid b^3$). Значит $n\\mid a^5+ab^4+b^5$.",
+    "answer": null,
+    "solution_source": "matol",
+    "confidence": "high"
+  },
+  {
+    "id": "m1215-5",
+    "topic": "geometry",
+    "subtopics": [
+      "касательные к окружностям",
+      "теорема Чевы"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1215-6",
+    "topic": "combinatorics",
+    "subtopics": [
+      "домино",
+      "связные фигуры"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1216-1",
+    "topic": "algebra",
+    "subtopics": [
+      "функциональные уравнения",
+      "подстановки"
+    ],
+    "difficulty": 5,
+    "skills": [
+      {
+        "name": "Подстановка $f(0)$",
+        "note": "из $P(0,0)$, $P(0,f(0))$, $P(f(0),f(0))$ последовательно получаем $f(f(0))=f(-f(0))=f(0)=0$"
+      },
+      {
+        "name": "Подстановка $y=0$",
+        "note": "даёт $2f(x)=f(0)=0$"
+      }
+    ],
+    "hints": [
+      "Подставьте $x=y=0$, затем $y=f(0)$, чтобы выразить $f(f(0))$ и $f(-f(0))$.",
+      "При $y=0$ что остаётся от уравнения?"
+    ],
+    "solution": "Обозначим уравнение через $P(x,y)$.\n\n1) $P(0,0)$: $f(f(0))+f(0)=f(0)$, значит $f(f(0))=0$.\n2) $P(0,f(0))$: $f(f(f(0))-f(0))+f(-f(0))=f(-f(0))$, т.е. $f(-f(0))=0$.\n3) $P(f(0),f(0))$: $f(f(f(0))+f(0)-f(0))+f(0)=f(f(0)f(f(0))-f(0))$. Так как $f(f(0))=0$, это даёт $2f(0)=f(-f(0))=0$, т.е. $f(0)=0$.\n4) $P(x,0)$: $f(f(0)+x)+f(x)=f(xf(0))=f(0)=0$, т.е. $2f(x)=0$.\n\nИтак, $f\\equiv0$. Проверка: $0+0=0$. Ответ: $f(x)=0$.",
+    "answer": "$f(x)=0$",
+    "solution_source": "matol",
+    "confidence": "high"
+  },
+  {
+    "id": "m1216-2",
+    "topic": "number_theory",
+    "subtopics": [
+      "суммы квадратов",
+      "сравнения по модулю"
+    ],
+    "difficulty": 6,
+    "skills": [
+      {
+        "name": "Сумма двух квадратов по модулю 4",
+        "note": "сумма двух квадратов не может быть $\\equiv3\\pmod4$, поэтому $n\\le3$"
+      },
+      {
+        "name": "Бесконечное семейство",
+        "note": "числа $4m^4+4m^2$, $+1$, $+2$ представимы суммами квадратов"
+      }
+    ],
+    "hints": [
+      "Какие остатки по модулю 4 дают суммы двух квадратов?",
+      "Постройте три последовательных числа вида $4m^4+4m^2+r$ и представьте каждое суммой квадратов."
+    ],
+    "solution": "Ответ: $n=3$.\n\nПри $n\\ge4$ в множестве найдётся число $\\equiv3\\pmod4$, а сумма $a^2+b^2$ по модулю 4 равна $0,1$ или $2$. Значит $n\\le3$.\n\nДля $n=3$ рассмотрим тройки $4m^4+4m^2,\\ 4m^4+4m^2+1,\\ 4m^4+4m^2+2$ при $m\\in\\mathbb Z$. Они представляются так:\n$$4m^4+4m^2=(2m^2)^2+(2m)^2,\\quad 4m^4+4m^2+1=(2m^2+1)^2+0^2,\\quad 4m^4+4m^2+2=(2m^2+1)^2+1^2.$$\nТаких троек бесконечно много (разные $m\\ge0$ дают разные тройки).",
+    "answer": "$n=3$",
+    "solution_source": "matol",
+    "confidence": "high"
+  },
+  {
+    "id": "m1216-3",
+    "topic": "geometry",
+    "subtopics": [
+      "касательные к окружностям",
+      "биссектриса",
+      "параллельные прямые"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1216-4",
+    "topic": "combinatorics",
+    "subtopics": [
+      "раскраски",
+      "тетрамино",
+      "остатки по модулю 7"
+    ],
+    "difficulty": 6,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1216-5",
+    "topic": "geometry",
+    "subtopics": [
+      "вписанная окружность",
+      "окружность Аполлония"
+    ],
+    "difficulty": 8,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  },
+  {
+    "id": "m1216-6",
+    "topic": "number_theory",
+    "subtopics": [
+      "порядок двойки",
+      "лемма о подъёме (LTE)",
+      "факториал"
+    ],
+    "difficulty": 7,
+    "skills": [],
+    "hints": [],
+    "solution": "",
+    "answer": null,
+    "solution_source": "none",
+    "confidence": "low"
+  }
+]
