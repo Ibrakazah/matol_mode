@@ -23,7 +23,7 @@ for f in sorted(glob.glob(os.path.join(ROOT, "annotations", "*.json"))):
     except Exception as e:
         print("bad annotation file", f, e)
 
-raw = json.load(open(os.path.join(ROOT, "raw", "olympiads.json"), encoding="utf-8"))
+raw = json.load(open(os.path.join(ROOT, "raw", "olympiads_all.json"), encoding="utf-8"))
 olympiads, problems = [], []
 for t in raw:
     olympiads.append(dict(oid=t["oid"], comp=t["comp"], year=t["year"], grade=t["grade"], title=t["title"]))

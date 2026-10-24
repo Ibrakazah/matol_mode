@@ -9,7 +9,7 @@ import json, glob, os
 
 ROOT = os.path.join(os.path.dirname(__file__), "..")
 comp = {}
-for t in json.load(open(os.path.join(ROOT, "raw", "olympiads.json"), encoding="utf-8")):
+for t in json.load(open(os.path.join(ROOT, "raw", "olympiads_all.json"), encoding="utf-8")):
     for p in t["problems"]:
         comp[f"m{t['oid']}-{p['num']}"] = t["comp"]
 

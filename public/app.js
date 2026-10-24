@@ -331,7 +331,7 @@
         var page = Math.max(1, +f.page || 1);
         var pages = Math.max(1, Math.ceil(list.length / PAGE_SIZE));
         var years = [];
-        for (var y = 2010; y <= 2026; y++) years.push(y);
+        for (var y = 1990; y <= 2026; y++) years.push(y);
         var diffs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
         var h = crumbs([['Главная', '#/'], ['Задачи', '']]);

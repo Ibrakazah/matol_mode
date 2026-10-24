@@ -11,14 +11,21 @@ def text(h):
     return re.sub(r"\n{3,}", "\n\n", h).strip()
 
 
-d = json.load(open("raw/olympiads.json", encoding="utf-8"))
+SRC = os.environ.get("SRC", "raw/olympiads.json")
+EXCLUDE = os.environ.get("EXCLUDE")
+PREFIX = os.environ.get("PREFIX", "")
+OUTDIR = os.environ.get("OUTDIR", "raw/batches")
+d = json.load(open(SRC, encoding="utf-8"))
+if EXCLUDE:
+    skip = {t["oid"] for t in json.load(open(EXCLUDE, encoding="utf-8"))}
+    d = [t for t in d if t["oid"] not in skip]
 d.sort(key=lambda t: (t["comp"], t["year"], t["grade"] or 0))
-os.makedirs("raw/batches", exist_ok=True)
+os.makedirs(OUTDIR, exist_ok=True)
 batch, n = [], 0
 def flush():
     global batch, n
     if batch:
-        json.dump(batch, open(f"raw/batches/{n:02d}.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+        json.dump(batch, open(f"{OUTDIR}/{PREFIX}{n:02d}.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
         n += 1; batch = []
 for t in d:
     for p in t["problems"]:
