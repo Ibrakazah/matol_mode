@@ -5,6 +5,10 @@
     <title>Олимпиады по математике, задачи, решения</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#f4f4f4">
+    <script>
+        try { if (localStorage.getItem('mm-theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) {}
+    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/matol.css" />
     <link rel="stylesheet" href="/css/mod.css" />
@@ -19,15 +23,11 @@
     <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
 </head>
 <body>
-<div class="navbar navbar-default navbar-fixed-top" role="navigation"
-     style="background: linear-gradient(rgb(220, 220, 220) 0%, rgb(255, 255, 255) 100%);" id="topmenu">
+<div class="navbar navbar-default navbar-fixed-top" role="navigation" id="topmenu">
     <div class="container">
-        <div style="text-align: center" id="caption">
-            <div class="hidden-xs"><h3><b>Казахстан на предметных олимпиадах</b></h3></div>
-        </div>
+        <div id="caption" class="hidden-xs"><h3><b>Казахстан на предметных олимпиадах</b></h3></div>
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" id="navtoggle">
-                <span class="sr-only">Меню</span>
+            <button type="button" class="navbar-toggle" id="navtoggle" aria-label="Меню">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -36,17 +36,21 @@
         </div>
         <div class="navbar-collapse collapse" id="navmenu">
             <ul class="nav navbar-nav">
-                <li><a href="#/">Главная</a></li>
-                <li><a href="#/olympiads">Олимпиады</a></li>
-                <li><a href="#/problems">Задачи</a></li>
-                <li><a href="#/theory">Теория</a></li>
-                <li><a href="#/skills">Теоремы и приёмы</a></li>
-                <li><a href="#/random">Случайная задача</a></li>
-                <li><a href="#/marked">Мои отметки</a></li>
+                <li data-nav=""><a href="#/">Главная</a></li>
+                <li data-nav="olympiads"><a href="#/olympiads">Олимпиады</a></li>
+                <li data-nav="problems"><a href="#/problems">Задачи</a></li>
+                <li data-nav="theory"><a href="#/theory">Теория</a></li>
+                <li data-nav="skills"><a href="#/skills">Теоремы</a></li>
+                <li data-nav="authors"><a href="#/authors">Авторы</a></li>
+                <li data-nav="marked"><a href="#/marked">Мои задачи</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="https://matol.kz" target="_blank" rel="noopener">matol.kz ↗</a></li>
+                <li><a href="#/random" title="Случайная нерешённая задача">🎲</a></li>
+                <li><a href="#" id="theme-toggle" title="Тёмная / светлая тема">🌓</a></li>
             </ul>
+            <form class="navbar-form navbar-right" id="nav-search" role="search">
+                <input type="search" class="form-control input-sm" name="q" placeholder="Поиск по условиям…" autocomplete="off">
+            </form>
         </div>
     </div>
 </div>
@@ -56,8 +60,8 @@
 </main>
 
 <footer class="container mod-footer">
-    Личная копия задач с <a href="https://matol.kz" target="_blank" rel="noopener">matol.kz</a> (только математика) с разметкой тем, сложности, подсказками и решениями.
-    Решения с пометкой «ИИ» написаны автоматически и могут содержать ошибки.
+    Личная копия задач с <a href="https://matol.kz" target="_blank" rel="noopener">matol.kz</a> (только математика) с темами, сложностью, подсказками и решениями.
+    Решения с пометкой «ИИ» написаны автоматически и могут содержать ошибки. Отметки «решена» и «избранное» хранятся в этом браузере.
 </footer>
 
 <script src="/app.js"></script>

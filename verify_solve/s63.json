@@ -1,0 +1,62 @@
+{
+ "m121-6": {
+  "verdict": "ok",
+  "note": "cos C=1/2 via similarity CDE~CAB, A,I,O,B concyclic and the AC>BC ordering argument are correct; answer 30 degrees."
+ },
+ "m123-6": {
+  "verdict": "ok",
+  "note": "O is equidistant from AB and AC via equal tangents and perpendicular bisectors, then lies on the perpendicular bisector of BC, hence on (ABC); isosceles case handled separately; correct."
+ },
+ "m124-6": {
+  "verdict": "ok",
+  "note": "Rechecked angles (BK=BA, angle AKC=90+gamma, apex 180-2gamma) and S(AO1C)=c^2 sin gamma cos gamma=S(ABK); the area equality is correct."
+ },
+ "m126-8": {
+  "verdict": "ok",
+  "note": "Anti-similarity f fixing X and the rotation R give Y'=O1+O2 with Y'A=Y'B, Y'C=Y'D and angle 2*angle ADX, so Y'=Y; orientation and rotation-sense argument verified."
+ },
+ "m128-8": {
+  "verdict": "ok",
+  "note": "Graph of chords >sqrt2 is K4-free (four arcs would exceed 360), and the Turan-type induction for K4-free graphs gives e<=n^2/3; arithmetic checked."
+ },
+ "m129-6": {
+  "verdict": "ok",
+  "note": "Cyclicity BNOM by power of A, K the midpoint of M'N, T=W the arc midpoint on both the bisector and the perpendicular bisector, giving angle MTB=90; all steps verified."
+ },
+ "m130-6": {
+  "verdict": "ok",
+  "note": "tan CED=DM/DK=DN/DK>1 since B>90-C is equivalent to A<90; correct."
+ },
+ "m131-6": {
+  "verdict": "ok",
+  "note": "Circles have diameters HA1, HB1, HC1, second intersections are projections of H onto the orthic sides (incircle touch points), with angles A,B,C; correct."
+ },
+ "m132-6": {
+  "verdict": "ok",
+  "note": "Reflection in a bisector plane puts A* in plane BCD, so the foot B' lies in the homothetic plane at ratio 1/2 about A; same for C', D'; correct."
+ },
+ "m134-2": {
+  "verdict": "ok",
+  "note": "Both parts correct; the order A,Q,S,B (triangle PQS homothetic to ABT) justifies angles 180-C in the similarity AQP~PSB giving PQ^2=AQ*BS=QR*ST."
+ },
+ "m135-2": {
+  "verdict": "ok",
+  "note": "Homothety CFG to PDE puts the intersection on CP; the coordinate computation was rechecked symbolically (identity holds exactly), so the point lies on the circumcircle."
+ },
+ "m137-2": {
+  "verdict": "ok",
+  "note": "Barycentric coordinates of A0, C0, P' rechecked and the 3x3 determinant is symbolically 0, so P'=P and PI is parallel to AC."
+ },
+ "m137-4": {
+  "verdict": "ok",
+  "note": "N,K,Q collinear by homothety, B1 on KM by oriented angles, and the angle count gives equal opposite angles; parallelogram confirmed numerically (B+B1=P+Q, error 1e-13)."
+ },
+ "m138-2": {
+  "verdict": "ok",
+  "note": "Radical-axis argument with circles on diameters II_b, IB1 and the circumcircle puts B2 on IT, which is perpendicular to B1I_b; correct."
+ },
+ "m139-5": {
+  "verdict": "ok",
+  "note": "Brocard's theorem makes AP the polar of H, K the inverse of H in the circle on diameter BC, and the similarities MBK~MHB, MB1K~MHB1 give equal angles; correct."
+ }
+}

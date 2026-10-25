@@ -1,0 +1,62 @@
+{
+ "m888-2": {
+  "verdict": "ok",
+  "note": "Classes mod 3 pairwise share exactly one coordinate, so at most 3 classes, and the convexity bound gives 678384>333333."
+ },
+ "m888-4": {
+  "verdict": "ok",
+  "note": "Each step (f(0)=0, f(f(x))=f(x), f(2x)=2f(x), idempotent differences, additivity via P(f(x),f(y))) is correct; answers f=0 and f=x."
+ },
+ "m889-3": {
+  "verdict": "ok",
+  "note": "Euler criterion plus the involution a->1/a gives 2T=-2, hence m+n=0 mod p; correct."
+ },
+ "m999-3": {
+  "verdict": "ok",
+  "note": "Injectivity dichotomy, linearity of G, G_w and the boundedness/linear-case analysis lead to f(x)=x; each step rechecked."
+ },
+ "m999-6": {
+  "verdict": "ok",
+  "note": "The i=1 counterexample (a_1=22, a_2=2) was verified over 5000 terms, and the i>=2 proof (purely periodic pair sequence mod p, then large j) is correct."
+ },
+ "m1000-3": {
+  "verdict": "ok",
+  "note": "Same equation and solution as m999-3; the argument was rechecked and yields f(x)=x."
+ },
+ "m1000-6": {
+  "verdict": "ok",
+  "note": "The i=1 counterexample (a_1=22, a_2=2) was verified over 5000 terms, and the i>=2 proof (purely periodic pair sequence mod p, then large j) is correct."
+ },
+ "m1063-3": {
+  "verdict": "ok",
+  "note": "Parity argument gives uniqueness at k=4n^2-3, and the 2x2-block construction (with checks for n=1,2 and n>=3 distinctness) shows k=4n^2-4 fails; answer 4n^2-3."
+ },
+ "m1063-5": {
+  "verdict": "ok",
+  "note": "AM-GM gives p>=3, distinctness, p^2 | q^2-qr+r^2, mod 3 forces r=3, and the case q | p+3 with p+3=uq closes (u=4 cannot occur for odd q); only (3,3,3)."
+ },
+ "m1065-4": {
+  "verdict": "ok",
+  "note": "The triangle lemma by induction (pair colour joined, other colour connected to the third vertex) and the fan from a black point inside give the required non-crossing connected graphs."
+ },
+ "m1065-5": {
+  "verdict": "ok",
+  "note": "n=2^e with an irrational k-th root of a*2^s and the binary-digit pattern 10 occurring infinitely often make the floor odd; phi_m(n) is a power of 2, so the gcd is 1."
+ },
+ "m1066-4": {
+  "verdict": "ok",
+  "note": "Same statement as m1065-4; the triangle lemma and construction are correct."
+ },
+ "m1066-5": {
+  "verdict": "ok",
+  "note": "Same statement as m1065-5; the 2^e construction with the binary-digit argument is correct."
+ },
+ "m1111-2": {
+  "verdict": "ok",
+  "note": "Colour-parity analysis of rotations and shifts and the snake/bounding-box constructions are correct; answer n^2-1 (even n) and 2n-3 (odd n) matches exhaustive search for n=2,3,4."
+ },
+ "m1111-6": {
+  "verdict": "ok",
+  "note": "Statement restored from the source (a_1<2^m); sign-propagation of d_n, descent, and b_(n+1)<2^m via strict x^(m-1)+y^(m-1)<(x+y)^(m-1) are correct."
+ }
+}

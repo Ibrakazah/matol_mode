@@ -8,7 +8,7 @@
 - отметки «решена» / «избранное» (хранятся в браузере).
 
 Олимпиады (с 2010 года): Республиканская (областной и заключительный этапы, 9–11 кл.), Жаутыковская, Шелковый путь, АТМО (APMO), BMO, JBMO.
-Геометрию ИИ не решает — у геометрических задач только тема, сложность и обсуждение с matol.
+Решения: переписанные с matol (пометка «matol») и написанные ИИ (пометка «ИИ», с уровнем уверенности). Все решения прошли автоматическую проверку.
 
 ## Устройство
 
@@ -17,6 +17,8 @@
 - `scripts/scrape.py` — собирает задачи и комментарии с matol.kz в `raw/olympiads.json`.
 - `scripts/make_batches.py` — режет задачи на батчи для разметки (`raw/batches/`).
 - `scripts/ANNOTATION_SPEC.md` — формат разметки; результаты лежат в `annotations/`.
-- `scripts/build_data.py` — собирает `public/data/` из `raw/` и `annotations/`.
+- `scripts/apply_verify.py` — вливает итоги проверки решений (`verify/`).
+- `scripts/make_solve_batches.py`, `scripts/SOLVE_SPEC.md`, `scripts/apply_solve.py` — решения для задач без решения (`solve/`).
+- `scripts/build_data.py` — собирает `public/data/` из `raw/`, `annotations/` и `insights/`; `scripts/build_theory.py` — блок «Теория».
 
 Локально: `python3 scripts/build_data.py && cd public && python3 -m http.server`.

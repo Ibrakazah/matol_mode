@@ -1,0 +1,62 @@
+{
+ "m210-4": {
+  "verdict": "ok",
+  "note": "Extreme-point characterisation, pairing of outer rays into adjacent pairs and the parity argument (n=2006 even) give a contradiction; correct."
+ },
+ "m212-4": {
+  "verdict": "ok",
+  "note": "Rational coefficients by Lagrange, denominators of solutions bounded by the leading coefficient, and the lattice-point count for degree >=2; only ax+b with rational a!=0."
+ },
+ "m213-3": {
+  "verdict": "ok",
+  "note": "Induction S(n): any non-removed edge lies on a Hamiltonian cycle of Q_n minus at most n-2 edges; base S(3) verified by enumeration of all 6 Hamiltonian cycles, and the three cut cases are correct; n=10 gives 8 removed edges."
+ },
+ "m975-2": {
+  "verdict": "ok",
+  "note": "Degree>=2 and slope>=2 cases give P_n>=2022 for suitable n; for x+b the count is exactly B-1, so b>=-2022; answer +-(x+b)."
+ },
+ "m975-5": {
+  "verdict": "ok",
+  "note": "Cases f(0)=-1 (mod 4 contradiction) and f(0)=0 (either f(2a)=0 family or f(x)=x^2 via the prime trick) are all correct."
+ },
+ "m1117-4": {
+  "verdict": "ok",
+  "note": "Steps f>=id, P(y)=cy, (U) and (L) bounds, the c=1 case and the exclusion of 0<c<1 (tau>0 and tau=0 subcases) were each rechecked; only f(x)=x, P(x)=x."
+ },
+ "m1147-6": {
+  "verdict": "unsure",
+  "note": "The solution is self-declared incomplete: part (a) is proved but part (b) (answer no) has no proof of the lower bound."
+ },
+ "m1217-6": {
+  "verdict": "ok",
+  "note": "Factorisation f1=ab, f3=ad, f2=cd, f4=bc and the logarithmic expansion with power sums p_k give a contradiction unless R is constant; P=Cx^n."
+ },
+ "m470-3": {
+  "verdict": "ok",
+  "note": "Chain g->(g-b)^2+a gives arbitrarily large x with f(g)|f(x), and the CRT-type choice a_(m+1)=B^2+k+a coprime to all earlier terms completes the construction."
+ },
+ "m579-4": {
+  "verdict": "unsure",
+  "note": "The solution is self-declared incomplete: the construction rests on a solvability lemma that is not proved for all n."
+ },
+ "m1110-4": {
+  "verdict": "ok",
+  "note": "The norm over the characters zeta^(4k),zeta^k,zeta^(7k) gives PQ with only monomials of weight 4A+B+7C=0 mod 9, which are exactly monomials in x^2y,y^2z,z^2x; rationality and nonnegativity after multiplying by (xyz)^(3N) verified."
+ },
+ "m1133-4": {
+  "verdict": "ok",
+  "note": "The set T={S_i+a_j} consists of distinct non-members, giving (k+1)l<=m+S_k+k(k+1)/2 and then the bound via S_k<=k a_k-k(k-1)/2; correct."
+ },
+ "m1205-4": {
+  "verdict": "unsure",
+  "note": "The solution is self-declared incomplete: only a sketch and cited results, no proof of the N^(3/4) bound."
+ },
+ "m225-5": {
+  "verdict": "ok",
+  "note": "Both-even steps are forbidden, a both-odd step gives the required midpoint, and otherwise the sum of 1993 odd numbers would be 0; correct."
+ },
+ "m226-5": {
+  "verdict": "ok",
+  "note": "Digit counts are floor(k log2 10)+1 and floor(k log5 10)+1 with 1/alpha+1/beta=1 irrational, so Beatty's theorem gives exactly one table entry with n digits."
+ }
+}

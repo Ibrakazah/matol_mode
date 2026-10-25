@@ -1,0 +1,62 @@
+{
+ "m562-3": {
+  "verdict": "ok",
+  "note": "Argument that the last erased number is the smallest row element above N/(m+1), namely Q+2, is correct and confirmed by simulation for N=m^e+1 (e=2,4, many m)."
+ },
+ "m962-1": {
+  "verdict": "unsure",
+  "note": "The solution is self-declared incomplete: only the lower bound n>=3034 is proved and the exact minimum is not determined."
+ },
+ "m992-6": {
+  "verdict": "unsure",
+  "note": "The solution is self-declared incomplete: reduction to a Thue-type equation and the solution (1,1,1) are fine, but uniqueness is not proved."
+ },
+ "m276-2": {
+  "verdict": "ok",
+  "note": "Square-quartic lemma and the root-pairing analysis in both cases force a/d=b/e and hence a_n=b_n; checked step by step."
+ },
+ "m470-4": {
+  "verdict": "ok",
+  "note": "Generating functions prod 1/(1-x^(2^j)) and prod (1-x^(2^j))=sum (-1)^(s(k)) x^k multiply to 1, giving the identity."
+ },
+ "m579-2": {
+  "verdict": "ok",
+  "note": "Halving lemma for f(x)>=x-eps, evenness argument via g(f(x))=g(f(-x)) and the shift trick give f(x)=x; each step rechecked."
+ },
+ "m904-3": {
+  "verdict": "ok",
+  "note": "Bound phi(m)>=sqrt(m), reduction to a<=3 and the case analysis (Fermat primes, product estimates) give exactly (2,1),(3,1),(5,1),(3,3); verified."
+ },
+ "m940-3": {
+  "verdict": "ok",
+  "note": "Lemma on mighty polynomials vanishing at 1, the t=1 and parity analysis, and the reflection x->-x for t=0 are correct."
+ },
+ "m1004-2": {
+  "verdict": "ok",
+  "note": "Explicit family y=4w, x_1,2=4(A-B)w^2 -/+ 1 satisfies the identity, with coprimality checked, and gives infinitely many values."
+ },
+ "m1004-4": {
+  "verdict": "unsure",
+  "note": "Construction giving 2*5^17 is plausible but its uniqueness check is only asserted, and the upper-bound argument is a sketch whose marking step (middle letter of a unique word) is not justified."
+ },
+ "m1110-3": {
+  "verdict": "ok",
+  "note": "P_q(1)-1 has an odd prime divisor p, vertex 1 returns after q steps, so the cycle has length exactly q; correct."
+ },
+ "m1133-3": {
+  "verdict": "ok",
+  "note": "Greedy count A=prod(n+2-j-r_(j)) and the fact that the c_j values form 1..M with multiplicities (a composition of n) give at most 2^(n-1) values."
+ },
+ "m222-4": {
+  "verdict": "ok",
+  "note": "Regularity proof via the injection N(u)->N(v), n=k^2+1 with k>=2, minimum size 5 and 398 pentagons are all correct."
+ },
+ "m223-4": {
+  "verdict": "ok",
+  "note": "Positions are triangular numbers minus 1; all residues are attained iff n is a power of 2, with both directions proved."
+ },
+ "m224-4": {
+  "verdict": "ok",
+  "note": "Region count 1+s+C(s,2)+h(s+1) gives (s+1)(s+2h)=3982, and the divisor analysis yields the stated pairs."
+ }
+}

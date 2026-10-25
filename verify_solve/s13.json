@@ -1,0 +1,62 @@
+{
+ "m126-4": {
+  "verdict": "ok",
+  "note": "Tree lemma (distance-k cover of size <= n/(k+1)) by induction at the deepest leaf is correct; floor(1000/11)=90."
+ },
+ "m128-4": {
+  "verdict": "ok",
+  "note": "Mod 3, 5, 7, 13 analysis leaves exactly n=1 and n=3 (both with p=3); each case checked."
+ },
+ "m129-4": {
+  "verdict": "ok",
+  "note": "Question is missing in the statement, but the proof that solutions are exactly the additive f with f(f(x))+f(x)=2x (only x and -2x if continuous) is correct."
+ },
+ "m130-7": {
+  "verdict": "ok",
+  "note": "The two weighings A vs C and B+C vs D+E force A, B to be the light fakes; case analysis for the boss is complete."
+ },
+ "m131-4": {
+  "verdict": "ok",
+  "note": "Counting root slots forces every number to be a root of exactly one trinomial, and Vieta gives sum b_i = 0 and sum b_i^2 = 0, a contradiction."
+ },
+ "m135-8": {
+  "verdict": "ok",
+  "note": "Bijectivity, f(0)=1, f(-1)=0 and the periodicity argument on g(x)=f(x)-x-1 give f(x)=x+1; identities rechecked and the solution verified."
+ },
+ "m136-3": {
+  "verdict": "ok",
+  "note": "The bound k<=6 via s=S-L+1 counting is correct (the s>15 case gives k<=5 trivially) and the explicit example attains 6."
+ },
+ "m136-6": {
+  "verdict": "ok",
+  "note": "Example with 7 lines checked; bound m<=8, uniqueness of the 8_3 configuration and its non-realizability over the reals (e^2-e+1=0) verified."
+ },
+ "m137-6": {
+  "verdict": "ok",
+  "note": "Same problem and solution as m136-6; the 7-line example and the impossibility of 8 lines are correct."
+ },
+ "m139-3": {
+  "verdict": "ok",
+  "note": "Swap involutions reduce S_7 mod 2 to the number of solutions of 4/x+2/z+1/w=1, which is 43 (recomputed), so S_7 is odd."
+ },
+ "m140-1": {
+  "verdict": "ok",
+  "note": "Swap involutions reduce S_10 mod 2 to the 5 solutions of 8/z+2/x=1 (recomputed), so S_10 is odd."
+ },
+ "m140-6": {
+  "verdict": "ok",
+  "note": "Divisibility chain d_i | d_(i+1) around the cycle forces |d_i| constant, then adjacent opposite differences give a_(j+2)=a_j and f(f(0))=0; correct."
+ },
+ "m141-4": {
+  "verdict": "ok",
+  "note": "Statement recovered from the source (cyclic sum with a_(n+1)=a_1); weighted AM-GM and telescoping give 2*sum a_k - n a_1 >= sum a_k; correct."
+ },
+ "m143-3": {
+  "verdict": "ok",
+  "note": "Binomial formula for t iterations, 2^k iterations work, odd n and odd parts fail via the sequence (-1,1,...,1); answer powers of 2."
+ },
+ "m63-2": {
+  "verdict": "ok",
+  "note": "Next digit depends only on the previous pair, so the sequence is eventually periodic and the decimal is rational."
+ }
+}

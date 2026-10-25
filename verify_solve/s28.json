@@ -1,0 +1,62 @@
+{
+ "m114-7": {
+  "verdict": "ok",
+  "note": "With h(x)=f(x)-x-1 one gets h(1)-periodicity and h(z+t)=h(z)-t for t in the range of h, so h has no nonzero rational values, contradicting condition 3; no such function exists."
+ },
+ "m115-8": {
+  "verdict": "ok",
+  "note": "Lower bounds n-1 (even) and n (odd) plus the cyclic schedule i+j=d (mod n) and the extension by one team give the stated minimum."
+ },
+ "m116-8": {
+  "verdict": "ok",
+  "note": "Same problem and solution as m115-8; correct."
+ },
+ "m119-7": {
+  "verdict": "ok",
+  "note": "All seven numbers are odd, so d<=1597-3 with 797 the largest prime below 800, and the example 13,787,797 (numbers 3,23,1571,1597) was checked."
+ },
+ "m119-8": {
+  "verdict": "ok",
+  "note": "Jumps are 3-cycles (even permutations); reversal has parity (-1)^(n(n-1)/2), and 3-cycles of adjacent positions generate A_n, so n=0,1 mod 4."
+ },
+ "m120-7": {
+  "verdict": "ok",
+  "note": "If every prime of 2^n-1 divided 2^m-1 then LTE gives S | k with S>=2k-1>k, a contradiction; correct."
+ },
+ "m121-8": {
+  "verdict": "ok",
+  "note": "Part (a) uses the hypercube plus antipodal edges (degree 5, diameter 2); part (b) uses a Moore-type counting argument and an eigenvalue/trace parity contradiction (a=3.5); correct."
+ },
+ "m122-7": {
+  "verdict": "ok",
+  "note": "Symmetry of f(f(x)f(y)) forces f(x)-x constant and then c=1; f(x)=x+1 verified."
+ },
+ "m122-8": {
+  "verdict": "ok",
+  "note": "Bound ((n+1)/2)^2 from odd-odd cells and 3((n+1)/2)^2<=n^2 give n>=7; the 7x7 tiling was checked and the n->n+2 border construction verified by computer up to n=41."
+ },
+ "m123-7": {
+  "verdict": "ok",
+  "note": "Same problem and solution as m122-8; correct."
+ },
+ "m124-7": {
+  "verdict": "ok",
+  "note": "Counts of integer triangles T(27)=1925<2004<=T(28) and of primitive ones S(29)=1935<2004<=S(30), recomputed by brute force; answers 27 and 29."
+ },
+ "m125-6": {
+  "verdict": "ok",
+  "note": "tau(N)>=2^omega(N) with induction omega(N_n)>=omega(N_(n-1))+2 using LTE and the size estimate for m,p>=5; correct."
+ },
+ "m125-7": {
+  "verdict": "ok",
+  "note": "Factorisation into linear and positive-definite quadratic factors and the positivity estimate for E_k=(u^2-buv+cv^2)-(u+cv) give the claim."
+ },
+ "m126-7": {
+  "verdict": "ok",
+  "note": "Substitution x=1/a reduces to 8r^2-prod(q-x^2)=(x-y)^2(y-z)^2(z-x)^2+4r*Schur>=0; identity rechecked."
+ },
+ "m127-6": {
+  "verdict": "ok",
+  "note": "Pairwise coprimality and 1/a+1/b+1/c>1 leave only (2,3,5) and its permutations; verified."
+ }
+}

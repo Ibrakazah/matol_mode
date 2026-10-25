@@ -1,0 +1,62 @@
+{
+ "m225-4": {
+  "verdict": "ok",
+  "note": "Parity argument for even n, then x=2y and the divisibility y | 2 leave only y=-2 and n=1; correct."
+ },
+ "m228-4": {
+  "verdict": "ok",
+  "note": "Condition reduces to km<=n<=k(m+1) for k and 17-k groups; the resulting 36 values were reproduced by brute force up to 1996."
+ },
+ "m231-4": {
+  "verdict": "ok",
+  "note": "Case analysis with squares between neighbouring values gives the listed families; verified by exhaustive search for |a|,|b|<=1500."
+ },
+ "m232-4": {
+  "verdict": "ok",
+  "note": "Statement restored as the APMO 2000 inequality; the largest-term argument for T_j=C(n,j)k^j(n-k)^(n-j) proves both bounds."
+ },
+ "m236-4": {
+  "verdict": "ok",
+  "note": "Cases (n,n+1 composite; n prime; n+1 prime) with Wilson's theorem and the 2-adic valuation bound are correct."
+ },
+ "m237-4": {
+  "verdict": "unsure",
+  "note": "The solution is self-declared incomplete: the formula n^2+c^2-nc-c is only confirmed by search for n<=6 and the optimality bound is not proved."
+ },
+ "m287-4": {
+  "verdict": "ok",
+  "note": "Two-colouring and the weights +-V(R) satisfy (x-1)(y-1)<=0 and the half-plane sums vanish vertex by vertex; the all-parallel case forces all zeros; correct."
+ },
+ "m288-4": {
+  "verdict": "ok",
+  "note": "Example (even numbers above n/2) and the bound via f(x)=2^a x with no two consecutive images, including the n=4k+1 refinement, give floor((n+2)/4)."
+ },
+ "m289-4": {
+  "verdict": "ok",
+  "note": "Cycle maximum <= 2m for odd m and T bijective on {1..m}∪{m+1,m+3,...,2m}; answer confirmed by brute force for several m (none for even m)."
+ },
+ "m291-4": {
+  "verdict": "unsure",
+  "note": "The solution is self-declared incomplete: the case k>=2 with odd m>=3 is not excluded, so the claimed answer c=s^2-1 is not fully proved."
+ },
+ "m292-4": {
+  "verdict": "ok",
+  "note": "Injectivity, the recurrence g(x+3)+2g(x)=g(x-1)+2g(x+2) and the asymptotic comparison force g(n)=n^2; correct."
+ },
+ "m253-6": {
+  "verdict": "ok",
+  "note": "Counting bound n>=42-d-rc-[d=2]>=27 is correct, and the 27-cell example was simulated and fills the whole 17x17 board."
+ },
+ "m109-8": {
+  "verdict": "ok",
+  "note": "Part (a) via four consecutive tens without carries giving 13 consecutive digit sums, part (b) with 9999999961..10000000038 (sums in [79,90] and [1,12]); both correct."
+ },
+ "m110-6": {
+  "verdict": "ok",
+  "note": "Same problem and solution as m109-8; correct."
+ },
+ "m112-6": {
+  "verdict": "ok",
+  "note": "Each piece contains a cell of every colour in the 4-colouring by (row parity, column parity), so n<=2*floor(n/2) and n is even; correct."
+ }
+}

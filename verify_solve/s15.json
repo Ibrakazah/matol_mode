@@ -1,0 +1,62 @@
+{
+ "m244-5": {
+  "verdict": "ok",
+  "note": "Reduction to sum 2a_ia_j/(n-a_ia_j)<=n, the bound 2t/(n-t)<=(s+t)/(n-s) and Titu's lemma sum to n; every inequality rechecked."
+ },
+ "m245-4": {
+  "verdict": "ok",
+  "note": "The map f is injective hence a permutation of A∪B, and summing f(i)-i gives a|A|-b|B|=0; correct."
+ },
+ "m246-2": {
+  "verdict": "ok",
+  "note": "Recursion f(n)=n*f(n-1) for n>=5 and f(4)=2592 (recomputed by brute force) give 108*2014!."
+ },
+ "m246-3": {
+  "verdict": "ok",
+  "note": "2 and primes >3 are excluded (injectivity/product argument in F_(p^2)), and Hensel lifting shows all powers of 3 work."
+ },
+ "m246-4": {
+  "verdict": "ok",
+  "note": "Part (a): the set {3,6,12,24,48,95,96,97} has 256 distinct subset sums (checked); part (b): the variance bound gives sum a_i^2>=87381>81285; correct."
+ },
+ "m580-3": {
+  "verdict": "unsure",
+  "note": "The solution is self-declared incomplete: evenness of n is proved but the construction for all even n in [2018,3018] (answer 501) is not given."
+ },
+ "m905-2": {
+  "verdict": "ok",
+  "note": "Odd-part monotonicity forces m=2 and a_1=2^l; confirmed by direct computation for m<=8."
+ },
+ "m905-4": {
+  "verdict": "ok",
+  "note": "The mod-5 harmonic 2x3 block, reflected over the board, is an invariant non-constant configuration, so equalising is not always possible; verified."
+ },
+ "m941-3": {
+  "verdict": "ok",
+  "note": "Example with powers of 2 plus alpha odd numbers and the necessity argument (S=A∪{c2^j}, 2^|A|=kc) are correct; k=2^alpha."
+ },
+ "m1002-4": {
+  "verdict": "unsure",
+  "note": "The solution is self-declared incomplete: the construction for n<=2^(k-1) is given but the upper bound n<=2^(k-1) is only checked for small k."
+ },
+ "m1002-5": {
+  "verdict": "ok",
+  "note": "Substitution s,p,t,q gives P>=(r-1)(r-2)/2>=-1/8 with equality at r=3/2; minimum -1/8 confirmed numerically and the equality cases listed."
+ },
+ "m1116-5": {
+  "verdict": "unsure",
+  "note": "The solution is self-declared incomplete: only observations, no proof that exactly n friends are reachable."
+ },
+ "m1124-2": {
+  "verdict": "ok",
+  "note": "Isolated central square, parity for odd k and the shifting argument for reachability give the stated L(k); confirmed by BFS for all k=51..99."
+ },
+ "m1124-3": {
+  "verdict": "ok",
+  "note": "Lemma 1/(1+x)^2+1/(1+y)^2>=1/(1+xy) and the downward induction with power-mean convexity prove the inequality."
+ },
+ "m1204-4": {
+  "verdict": "unsure",
+  "note": "The solution is self-declared incomplete: periodicity is shown but the key claim that the steady regime consists of exactly three laps is not proved."
+ }
+}

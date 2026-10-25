@@ -1,0 +1,62 @@
+{
+ "m1248-5": {
+  "verdict": "ok",
+  "note": "Self-duality (Hex-type) argument is sound; brute force n=1,2 gives 1 and 64, matching 2^(2n^2-2)."
+ },
+ "m356-3": {
+  "verdict": "ok",
+  "note": "Rechecked: 67 people with 34..100 votes sum to 4489, E_bb<=33*34, giving at least 3367>3366 distinct edges."
+ },
+ "m356-4": {
+  "verdict": "ok",
+  "note": "Rechecked d=15 mod 20 and the mod 4/mod 5 exclusion of c=1..4, including the c=4 reduction to c=1."
+ },
+ "m508-4": {
+  "verdict": "ok",
+  "note": "Own BFS over reachable states for n=3..6 gives 10,25,126,406, equal to the formula; parity argument checked."
+ },
+ "m947-4": {
+  "verdict": "ok",
+  "note": "Every inequality and the bounds alpha<=17, q<2^18 rechecked; numeric run gives the stated jumps (4,24,120,240,...)."
+ },
+ "m982-3": {
+  "verdict": "ok",
+  "note": "All cases (d=p with p=43,47; d=1 with c even/odd) rechecked including the Legendre symbol computations."
+ },
+ "m1001-4": {
+  "verdict": "ok",
+  "note": "Answer matches the comment; Euler/curve argument rechecked and brute force n=3 gives max 5 components."
+ },
+ "m254-3": {
+  "verdict": "ok",
+  "note": "Quarter-cell decomposition of all piece orientations rechecked; painted-count parity is 0 mod 2 for squares/triangles and odd for parallelograms."
+ },
+ "m256-2": {
+  "verdict": "ok",
+  "note": "Each substitution step recomputed; the derived f(x+t)=f(x)+2xt+t^2 gives f=x^2+c, which checks."
+ },
+ "m256-3": {
+  "verdict": "ok",
+  "note": "Answer matches the comment; LTE order computation and counting of residues rechecked."
+ },
+ "m257-2": {
+  "verdict": "ok",
+  "note": "Answer 4n-8 matches the comment; construction and the case analysis of tight lines (r=n-1, c=n-1) rechecked for n>=5."
+ },
+ "m257-6": {
+  "verdict": "ok",
+  "note": "Identities 256Q-P^2 and (P+1)^2-256Q verified symbolically, coprimality argument checked; only (+-1,+-1)."
+ },
+ "m269-3": {
+  "verdict": "ok",
+  "note": "Every step (f(0)=0, oddness, additivity via s=u+p^3/u, q^2 coefficient) rechecked; answer f=cx."
+ },
+ "m269-5": {
+  "verdict": "ok",
+  "note": "Predecessor-function encoding and the shift bijection checked in both directions."
+ },
+ "m559-4": {
+  "verdict": "ok",
+  "note": "Lower-bound packing of strips verified by hand; the construction for n=2018 was built and checked by computer with 226464 squares."
+ }
+}

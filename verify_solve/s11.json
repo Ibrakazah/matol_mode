@@ -1,0 +1,62 @@
+{
+ "m1228-5": {
+  "verdict": "ok",
+  "note": "Cauchy-type bound (n-1)(M-1)^2>=2 from sum y_i^2<=(sum y_i)^2 and the explicit example (n-1 equal roots) both verified; answer 1+sqrt(2/(n-1))."
+ },
+ "m1230-4": {
+  "verdict": "ok",
+  "note": "Edge counting E_AB>=|A|+|B|-1 for each pair gives 2n^2-2n>=2n^2-3, impossible for n>=2; answer no is correct."
+ },
+ "m929-4": {
+  "verdict": "ok",
+  "note": "Divisor-chain argument forces a=2^10, b=2^11; each inequality checked and the pair satisfies the conditions."
+ },
+ "m962-6": {
+  "verdict": "ok",
+  "note": "Answer (composite n>=48 except 2p, 129, 141) confirmed by exact prime-exponent computation for all n<=4000; the sufficiency estimates are correct."
+ },
+ "m1146-5": {
+  "verdict": "ok",
+  "note": "Lower bound via the vertical line with 675 distinct values and the nested example 2^(3i)(x^2+2x+4) both correct; answer 676."
+ },
+ "m1216-4": {
+  "verdict": "ok",
+  "note": "Neighbours of any interior cell share a residue mod 7, chessboard connectivity gives at least 30 cells of one residue, but at most 10 fit among 64 consecutive integers; answer no is correct."
+ },
+ "m215-4": {
+  "verdict": "ok",
+  "note": "Thue lemma gives p=x^2+xy+y^2 for p=1 mod 3 (the value 2p is excluded by parity) and infinitely many such primes follow from N^2+N+1; all steps check out."
+ },
+ "m509-1": {
+  "verdict": "ok",
+  "note": "Counting argument (288 classes vs 288 rectangles, each colour used on 18 cells, all of them interior, 126>100) is correct; answer no."
+ },
+ "m974-1": {
+  "verdict": "ok",
+  "note": "Statement restored from the source (v_n<v_{n+1}<v_{n+2}, all digits of s equal); the shifted-occurrence argument is correct."
+ },
+ "m1205-1": {
+  "verdict": "ok",
+  "note": "f is a permutation of finite S, every element is periodic, and f^k(x)=x forces x^2=x+1, so |S|<=2 and 2025 is impossible; correct."
+ },
+ "m1205-3": {
+  "verdict": "ok",
+  "note": "Lattice argument reduces to gcd(a-b,3a+1)=1 for all odd d<=a-2; the resulting condition (3a+1 a power of 2 or (3a+1)/2 prime) was confirmed by Smith normal form for all odd a<200."
+ },
+ "m222-2": {
+  "verdict": "ok",
+  "note": "AM-GM on the C(n,k) terms of S_k gives S_k>=C(n,k)P^(k/n), and multiplying with S_(n-k) gives the claim; correct."
+ },
+ "m223-2": {
+  "verdict": "ok",
+  "note": "Discs of radius d/2 around the two farthest points touch only at the midpoint, giving 996+996-1 red points; the equally spaced example gives exactly 1991; correct."
+ },
+ "m225-2": {
+  "verdict": "ok",
+  "note": "f is a non-decreasing step function; jump points counted by inclusion-exclusion give 733 and 734 values, confirmed by direct evaluation on a 1/60 grid."
+ },
+ "m227-2": {
+  "verdict": "ok",
+  "note": "Smallest-prime argument bounds a prime-free sequence by 13 terms and the 13-term example is valid, so n=14."
+ }
+}

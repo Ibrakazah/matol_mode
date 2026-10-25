@@ -10,7 +10,7 @@ idx = json.load(open(os.path.join(ROOT, "public", "data", "index.json"), encodin
 
 by_topic = {t["id"]: [] for t in topics}
 for p in idx["problems"]:
-    if not p.get("topic") or p["topic"] == "geometry":
+    if not p.get("topic"):
         continue
     hay = " ".join(p.get("skills", []) + p.get("sub", [])).lower()
     for t in topics:

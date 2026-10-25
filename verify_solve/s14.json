@@ -1,0 +1,64 @@
+{
+ "m63-5": {
+  "verdict": "fixed",
+  "note": "The solution assumes real roots only; the statement says only that a is real, and for a>2 the complex roots (x^4=-9 and x^4=-1/9) also contain four collinear roots in arithmetic progression, so a=82/9 is also valid when complex roots are allowed.",
+  "solution": "Пусть $t=x^4$: $t^2+at+1=0$, $t_1t_2=1$ (при необходимости рассматриваем и комплексные корни $x$).\n\n* $|a|<2$: все 8 корней лежат на единичной окружности, а прямая содержит не более двух точек окружности — четыре корня в прогрессии (они коллинеарны) невозможны. При $a=\\pm2$ различных корней всего четыре, они образуют квадрат — не прогрессия.\n* $a<-2$: $t_1>t_2>0$, корни $\\pm u,\\pm iu,\\pm v,\\pm iv$, $u=\\sqrt[4]{t_2}$, $v=\\sqrt[4]{t_1}$, $uv=1$. Четыре коллинеарные точки среди них — лишь $-v,-u,u,v$ на вещественной (или мнимой) оси; это прогрессия $\\iff v-u=2u\\iff v=3u$, откуда $t_2=\\frac19$, $t_1=9$, $a=-\\left(9+\\frac19\\right)=-\\frac{82}9$. Здесь все четыре корня вещественны.\n* $a>2$: $t_1,t_2<0$, корни лежат на двух диагоналях $\\arg x=\\frac\\pi4+\\frac{k\\pi}2$; на каждой диагонали по четыре корня $\\pm\\rho_1e^{i\\pi/4},\\pm\\rho_2e^{i\\pi/4}$ ($\\rho_1\\rho_2=1$), и снова прогрессия $\\iff\\rho_1=3\\rho_2$, т.е. $t_1=-9$, $t_2=-\\frac19$, $a=\\frac{82}9$ (корни комплексные).\n\nИтак, для вещественных корней $a=-\\frac{82}9$; если допустимы комплексные корни, то $a=\\pm\\frac{82}9$.",
+  "answer": "$a=-\\frac{82}9$ (вещественные корни); при допущении комплексных корней $a=\\pm\\frac{82}9$"
+ },
+ "m63-8": {
+  "verdict": "ok",
+  "note": "Bounds L>=97, exclusion of L=97 and 98, and the example 22*99+33 giving lcm 99 are correct."
+ },
+ "m65-2": {
+  "verdict": "ok",
+  "note": "f(1)>=2 and superadditivity give f(3000)>=6000, contradicting f(3000)<3002, so no such function exists; correct."
+ },
+ "m65-3": {
+  "verdict": "ok",
+  "note": "With the L-tromino figure (identified from the sibling problem), the 25 odd-odd black cells each need a distinct tile but only 24 tiles exist; correct."
+ },
+ "m67-8": {
+  "verdict": "ok",
+  "note": "The two 3-colourings give i_X,j_X != 1 mod 3 as a necessary condition, and the three explicit tilings were checked cell by cell; exhaustive search confirms the 16 good cells."
+ },
+ "m68-7": {
+  "verdict": "ok",
+  "note": "Same problem and solution as m67-8; verified by the colouring argument, explicit tilings and exhaustive search."
+ },
+ "m70-4": {
+  "verdict": "ok",
+  "note": "Upper bound 4*2+4*3+5 inward moves plus the exit gives 26, and the example is exactly the maximiser found by exhaustive search over all 4^9 arrangements and starts."
+ },
+ "m70-7": {
+  "verdict": "ok",
+  "note": "Invariant 'c>=|a-b|+2 or (a=b and c even)' lets B always restore it; the final position gives sum divisible by 3, and exhaustive game search on analogous boards confirms B wins."
+ },
+ "m72-8": {
+  "verdict": "ok",
+  "note": "Each letter occurs at most 3 times, pair analysis leaves XXXYYY and XXYXYY, and the count n!*2^(n-1) matches brute force for n=1..4."
+ },
+ "m74-5": {
+  "verdict": "ok",
+  "note": "Examples for n<=4 and the case analysis near N forcing a missing difference N-5 for n>=5 are correct."
+ },
+ "m82-5": {
+  "verdict": "ok",
+  "note": "Direction criterion beta+gamma=2alpha, at most 3 pairs per base line, and the 8-direction example with 24 distinct triangles are correct."
+ },
+ "m86-7": {
+  "verdict": "ok",
+  "note": "Process simulated exactly: the last page read is 37, matching the leader analysis."
+ },
+ "m89-1": {
+  "verdict": "ok",
+  "note": "a_n=2^(2^n)+1 by telescoping, so a_2008=2^(2^2008)+1, and coprimality follows from d | 2."
+ },
+ "m90-1": {
+  "verdict": "ok",
+  "note": "Choosing the student with the maximum number k of acquaintances in one other school and a pigeonhole count gives the required triple; correct."
+ },
+ "m242-5": {
+  "verdict": "ok",
+  "note": "Evenness, f(0)=0, the property f(z1)=f(z2) => |z1|=|z2| and the final comparison give f=0 or f=x^2; each step rechecked and x^2 verified."
+ }
+}

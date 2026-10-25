@@ -1,0 +1,62 @@
+{
+ "m290-4": {
+  "verdict": "ok",
+  "note": "Bound (each arc needs two polygons with an interior vertex, 2k<=3n) is correct; construction with chords and near-tangent lines checked numerically for n=3..9, giving floor(3n/2) points."
+ },
+ "m250-6": {
+  "verdict": "ok",
+  "note": "Vector identities and the sum-of-squares argument giving |p-q+r|=0 with equality in all triangle inequalities are correct and yield the ratios."
+ },
+ "m251-6": {
+  "verdict": "ok",
+  "note": "Checked GJ=rho(x,y;alpha) derivation and numerically confirmed the equal-radii system has the unique positive solution x:y:z=sin(beta):sin(gamma):sin(alpha), so the areas coincide."
+ },
+ "m109-6": {
+  "verdict": "ok",
+  "note": "Oriented-angle chase showing BC tangent to (BDE) is correct, giving BC^2=CD*CE."
+ },
+ "m110-8": {
+  "verdict": "ok",
+  "note": "Angle chase is correct and concyclicity of D,E,B1,C confirmed numerically (error 1e-15)."
+ },
+ "m111-7": {
+  "verdict": "ok",
+  "note": "Coordinates give plane through T=(2/3)PO (centroid) and S=2*sqrt(sum c_i^2c_j^2)<=2sqrt3/3 with equality at c_i=1/sqrt3; correct."
+ },
+ "m113-7": {
+  "verdict": "ok",
+  "note": "Statement truncated but identical to m114-8; vertex check of convex f over region R is complete and correct, and the inequality was confirmed on 200000 random points."
+ },
+ "m114-8": {
+  "verdict": "ok",
+  "note": "Vertex enumeration of the convex function 2MA+MB+MC over the region MA<=MB,MC is complete and every vertex gives a strict bound; inequality confirmed numerically."
+ },
+ "m116-6": {
+  "verdict": "ok",
+  "note": "Ceva plus Menelaus with directed segments gives (A,C;M,E)=-1, so E is fixed; the parallel case correctly forces M to be the midpoint."
+ },
+ "m116-7": {
+  "verdict": "ok",
+  "note": "The 7-point argument (centre plus three triples with equal side 3/10, all inter-group distances >2r) is correct and shows at least 7 discs are needed if r<sqrt3/10."
+ },
+ "m117-6": {
+  "verdict": "ok",
+  "note": "Same statement and solution as m116-7; the 7-point argument is correct."
+ },
+ "m117-7": {
+  "verdict": "ok",
+  "note": "Angle chase (phi=180-2(x+y), H on line BP, all angles x+y) is correct and A,H,Q,K,B concyclicity confirmed numerically (1e-14)."
+ },
+ "m117-8": {
+  "verdict": "ok",
+  "note": "Cayley-Menger determinant mod 3 equals det(J-I)=4 not 0, so every 4-set has a distance divisible by 3; double counting gives k>=n(n-1)/12, correct."
+ },
+ "m118-6": {
+  "verdict": "ok",
+  "note": "Parallelogram/rectangle argument and similarity of FBC and DAC via BF/BC=AD/AC (tan A) are correct."
+ },
+ "m119-6": {
+  "verdict": "ok",
+  "note": "M is the midpoint of AB (antipodal on nine-point circle with the midpoint of CH), and the oriented-angle chase puts D on (BMA1); correct."
+ }
+}

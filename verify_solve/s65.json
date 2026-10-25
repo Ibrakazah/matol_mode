@@ -1,0 +1,62 @@
+{
+ "m1063-6": {
+  "verdict": "ok",
+  "note": "Vector computation (H=A+B+C, PQ perpendicular to OA, O1=A+mu*M, T=lambda(A+mu M)) gives T-M parallel to H-M; every formula rechecked."
+ },
+ "m1066-6": {
+  "verdict": "unsure",
+  "note": "The solution is self-declared incomplete: the key lemma that every such rhombus contains the centre is only checked numerically."
+ },
+ "m1229-6": {
+  "verdict": "ok",
+  "note": "Power-of-point equations in coordinates along the bisectors give a common point P on MN as a convex combination; the p1=p2 identity was verified by expansion."
+ },
+ "m1230-6": {
+  "verdict": "ok",
+  "note": "Same statement and solution as m1229-6; the equal-power point P=((b+d)M+(a+c)N)/(a+b+c+d) was rechecked by hand and lies on MN."
+ },
+ "m963-5": {
+  "verdict": "ok",
+  "note": "Condition AO||HD is equivalent to cosB+cosC=1 (so OI||BC), and I,O,F,E lie on the circle with diameter IW; confirmed numerically on 1669 triangles."
+ },
+ "m974-3": {
+  "verdict": "ok",
+  "note": "Q-tangents show B1Q is the symmedian of AB1B, K1 reflection gives a reversed similarity KAK1 ~ ECB1, so CK is the median; all directed-angle steps checked."
+ },
+ "m1004-1": {
+  "verdict": "ok",
+  "note": "Similar-triangle ratios give CM=BC^2/BD, hence triangle MCB ~ CBD and BM is tangent by the tangent-chord converse; correct."
+ },
+ "m1133-2": {
+  "verdict": "ok",
+  "note": "Equal radii make the two circles symmetric about GH, so GH is perpendicular to CD and AB, and the power-of-F0 equality identifies H with the orthocentre of ABG."
+ },
+ "m222-5": {
+  "verdict": "ok",
+  "note": "Strip of k isosceles 75-degree triangles plus two glued copies gives a convex hexagon with k+2 equal triangles; reconstructed numerically for n=6..16 (hull area equals total area, 6 vertices)."
+ },
+ "m223-5": {
+  "verdict": "ok",
+  "note": "Inversion at P with radius PT fixes both circles and turns the required circle into another common tangent; construction and the count of solutions are correct."
+ },
+ "m233-5": {
+  "verdict": "unsure",
+  "note": "The solution is self-declared incomplete: example for n=4 and bound n<=8 only, the bound n<=4 is not proved."
+ },
+ "m237-5": {
+  "verdict": "ok",
+  "note": "Law of cosines identity MN^2=a^2(1-2r/R) rechecked and confirmed numerically; ratio sqrt(1-2r/R)=OI/R."
+ },
+ "m138-5": {
+  "verdict": "ok",
+  "note": "I is the incentre of both ABC and AKN, so omega is the mixtilinear incircle of both (same touch point on AB via AU=AI/cos(A/2)), hence tangent to the circumcircle of ABC."
+ },
+ "m140-5": {
+  "verdict": "ok",
+  "note": "MN is the polar of P, K is the inverse of P, similar triangles OPA~OAK and OPC~OCK give equal angles at K; correct."
+ },
+ "m141-5": {
+  "verdict": "ok",
+  "note": "Same statement and solution as m140-5; correct."
+ }
+}

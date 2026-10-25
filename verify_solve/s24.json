@@ -1,0 +1,62 @@
+{
+ "m1204-5": {
+  "verdict": "unsure",
+  "note": "The solution is self-declared incomplete (only first consequences, no proof that an unbounded sequence is linear)."
+ },
+ "m296-4": {
+  "verdict": "unsure",
+  "note": "The solution is self-declared incomplete: it only reduces to 3-colourability of an induced-cycle-restricted graph without proving it."
+ },
+ "m479-4": {
+  "verdict": "unsure",
+  "note": "The lemmas (rhombus of radius 24 contains each colour once) are fine, but the final step that the Lee-sphere tiling is a lattice tiling is cited without proof."
+ },
+ "m577-2": {
+  "verdict": "ok",
+  "note": "Decoding into u=x+y, v=x-y sign sequences and the rational-root argument with coefficients in {0,1,-1} give q=1; example works."
+ },
+ "m897-4": {
+  "verdict": "unsure",
+  "note": "The solution is self-declared incomplete with only observations and no answer to the game."
+ },
+ "m947-3": {
+  "verdict": "ok",
+  "note": "Construction with boxes 2^k-1..2^k-1+k and the potential-function bound both rechecked; answer 2^k+k-1 matches exhaustive search for k=1,2 and k=3 (n=10 infinite, n<=8 finite)."
+ },
+ "m1001-2": {
+  "verdict": "ok",
+  "note": "Divisors a^(2021-j)b^j, LTE for p=3 or 337 not dividing a, and the 1011|a subcases with T={2022} or {1011,1011a^2} are correct."
+ },
+ "m1157-4": {
+  "verdict": "ok",
+  "note": "Hamiltonicity, rotation lemma and circulant structure give C_n, K_n and K_(n/2,n/2); steps A and B rechecked and the answer matches exhaustive search for n<=7."
+ },
+ "m1236-4": {
+  "verdict": "ok",
+  "note": "Invariant sum n, p-adic minimum valuation never increases for odd p, and the doubling construction for powers of two are correct."
+ },
+ "m463-6": {
+  "verdict": "unsure",
+  "note": "Statement truncated and the solution is self-declared incomplete (only a conjectured reconstruction, no proof)."
+ },
+ "m948-3": {
+  "verdict": "ok",
+  "note": "Moves add R_i-C_j with equal sums; the reduction, Konig decomposition argument and the form b_ij=u_i+v_j are all correct."
+ },
+ "m1147-2": {
+  "verdict": "ok",
+  "note": "Subgroup-closure argument gives at least 858 red vertices and the coset of 7Z (143 vertices) blocks more; both parts correct."
+ },
+ "m1147-3": {
+  "verdict": "ok",
+  "note": "Parametrization m=A_n+A_(n+1)s, choice of s and n+1 divisible by prod p(p-1), and the non-divisibility check are correct."
+ },
+ "m1217-3": {
+  "verdict": "unsure",
+  "note": "The solution is self-declared incomplete: answer 2m+2k-4 is only found by computer search for small cases and the bound and construction are not proved."
+ },
+ "m887-6": {
+  "verdict": "ok",
+  "note": "Rewriting as (a+b+c)^2=(3k+2)Q, a prime p=2 mod 3 of odd valuation and infinite descent are correct; only the zero triple."
+ }
+}

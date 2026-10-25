@@ -1,0 +1,62 @@
+{
+ "m227-5": {
+  "verdict": "ok",
+  "note": "Lower bound argument and the 8-periodic 4-colouring rechecked; k=4."
+ },
+ "m229-5": {
+  "verdict": "ok",
+  "note": "Median reduction sum|x+c_i| and the acyclic-path feasibility argument are correct."
+ },
+ "m231-5": {
+  "verdict": "ok",
+  "note": "Pencil-of-circles lemma (odd number of good circles through each pair) and the 3G = n(2n+1) mod 2 count rechecked."
+ },
+ "m232-5": {
+  "verdict": "ok",
+  "note": "Even n>=4 dead end verified by hand; simulation for n<=299 gives exactly n=1,2,3,7,15,...; the claimed states S_j were confirmed on the trajectory for all odd n<600 (the phase step is only sketched but correct)."
+ },
+ "m235-5": {
+  "verdict": "ok",
+  "note": "Matching Ramsey number 2m+n-1 (m>=n): example and the induction step rechecked; the hint in the comment is not an actual formula."
+ },
+ "m239-5": {
+  "verdict": "ok",
+  "note": "GF(2) computation gives image of size 2^23 and single-lamp reachable cells exactly (2,2),(2,4),(3,3),(4,2),(4,4)."
+ },
+ "m240-5": {
+  "verdict": "ok",
+  "note": "Shift-by-b argument with cyclic intervals of length a+1<c is correct and uses all hypotheses."
+ },
+ "m241-5": {
+  "verdict": "ok",
+  "note": "Per-period displacement computation rechecked; simulation for coprime l,r<20 confirms l=r mod 4 (the comment's 'one is even' is wrong)."
+ },
+ "m96-6": {
+  "verdict": "ok",
+  "note": "Induction n_{k+1}=p*n_k with a Zsigmondy prime p and LTE checked; base 3^3*19=513."
+ },
+ "m210-3": {
+  "verdict": "ok",
+  "note": "Delta = u+1/u mod p, residues 0 and 1 excluded, residue 2 attained; brute force for p=11,23 gives 2."
+ },
+ "m211-4": {
+  "verdict": "unsure",
+  "note": "Part 1 example verified and part 2 answer 'no' agrees with my own MILP (infeasible for n=5, feasible for n=4), but the solution itself admits it has no rigorous proof of part 2."
+ },
+ "m213-4": {
+  "verdict": "ok",
+  "note": "Pell construction x=a+1,y=a-1,z=a^2-1,t=n verified algebraically, distinctness checked."
+ },
+ "m266-4": {
+  "verdict": "ok",
+  "note": "m_a<(b+c)/2 bounds and the median-difference formula give a complete case analysis; answer no."
+ },
+ "m373-3": {
+  "verdict": "ok",
+  "note": "Concyclicity of A,B,M,K and then A,B,L,N via directed angles is correct; the AB=AK degeneracy is excluded."
+ },
+ "m568-1": {
+  "verdict": "ok",
+  "note": "Power of the centre O w.r.t. both circles gives OZ=-OY; correct and complete."
+ }
+}

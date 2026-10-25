@@ -1,0 +1,66 @@
+{
+ "m229-2": {
+  "verdict": "fixed",
+  "note": "Brute force confirms there is no n in [1000,1997] with n | 2^n+2 (solutions below 2000 are 1,2,6,66,946), so the answer for the stated range is 'none', with 946 only for the original range 100..1997.",
+  "solution": "В заданном диапазоне $1000\\le n\\le1997$ подходящих $n$ нет: полный перебор показывает, что все $n\\le1997$ с $n\\mid2^n+2$ — это $1,2,6,66,946$, и ни одно не лежит в $[1000,1997]$. Число $946=2\\cdot11\\cdot43$ — ответ исходной задачи APMO 1997 (диапазон $100\\le n\\le1997$): $2^{946}+2$ чётно; по модулю $11$ порядок $2$ равен $10$, $946\\equiv6\\pmod{10}$, $2^6=64\\equiv9$, $9+2\\equiv0$; по модулю $43$ имеем $2^7\\equiv-1$, $946\\equiv8\\pmod{14}$, $2^8\\equiv-2$, $-2+2=0$. Так как $2,11,43$ попарно взаимно просты, $946\\mid2^{946}+2$.",
+  "answer": "Решений нет при $1000\\le n\\le1997$ (n=946 — лишь для исходного диапазона $100\\le n\\le1997$)"
+ },
+ "m231-2": {
+  "verdict": "ok",
+  "note": "Strong induction using sum of T_k and a_j+a_(n-j)>=a_n is correct; the discussion's k|n shortcut is rightly flagged invalid."
+ },
+ "m232-2": {
+  "verdict": "ok",
+  "note": "Mod-3 analysis and quadratic checks give vertices {2,5,8} with the stated side pairs; exhaustive search over 9! placements confirms exactly 48 solutions."
+ },
+ "m238-2": {
+  "verdict": "ok",
+  "note": "Normalization to non-adjacent exponents and the inductive identity 1+sum tau^(-2i)=tau+sum tau^(-(2i-1))+tau^(-2t-2) were rechecked; the construction keeps exponents distinct."
+ },
+ "m288-2": {
+  "verdict": "ok",
+  "note": "Factorization p(p-1)=(q-1)(q^2+q+1), p | q^2+q+1, and the discriminant squeeze (k^2-3)^2<=Delta<(k^2-2)^2 are correct; unique prime p=19."
+ },
+ "m290-2": {
+  "verdict": "ok",
+  "note": "Symmetry of g=f-x^2 about every value of f plus the free choice of s gives all periods, so g is constant; f=0 and f=x^2+C both verified."
+ },
+ "m252-2": {
+  "verdict": "ok",
+  "note": "Explicit decomposition in a) verified by symbolic expansion and the F_4 invariant in b) is correct (P(omega)=omega is not in F_2)."
+ },
+ "m365-3": {
+  "verdict": "ok",
+  "note": "Statement restored (d_k=(d2+d4)d6, k=d5); the case analysis d5 in {7,10,13,16} and the final case n=2002 are all correct."
+ },
+ "m110-4": {
+  "verdict": "ok",
+  "note": "Triangle-free bound via Mantel and the two-cluster complete bipartite example both correct; answer 10^6."
+ },
+ "m111-4": {
+  "verdict": "ok",
+  "note": "Parity argument (transposition is odd, 3-cycles are even) is correct; answer no."
+ },
+ "m114-4": {
+  "verdict": "ok",
+  "note": "Parity, LTE giving (a+1)^(n-1) | m, and the logarithmic estimates are correct; only (1,2,1)."
+ },
+ "m118-4": {
+  "verdict": "ok",
+  "note": "Strict convexity in each variable reduces to 0/1 vectors where E=s/2 with s even, giving floor(n/2); the extremal sets described are correct."
+ },
+ "m121-4": {
+  "verdict": "fixed",
+  "note": "The claim that t_0<1/2 forces t_1>1/2 is false (h(1/4)=1/2, so g(1/4)=-1/2); finite closed sets are exactly those between {-1/2} and {+-1/2,+-1/4}, eight sets.",
+  "solution": "**Ответ** (для конечных непустых множеств): все множества $S$ с $\\{-\\tfrac12\\}\\subseteq S\\subseteq\\{-\\tfrac12,\\tfrac12,\\tfrac14,-\\tfrac14\\}$, т.е. восемь множеств (в частности $\\{-\\tfrac12\\}$, $\\{-\\tfrac12,\\tfrac12\\}$, $\\{-\\tfrac12,\\tfrac14\\}$, ...). Без условия конечности подошло бы и пустое множество, и любое объединение прямых орбит (например бесконечное).\n\nПусть $g(x)=3|x|-4x^2-1$, $t=|x|$. Тогда $g(x)=-(4t^2-3t+1)<0$ и $|g(x)|=h(|x|)$, $h(t)=4t^2-3t+1=t+(2t-1)^2\\ge t$ с равенством лишь при $t=\\tfrac12$. Пусть $S$ конечно и замкнуто, $x\\in S$, $t_0=|x|$, $t_{j+1}=h(t_j)=|g^{j+1}(x)|$. Если ни одно $t_j$ не равно $\\tfrac12$, то $t_j$ строго возрастает, и $S$ бесконечно. Значит $t_j=\\tfrac12$ для некоторого $j$. Уравнение $h(t)=\\tfrac12$ имеет корни $t=\\tfrac12$ и $t=\\tfrac14$; уравнение $h(t)=\\tfrac14$ не имеет действительных корней (дискриминант $9-12<0$). Поэтому $t_0\\in\\{\\tfrac12,\\tfrac14\\}$ (случай $j\\ge2$ невозможен: он требовал бы $t_{j-1}\\in\\{\\tfrac12,\\tfrac14\\}$, а $t_{j-1}=\\tfrac14$ при $j-1\\ge1$ невозможно как значение $h$), т.е. $x\\in\\{\\pm\\tfrac12,\\pm\\tfrac14\\}$. Для этих чисел $g(\\pm\\tfrac12)=g(\\pm\\tfrac14)=-\\tfrac12$, а $g(-\\tfrac12)=-\\tfrac12$. Следовательно, всякое конечное непустое замкнутое множество содержит $-\\tfrac12$ и лежит в $\\{\\pm\\tfrac12,\\pm\\tfrac14\\}$, и любое такое множество замкнуто.",
+  "answer": "Конечные непустые множества $S$ с $\\{-\\frac12\\}\\subseteq S\\subseteq\\{-\\frac12,\\frac12,\\frac14,-\\frac14\\}$ (8 множеств)"
+ },
+ "m122-4": {
+  "verdict": "ok",
+  "note": "Hall's condition via areas and choosing piercing points off the boundaries is correct."
+ },
+ "m124-4": {
+  "verdict": "ok",
+  "note": "Lemma (exactly one of m and ab-a-b-m is representable) and the reflection about (ab+a+b)/2 are correct."
+ }
+}
