@@ -8,20 +8,16 @@
         geometry: 'Геометрия',
         number_theory: 'Теория чисел'
     };
-    var COMP_ORDER = ['resp-region', 'resp-final', 'izho', 'silk', 'apmo', 'bmo', 'jbmo'];
-    var COMP_SHORT = {
-        'resp-region': 'Респа, область', 'resp-final': 'Респа, финал', izho: 'Жаутыковская',
-        silk: 'Шелковый путь', apmo: 'АТМО', bmo: 'BMO', jbmo: 'JBMO'
-    };
-    // olympiad tree as on matol.kz
-    var TREE = [
-        { title: 'Республиканская олимпиада', comps: ['resp-region', 'resp-final'] },
-        { title: 'Международные олимпиады', comps: ['izho', 'bmo', 'jbmo'] },
-        { title: 'Дистанционные олимпиады', comps: ['silk', 'apmo'] }
-    ];
+    var ROOT_NODE = '171';      // «Математика» on matol.kz
+    var RESP_NAMES = { '11': 'Районная олимпиада', '12': 'Областная олимпиада', '13': 'Заключительный этап РО' };
     var PAGE_SIZE = 20;
+    var SERIES_ORDER = [];      // series node ids in tree order
+    var GROUPS = [];            // [{id, title, series: [...]}] — top-level groups of the tree
+    var PARENT = {};            // node id -> parent node id
 
     var DB = null;          // index.json
+    var LANG = lsGetRaw('mm-lang') === 'kz' ? 'kz' : 'ru';
+    var kzCache = {};       // oid -> promise of Kazakh statements
     var OLY = {};           // oid -> olympiad
     var PROB = {};          // id -> problem
     var BY_OLY = {};        // oid -> [problems]
@@ -52,6 +48,9 @@
             setTimeout(function () { typeset(el); }, 300);
         }
     }
+    function lsGetRaw(key) {
+        try { return localStorage.getItem(key); } catch (e) { return null; }
+    }
     function lsGet(key, def) {
         try { var v = localStorage.getItem(key); return v ? JSON.parse(v) : def; } catch (e) { return def; }
     }
@@ -59,6 +58,7 @@
         try { localStorage.setItem(key, JSON.stringify(val)); } catch (e) { /* storage unavailable */ }
     }
     var marks = lsGet('mm-marks', {});   // id -> {solved:bool, star:bool}
+    var notes = lsGet('mm-notes', {});   // id -> markdown text
     function isSolved(id) { return !!(marks[id] && marks[id].solved); }
     function isStar(id) { return !!(marks[id] && marks[id].star); }
     function setMark(id, k) {
@@ -86,11 +86,46 @@
         }
         return details[oid];
     }
+    function seriesShort(c) { return (DB.series[c] || {}).short || c; }
+    function seriesTitle(c) { return (DB.series[c] || {}).title || c; }
+    function olyLabel(o) {
+        var parent = DB.nodes[String(o.path[o.path.length - 1])];
+        return parent && parent.l[o.oid] ? parent.l[o.oid] : o.title;
+    }
     function olyName(o) {
-        if (o.comp.indexOf('resp') === 0) {
-            return (o.comp === 'resp-region' ? 'Областная олимпиада' : 'Заключительный этап РО') + ', ' + o.year + ', ' + o.grade + ' класс';
-        }
-        return COMP_SHORT[o.comp] + ' ' + o.year;
+        if (RESP_NAMES[o.comp] && o.grade) return RESP_NAMES[o.comp] + ', ' + o.year + ', ' + o.grade + ' класс';
+        var label = olyLabel(o);
+        var name = seriesShort(o.comp) + ' — ' + label;
+        if (o.year && !/(19|20)\d\d/.test(label)) name += ' (' + o.year + ')';
+        return name;
+    }
+    function loadKz(oid) {
+        if (!kzCache[oid]) kzCache[oid] = fetch('/data/kz/' + oid + '.json').then(function (r) { return r.json(); }).catch(function () { return {}; });
+        return kzCache[oid];
+    }
+    // swap statements to Kazakh where available
+    function applyLang(root) {
+        if (LANG !== 'kz') return;
+        var els = root.querySelectorAll('[data-st]');
+        Array.prototype.forEach.call(els, function (el) {
+            var p = PROB[el.getAttribute('data-st')];
+            loadKz(p.oid).then(function (kz) {
+                if (kz[p.id]) { el.innerHTML = kz[p.id]; el.setAttribute('lang', 'kk'); typeset(el); }
+            });
+        });
+    }
+    function nodePath(id) {
+        var out = [String(id)];
+        while (PARENT[out[0]]) out.unshift(PARENT[out[0]]);
+        return out;
+    }
+    function nodeCrumbs(id, extra) {
+        var items = [['Все олимпиады', '#/olympiads']];
+        nodePath(id).forEach(function (n) {
+            if (n === ROOT_NODE) items.push(['Математика', '#/olympiads']);
+            else items.push([DB.nodes[n].t, '#/node/' + n]);
+        });
+        return crumbs(items.concat(extra || []));
     }
     function crumbs(items) {
         return '<ol class="breadcrumb">' + items.map(function (it, i) {
@@ -130,11 +165,11 @@
         var o = OLY[p.oid];
         var head = opts.withSource
             ? '<a class="p-title" href="#/p/' + p.id + '">' + esc(olyName(o)) + ', №' + esc(p.num) + '</a>'
-            : '<a class="p-title" href="#/p/' + p.id + '">Задача №' + esc(p.num) + '</a>';
+            : '<a class="p-title" href="#/p/' + p.id + '">' + (LANG === 'kz' ? 'Есеп №' : 'Задача №') + esc(p.num) + '</a>';
         return '<div class="card problem' + (isSolved(p.id) ? ' is-solved' : '') + '" id="p-' + p.id + '" data-pid="' + p.id + '">' +
             marksHtml(p) +
             '<div class="p-head">' + head + '</div>' +
-            '<div class="stmt">' + p.st + '</div>' +
+            '<div class="stmt" data-st="' + p.id + '">' + p.st + '</div>' +
             chipsHtml(p) +
             '<div class="reveals" data-reveals="' + p.id + '"><div class="toolbar"><span class="tb-note">…</span></div></div>' +
             '</div>';
@@ -169,9 +204,13 @@
         if (d.comments && d.comments.length) {
             add('comments', '💬 Обсуждение <span class="n">' + d.comments.length + '</span>', 'Обсуждение на matol', commentsHtml(d));
         }
+        var mine = notes[p.id] || '';
+        btns.push('<button class="tb' + (mine ? ' has-note' : '') + '" data-tb="notes">📝 Заметки' + (mine ? ' <span class="n">•</span>' : '') + '</button>');
+        panels.push('<div class="panel-x" data-px="notes"><div class="px-title">Мои заметки (видны только тебе)</div>' +
+            '<textarea class="form-control note-area" data-note="' + p.id + '" rows="4" placeholder="Свои идеи, решение, где застрял… Можно писать формулы в $...$">' + esc(mine) + '</textarea>' +
+            '<div class="note-preview" data-note-preview="' + p.id + '">' + md(mine) + '</div></div>');
         var note = '';
-        if (!d.solution && p.topic === 'geometry') note = '<span class="tb-note">геометрия — решения ИИ пока нет</span>';
-        else if (!d.solution && !(d.comments && d.comments.length)) note = '<span class="tb-note">решения пока нет</span>';
+        if (!d.solution && !(d.comments && d.comments.length)) note = '<span class="tb-note">решение готовится</span>';
         var link = '<a class="tb-link" href="#/c/' + p.id + '">комментарий/решение(' + (d.comments ? d.comments.length : 0) + ')</a>';
         return '<div class="toolbar">' + btns.join('') + note + link + '</div>' + panels.join('');
     }
@@ -191,6 +230,7 @@
             });
         });
         typeset(root);
+        applyLang(root);
     }
     function togglePanel(btn) {
         var box = btn.closest('.reveals');
@@ -240,6 +280,20 @@
             lsSet('mm-more-filters', !shown);
             return;
         }
+        if (t.closest('[data-print]')) { e.preventDefault(); window.print(); return; }
+        var dd = t.closest('[data-dropdown]');
+        var menu = document.getElementById('more-menu');
+        if (dd) { e.preventDefault(); menu.classList.toggle('open'); return; }
+        if (menu && !t.closest('#more-menu .dropdown-menu')) menu.classList.remove('open');
+        else if (menu) menu.classList.remove('open');
+        if (t.closest('#lang-toggle')) {
+            e.preventDefault();
+            LANG = LANG === 'kz' ? 'ru' : 'kz';
+            lsSet('mm-lang', LANG);
+            updateLangButton();
+            route();
+            return;
+        }
         if (t.closest('#theme-toggle')) {
             e.preventDefault();
             var dark = document.documentElement.getAttribute('data-theme') !== 'dark';
@@ -253,6 +307,21 @@
         } else if (t.closest('#navmenu a')) {
             document.getElementById('navmenu').classList.remove('in');
         }
+    });
+    function updateLangButton() {
+        var b = document.getElementById('lang-toggle');
+        if (b) b.textContent = LANG === 'kz' ? 'Қаз' : 'Рус';
+    }
+    updateLangButton();
+    // personal notes: save while typing
+    document.addEventListener('input', function (e) {
+        var id = e.target.getAttribute && e.target.getAttribute('data-note');
+        if (!id) return;
+        var v = e.target.value;
+        if (v.trim()) notes[id] = v; else delete notes[id];
+        lsSet('mm-notes', notes);
+        var pv = document.querySelector('[data-note-preview="' + id + '"]');
+        if (pv) { pv.innerHTML = md(v); clearTimeout(pv._t); pv._t = setTimeout(function () { typeset(pv); }, 600); }
     });
     document.getElementById('nav-search').addEventListener('submit', function (e) {
         e.preventDefault();
@@ -268,12 +337,31 @@
     });
 
     // ---------- pages ----------
-    function compStats(c) {
+    function seriesStats(c) {
         var list = DB.olympiads.filter(function (o) { return o.comp === c; });
-        var years = list.map(function (o) { return o.year; });
+        var years = list.map(function (o) { return o.year; }).filter(Boolean);
         var n = 0, s = 0;
         list.forEach(function (o) { (BY_OLY[o.oid] || []).forEach(function (p) { n++; if (isSolved(p.id)) s++; }); });
         return { n: n, solved: s, from: Math.min.apply(null, years), to: Math.max.apply(null, years) };
+    }
+    function seriesTile(c) {
+        var s = seriesStats(c);
+        return '<a class="tile" href="#/node/' + c + '"><b>' + esc(seriesShort(c)) + '</b><span>' + (s.from ? s.from + '–' + s.to + ' · ' : '') +
+            s.n + ' задач' + (s.solved ? ' · решено ' + s.solved : '') + '</span></a>';
+    }
+    // problems under a node (recursively)
+    function nodeOlys(id, acc) {
+        acc = acc || [];
+        var n = DB.nodes[id];
+        if (!n) return acc;
+        n.o.forEach(function (oid) { if (OLY[oid]) acc.push(OLY[oid]); });
+        n.c.forEach(function (c) { nodeOlys(c, acc); });
+        return acc;
+    }
+    function nodeCount(id) {
+        var n = 0, s = 0;
+        nodeOlys(id).forEach(function (o) { (BY_OLY[o.oid] || []).forEach(function (p) { n++; if (isSolved(p.id)) s++; }); });
+        return { n: n, solved: s };
     }
 
     function pageHome() {
@@ -285,7 +373,7 @@
         var byTopic = {};
         DB.problems.forEach(function (p) { if (p.topic) byTopic[p.topic] = (byTopic[p.topic] || 0) + 1; });
 
-        var h = '<div class="page-title"><h2>Олимпиадная математика</h2><div class="page-sub">' + all + ' задач · ' + withSol + ' с решениями · подсказки, теоремы и разборы «как догадаться»</div></div>';
+        var h = '<div class="page-title"><h2>Олимпиадная математика</h2><div class="page-sub">' + all + ' задач · ' + DB.olympiads.length + ' олимпиад · ' + withSol + ' с решениями · подсказки, теоремы и разборы «как догадаться»</div></div>';
         h += '<form class="hero-search" id="hero-search"><input type="search" class="form-control" name="q" placeholder="Найти задачу по словам из условия…" autocomplete="off"></form>';
 
         h += '<div class="card"><b>Мой прогресс</b>: решено ' + solved + ' из ' + all +
@@ -294,42 +382,72 @@
             '<a class="btn btn-default btn-sm" href="#/random?sol=1">🎲 Случайная с решением</a> ' +
             '<a class="btn btn-default btn-sm" href="#/marked">★ Избранное (' + stars + ')</a></div>';
 
-        h += '<div class="section-title">Олимпиады</div><div class="grid">';
-        COMP_ORDER.forEach(function (c) {
-            var s = compStats(c);
-            h += '<a class="tile" href="#/n/' + c + '"><b>' + esc(COMP_SHORT[c]) + '</b><span>' + s.from + '–' + s.to + ' · ' + s.n + ' задач' + (s.solved ? ' · решено ' + s.solved : '') + '</span></a>';
+        h += '<div class="row"><div class="col-md-8">';
+        GROUPS.forEach(function (g) {
+            h += '<div class="section-title">' + esc(g.title) + '</div><div class="grid">' + g.series.map(seriesTile).join('') + '</div>';
         });
-        h += '</div>';
-
         h += '<div class="section-title">Темы</div><div class="grid">';
         Object.keys(TOPICS).forEach(function (t) {
-            h += '<a class="tile t-' + t + '" href="#/problems?topic=' + t + '&sort=diff"><b><span class="chip t-' + t + '" style="padding:0;background:none"><span class="dot"></span></span>' + TOPICS[t] + '</b><span>' + (byTopic[t] || 0) + ' задач · от лёгких к сложным</span></a>';
+            h += '<a class="tile" href="#/problems?topic=' + t + '&sort=diff"><b><span class="chip t-' + t + '" style="padding:0;background:none"><span class="dot"></span></span>' + TOPICS[t] + '</b><span>' + (byTopic[t] || 0) + ' задач · от лёгких к сложным</span></a>';
         });
         h += '</div>';
-
         h += '<div class="section-title">Учиться</div><div class="grid">' +
-            '<a class="tile" href="#/theory"><b>📘 Теория</b><span>конспекты по 30 темам с задачами по возрастанию сложности</span></a>' +
+            '<a class="tile" href="#/theory"><b>📘 Теория</b><span>конспекты по 40 темам с задачами по возрастанию сложности</span></a>' +
             '<a class="tile" href="#/skills"><b>🧩 Теоремы и приёмы</b><span>все теоремы из решений и задачи на них</span></a>' +
-            '<a class="tile" href="#/authors"><b>✍️ Авторы</b><span>задачи по авторам</span></a>' +
-            '</div>';
+            '<a class="tile" href="#/info"><b>ℹ️ Об олимпиадах</b><span>правила и этапы олимпиад</span></a>' +
+            '<a class="tile" href="#/books"><b>📚 Книги</b><span>сборники задач с matol.kz</span></a>' +
+            '</div></div>';
+        h += '<div class="col-md-4"><div class="section-title">Объявления и новости</div><div class="card side-feed" id="home-news"><span class="text-muted">…</span></div>' +
+            '<div class="section-title">Последние обсуждения</div><div class="card side-feed" id="home-recent"><span class="text-muted">…</span></div></div></div>';
         app.innerHTML = h;
         document.getElementById('hero-search').addEventListener('submit', function (e) {
             e.preventDefault();
             location.hash = '#/problems?' + buildQuery({ q: this.elements.q.value.trim() });
         });
+        loadPages().then(function (pg) {
+            var el = document.getElementById('home-news');
+            if (el) el.innerHTML = pg.news.slice(0, 6).map(newsRow).join('') + '<a href="#/news">все новости →</a>';
+        });
+        loadJson('recent').then(function (rc) {
+            var el = document.getElementById('home-recent');
+            if (el) el.innerHTML = rc.slice(0, 8).map(recentRow).join('') + '<a href="#/recent">все обсуждения →</a>';
+        });
     }
 
-    function pageOlympiads() {
-        setTitle('Олимпиады');
-        var h = crumbs([['Все олимпиады', '#/olympiads'], ['Математика', '']]);
-        TREE.forEach(function (g) {
-            h += '<div class="tree-group"><h4>' + esc(g.title) + '</h4><div class="grid">';
-            g.comps.forEach(function (c) {
-                var s = compStats(c);
-                h += '<a class="tile" href="#/n/' + c + '"><b>' + esc(DB.comps[c]) + '</b><span>' + s.from + '–' + s.to + ' · ' + s.n + ' задач' + (s.solved ? ' · решено ' + s.solved : '') + '</span></a>';
-            });
-            h += '</div></div>';
-        });
+    function pageOlympiads() { pageNode(ROOT_NODE); }
+
+    // a node of the matol tree: child nodes and olympiads, like /nodes/<id> on matol
+    function pageNode(id) {
+        var n = DB.nodes[id];
+        if (!n) return notFound();
+        setTitle(n.t);
+        var h = id === ROOT_NODE ? crumbs([['Все олимпиады', '#/olympiads'], ['Математика', '']]) : nodeCrumbs(id);
+        h += '<div class="page-title"><h2>' + esc(id === ROOT_NODE ? 'Олимпиады по математике' : n.t) + '</h2>';
+        if (DB.series[id]) h += '<div class="page-sub"><a href="#/problems?comp=' + id + '">все задачи списком с фильтрами</a></div>';
+        h += '</div>';
+        // children that only hold olympiads (e.g. school years) are shown as compact cells
+        var leafKids = n.c.filter(function (c) { return DB.nodes[c] && !DB.nodes[c].c.length && DB.nodes[c].o.length; });
+        var deepKids = n.c.filter(function (c) { return leafKids.indexOf(c) < 0 && DB.nodes[c] && nodeOlys(c).length; });
+        if (deepKids.length) {
+            h += '<div class="grid">' + deepKids.map(function (c) {
+                var k = nodeCount(c);
+                return '<a class="tile" href="#/node/' + c + '"><b>' + esc(DB.nodes[c].t) + '</b><span>' + k.n + ' задач' + (k.solved ? ' · решено ' + k.solved : '') + '</span></a>';
+            }).join('') + '</div>';
+        }
+        if (leafKids.length) {
+            leafKids.sort(function (a, b) { return DB.nodes[b].t.localeCompare(DB.nodes[a].t, 'ru', { numeric: true }); });
+            h += '<div class="year-grid">' + leafKids.map(function (c) {
+                var kid = DB.nodes[c];
+                return '<div class="year-cell"><div class="y"><a href="#/node/' + c + '" style="color:inherit">' + esc(kid.t) + '</a></div>' +
+                    kid.o.map(function (oid) { return '<a href="#/o/' + oid + '">' + esc(kid.l[oid]) + '</a>' + olyProgress(oid); }).join(' ') + '</div>';
+            }).join('') + '</div>';
+        }
+        if (n.o.length) {
+            h += '<div class="year-grid" style="margin-top:10px">' + n.o.map(function (oid) {
+                return '<a class="year-cell" href="#/o/' + oid + '"><div class="y">' + esc(n.l[oid]) + olyProgress(oid) + '</div>' +
+                    '<span class="cnt">' + (BY_OLY[oid] || []).length + ' задач</span></a>';
+            }).join('') + '</div>';
+        }
         app.innerHTML = h;
     }
 
@@ -338,49 +456,25 @@
         var s = ps.filter(function (p) { return isSolved(p.id); }).length;
         return s ? ' <span class="cnt">' + s + '/' + ps.length + '</span>' : '';
     }
-    function pageComp(c) {
-        if (!DB.comps[c]) return notFound();
-        setTitle(COMP_SHORT[c]);
-        var list = DB.olympiads.filter(function (o) { return o.comp === c; });
-        var h = crumbs([['Все олимпиады', '#/olympiads'], ['Математика', '#/olympiads'], [DB.comps[c], '']]);
-        h += '<div class="page-title"><h2>' + esc(DB.comps[c]) + '</h2>' +
-            '<div class="page-sub"><a href="#/problems?comp=' + c + '">все задачи списком с фильтрами</a></div></div>';
-        h += '<div class="year-grid">';
-        if (c.indexOf('resp') === 0) {
-            var years = {};
-            list.forEach(function (o) { (years[o.year] = years[o.year] || []).push(o); });
-            Object.keys(years).sort().reverse().forEach(function (y) {
-                h += '<div class="year-cell"><div class="y">' + (y - 1) + '-' + y + ' учебный год</div>' +
-                    years[y].sort(function (a, b) { return a.grade - b.grade; }).map(function (o) {
-                        return '<a href="#/o/' + o.oid + '">' + o.grade + ' класс</a>' + olyProgress(o.oid);
-                    }).join(' ') + '</div>';
-            });
-        } else {
-            list.sort(function (a, b) { return b.year - a.year; }).forEach(function (o) {
-                h += '<a class="year-cell" href="#/o/' + o.oid + '"><div class="y">' + esc(COMP_SHORT[c]) + ' ' + o.year + olyProgress(o.oid) + '</div>' +
-                    '<span class="cnt">' + (BY_OLY[o.oid] || []).length + ' задач</span></a>';
-            });
-        }
-        app.innerHTML = h + '</div>';
-    }
 
     function pageOlympiad(oid) {
         var o = OLY[oid];
         if (!o) return notFound();
         setTitle(olyName(o));
         var probs = BY_OLY[o.oid] || [];
-        var h = crumbs([['Все олимпиады', '#/olympiads'], ['Математика', '#/olympiads'],
-            [DB.comps[o.comp], '#/n/' + o.comp], [String(o.year) + (o.grade ? ', ' + o.grade + ' класс' : ''), '']]);
-        h += '<div class="page-title"><h2>' + esc(o.title) + '</h2>' +
-            '<div class="page-sub"><a href="https://matol.kz/olympiads/' + o.oid + '" target="_blank" rel="noopener">оригинал на matol.kz ↗</a></div></div>';
+        var h = nodeCrumbs(o.path[o.path.length - 1], [[olyLabel(o), '']]);
+        h += '<div class="page-title"><h2 id="oly-title">' + esc(o.title) + '</h2>' +
+            '<div class="page-sub"><a href="https://matol.kz/olympiads/' + o.oid + '" target="_blank" rel="noopener">оригинал на matol.kz ↗</a> · ' +
+            '<a href="#" data-print>🖨 распечатать</a></div></div>';
         h += probs.map(function (p) { return problemHtml(p); }).join('');
         h += siblingOlys(o);
         app.innerHTML = h;
         fillReveals(app);
+        if (LANG === 'kz') loadKz(o.oid).then(function (kz) { if (kz.title) document.getElementById('oly-title').textContent = kz.title; });
     }
     function siblingOlys(o) {
         var same = DB.olympiads.filter(function (x) { return x.comp === o.comp; })
-            .sort(function (a, b) { return a.year - b.year || (a.grade || 0) - (b.grade || 0); });
+            .sort(function (a, b) { return (a.year || 0) - (b.year || 0) || (a.grade || 0) - (b.grade || 0) || a.oid - b.oid; });
         var i = same.indexOf(o);
         return '<div class="pager-row">' +
             (i > 0 ? '<a class="btn btn-default btn-sm" href="#/o/' + same[i - 1].oid + '">← ' + esc(olyName(same[i - 1])) + '</a> ' : '') +
@@ -390,8 +484,7 @@
 
     function problemCrumbs(p, last) {
         var o = OLY[p.oid];
-        return crumbs([['Все олимпиады', '#/olympiads'], [DB.comps[o.comp], '#/n/' + o.comp],
-            [olyName(o), '#/o/' + o.oid], ['Задача №' + p.num, last ? '#/p/' + p.id : ''], last ? [last, ''] : null].filter(Boolean));
+        return nodeCrumbs(o.path[o.path.length - 1], [[olyLabel(o), '#/o/' + o.oid], ['Задача №' + p.num, last ? '#/p/' + p.id : ''], last ? [last, ''] : null].filter(Boolean));
     }
     function pageProblem(id) {
         var p = PROB[id];
@@ -498,7 +591,7 @@
         return Object.keys(c).sort(function (a, b) { return c[b] - c[a]; }).map(function (s) { return [s, c[s]]; });
     }
     var FILTER_LABELS = {
-        sub: function (v) { return v; }, comp: function (v) { return COMP_SHORT[v]; }, grade: function (v) { return v + ' класс'; },
+        sub: function (v) { return v; }, comp: function (v) { return seriesShort(v); }, grade: function (v) { return v + ' класс'; },
         dmin: function (v) { return 'сложность ≥ ' + v; }, dmax: function (v) { return 'сложность ≤ ' + v; },
         ymin: function (v) { return 'с ' + v + ' года'; }, ymax: function (v) { return 'до ' + v + ' года'; },
         skill: function (v) { return 'теорема: ' + v; }, q: function (v) { return '«' + v + '»'; },
@@ -522,10 +615,10 @@
             Object.keys(TOPICS).map(function (t) {
                 return '<a href="' + withQ(f, { topic: t, sub: '' }) + '" class="' + (f.topic === t ? 'on' : '') + '">' + TOPICS[t] + '</a>';
             }).join('') + '</div>';
-        h += '<div class="seg"><a href="' + withQ(f, { comp: '' }) + '" class="' + (!f.comp ? 'on' : '') + '">Все олимпиады</a>' +
-            COMP_ORDER.map(function (c) {
-                return '<a href="' + withQ(f, { comp: c }) + '" class="' + (f.comp === c ? 'on' : '') + '">' + COMP_SHORT[c] + '</a>';
-            }).join('') + '</div>';
+        h += '<div class="seg"><select class="form-control input-sm seg-select" id="comp-select">' + opt('', 'Все олимпиады', f.comp) +
+            GROUPS.map(function (g) {
+                return '<optgroup label="' + esc(g.title) + '">' + g.series.map(function (c) { return opt(c, seriesShort(c), f.comp); }).join('') + '</optgroup>';
+            }).join('') + '</select></div>';
 
         // active filter chips
         var act = Object.keys(FILTER_LABELS).filter(function (k) { return f[k]; });
@@ -585,6 +678,7 @@
         }
         form.addEventListener('change', apply);
         form.addEventListener('submit', function (e) { e.preventDefault(); apply(); });
+        document.getElementById('comp-select').addEventListener('change', function () { location.hash = withQ(f, { comp: this.value }); });
         fillReveals(app);
         window.scrollTo(0, 0);
     }
@@ -641,15 +735,17 @@
     function pageMarked(f) {
         setTitle('Мои задачи');
         var tab = f.tab || 'star';
-        var list = DB.problems.filter(function (p) { return tab === 'star' ? isStar(p.id) : isSolved(p.id); });
+        var list = DB.problems.filter(function (p) { return tab === 'star' ? isStar(p.id) : tab === 'notes' ? !!notes[p.id] : isSolved(p.id); });
+        var nNotes = DB.problems.filter(function (p) { return !!notes[p.id]; }).length;
         var nStar = DB.problems.filter(function (p) { return isStar(p.id); }).length;
         var nSol = DB.problems.filter(function (p) { return isSolved(p.id); }).length;
         var h = crumbs([['Главная', '#/'], ['Мои задачи', '']]);
         h += '<div class="seg"><a href="#/marked?tab=star" class="' + (tab === 'star' ? 'on' : '') + '">★ Избранное (' + nStar + ')</a>' +
-            '<a href="#/marked?tab=solved" class="' + (tab === 'solved' ? 'on' : '') + '">✓ Решённые (' + nSol + ')</a></div>';
+            '<a href="#/marked?tab=solved" class="' + (tab === 'solved' ? 'on' : '') + '">✓ Решённые (' + nSol + ')</a>' +
+            '<a href="#/marked?tab=notes" class="' + (tab === 'notes' ? 'on' : '') + '">📝 С заметками (' + nNotes + ')</a></div>';
         h += '<p class="text-muted" style="font-size:12px">Отметки хранятся только в этом браузере.</p>';
         if (!list.length) h += '<div class="card text-muted">Пока пусто. Отмечай задачи кнопками ✓ и ☆ в правом верхнем углу карточки.</div>';
-        else if (tab === 'star') h += list.map(function (p) { return problemHtml(p, { withSource: true }); }).join('');
+        else if (tab !== 'solved') h += list.map(function (p) { return problemHtml(p, { withSource: true }); }).join('');
         else h += '<div class="card">' + list.map(listRow).join('') + '</div>';
         app.innerHTML = h;
         fillReveals(app);
@@ -709,6 +805,120 @@
         });
     }
 
+
+    // ---------- matol content: info, news, books, rating, recent discussions ----------
+    var jsonCache = {};
+    function loadJson(name) {
+        if (!jsonCache[name]) jsonCache[name] = fetch('/data/' + name + '.json').then(function (r) { return r.json(); });
+        return jsonCache[name];
+    }
+    function loadPages() { return loadJson('pages'); }
+    function fmtDate(ts) {
+        var d = new Date(ts * 1000);
+        return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
+    }
+    function newsRow(n) {
+        return '<div class="feed-row"><span class="cnt">' + esc(n.date) + '</span> <span class="chip kind-' + n.kind + '">' + (n.kind === 'announce' ? 'объявление' : 'новость') + '</span><br>' +
+            '<a href="#/news/' + n.kind + '/' + n.id + '">' + esc(n.title) + '</a></div>';
+    }
+    function recentRow(r) {
+        var p = PROB[r.pid];
+        if (!p) return '';
+        return '<div class="feed-row"><span class="cnt">' + fmtDate(r.time) + ' · ' + esc(r.author || 'гость') + '</span><br>' +
+            '<a href="#/c/' + r.pid + '">' + esc(olyName(OLY[p.oid])) + ', №' + esc(p.num) + '</a><div class="cnt">' + esc(r.text) + '</div></div>';
+    }
+    function pageInfo(id) {
+        setTitle('Об олимпиадах');
+        loadPages().then(function (pg) {
+            var h = crumbs([['Главная', '#/'], ['Инфо', id ? '#/info' : ''], id ? [(pg.info[+id] || {}).title || '', ''] : null].filter(Boolean));
+            if (id && pg.info[+id]) {
+                var it = pg.info[+id];
+                h += '<div class="page-title"><h2>' + esc(it.title) + '</h2></div><div class="card article">' + it.html + '</div>';
+            } else {
+                h += '<div class="page-title"><h2>Информация об олимпиадах</h2></div><div class="grid">' + pg.info.map(function (it, i) {
+                    return '<a class="tile" href="#/info/' + i + '"><b>' + esc(it.title) + '</b></a>';
+                }).join('') + '</div>';
+            }
+            app.innerHTML = h;
+            typeset(app);
+        });
+    }
+    function pageNews(f, kind, id) {
+        setTitle('Новости');
+        loadPages().then(function (pg) {
+            if (kind) {
+                var it = pg.news.filter(function (n) { return n.kind === kind && String(n.id) === String(id); })[0];
+                if (!it) return notFound();
+                app.innerHTML = crumbs([['Главная', '#/'], ['Новости и объявления', '#/news'], [it.title, '']]) +
+                    '<div class="page-title"><h2>' + esc(it.title) + '</h2><div class="page-sub">' + esc(it.date) +
+                    ' · <a href="https://matol.kz' + it.path + '" target="_blank" rel="noopener">на matol.kz ↗</a></div></div><div class="card article">' + it.html + '</div>';
+                typeset(app);
+                return;
+            }
+            var tab = f.tab || '';
+            var list = pg.news.filter(function (n) { return !tab || n.kind === tab; });
+            var h = crumbs([['Главная', '#/'], ['Новости и объявления', '']]);
+            h += '<div class="seg"><a href="#/news" class="' + (!tab ? 'on' : '') + '">Все</a><a href="#/news?tab=announce" class="' + (tab === 'announce' ? 'on' : '') + '">Объявления</a>' +
+                '<a href="#/news?tab=news" class="' + (tab === 'news' ? 'on' : '') + '">Новости</a></div>';
+            h += '<div class="card">' + list.map(newsRow).join('') + '</div>';
+            app.innerHTML = h;
+        });
+    }
+    function pageBooks() {
+        setTitle('Книги');
+        loadPages().then(function (pg) {
+            var h = crumbs([['Главная', '#/'], ['Книги', '']]);
+            h += '<div class="page-title"><h2>Книги</h2><div class="page-sub">сборники задач и решений, изданные с участием matol.kz — заказ на сайте matol</div></div>';
+            h += pg.books.map(function (b) {
+                return '<div class="card book">' + (b.img ? '<img src="' + esc(b.img) + '" alt="" loading="lazy">' : '') +
+                    '<div><b>' + esc(b.title) + '</b><div class="cnt">' + esc(b.author) + '</div><p>' + esc(b.desc) + '</p>' +
+                    '<div class="cnt">' + esc(b.lang) + (b.access ? ' · ' + esc(b.access) : '') + '</div>' +
+                    '<a href="' + esc(b.url) + '" target="_blank" rel="noopener">открыть на matol.kz ↗</a></div></div>';
+            }).join('');
+            app.innerHTML = h;
+        });
+    }
+    function pageRating() {
+        setTitle('Рейтинг');
+        loadJson('rating').then(function (rows) {
+            var h = crumbs([['Главная', '#/'], ['Рейтинг', '']]);
+            h += '<div class="page-title"><h2>Рейтинг авторов решений</h2><div class="page-sub">по комментариям к задачам в этой базе: сколько задач человек разобрал и сколько голосов получил на matol</div></div>';
+            h += '<div class="card"><table class="table table-condensed rating"><thead><tr><th>№</th><th>Логин</th><th>Задач</th><th>Комментариев</th><th>Голоса</th><th>Последний</th></tr></thead><tbody>' +
+                rows.slice(0, 200).map(function (r, i) {
+                    return '<tr><td>' + (i + 1) + '</td><td><a href="#/recent?author=' + encodeURIComponent(r.author) + '">' + esc(r.author) + '</a></td><td>' + r.problems + '</td><td>' + r.n + '</td><td>' + r.votes + '</td><td class="cnt">' + (r.last ? fmtDate(r.last) : '') + '</td></tr>';
+                }).join('') + '</tbody></table></div>';
+            app.innerHTML = h;
+        });
+    }
+    function pageRecent(f) {
+        setTitle('Последние обсуждения');
+        loadJson('recent').then(function (rc) {
+            var list = f.author ? [] : rc;
+            var h = crumbs([['Главная', '#/'], ['Последние обсуждения', '']]);
+            if (f.author) {
+                // all comments of one person, from the per-olympiad files
+                h += '<div class="page-title"><h2>Комментарии: ' + esc(f.author) + '</h2></div><div class="card" id="author-comments">Загрузка…</div>';
+                app.innerHTML = h;
+                var oids = Object.keys(BY_OLY);
+                var found = [];
+                Promise.all(oids.map(function (oid) {
+                    return loadDetails(oid).then(function (all) {
+                        Object.keys(all).forEach(function (pid) {
+                            (all[pid].comments || []).forEach(function (c) { if (c.author === f.author) found.push({ pid: pid, author: c.author, time: c.time, text: c.html.replace(/<[^>]+>/g, ' ').slice(0, 180) }); });
+                        });
+                    });
+                })).then(function () {
+                    found.sort(function (a, b) { return b.time - a.time; });
+                    document.getElementById('author-comments').innerHTML = found.map(recentRow).join('') || 'Ничего не найдено.';
+                });
+                return;
+            }
+            h += '<div class="page-title"><h2>Последние обсуждения</h2><div class="page-sub">свежие комментарии к задачам на matol.kz (снимок)</div></div>';
+            h += '<div class="card">' + list.map(recentRow).join('') + '</div>';
+            app.innerHTML = h;
+        });
+    }
+
     function notFound() {
         setTitle('Не найдено');
         app.innerHTML = '<div class="card" style="margin-top:30px">Страница не найдена. <a href="#/">На главную</a></div>';
@@ -724,12 +934,17 @@
         var sec = parts[0] || '';
         Array.prototype.forEach.call(document.querySelectorAll('#navmenu [data-nav]'), function (li) {
             var n = li.getAttribute('data-nav');
-            var on = n === sec || (n === 'olympiads' && /^(n|o)$/.test(sec)) || (n === 'problems' && /^(p|c)$/.test(sec)) || (n === 'authors' && sec === 'author');
+            var on = n === sec || (n === 'olympiads' && /^(n|o|node)$/.test(sec)) || (n === 'problems' && /^(p|c)$/.test(sec)) || (n === 'authors' && sec === 'author');
             li.classList.toggle('active', on);
         });
         if (!parts.length) pageHome();
         else if (sec === 'olympiads') pageOlympiads();
-        else if (sec === 'n') pageComp(parts[1]);
+        else if (sec === 'n' || sec === 'node') pageNode(parts[1]);
+        else if (sec === 'info') pageInfo(parts[1]);
+        else if (sec === 'news') pageNews(f, parts[1], parts[2]);
+        else if (sec === 'books') pageBooks();
+        else if (sec === 'rating') pageRating();
+        else if (sec === 'recent') pageRecent(f);
         else if (sec === 'o') pageOlympiad(+parts[1]);
         else if (sec === 'p') pageProblem(decodeURIComponent(parts[1]));
         else if (sec === 'c') pageComments(decodeURIComponent(parts[1]));
@@ -747,6 +962,18 @@
     fetch('/data/index.json').then(function (r) { return r.json(); }).then(function (db) {
         DB = db;
         db.olympiads.forEach(function (o) { OLY[o.oid] = o; });
+        Object.keys(db.nodes).forEach(function (id) { db.nodes[id].c.forEach(function (c) { PARENT[c] = id; }); });
+        (function walk(id, group) {
+            var n = db.nodes[id];
+            if (!n) return;
+            if (db.series[id] && SERIES_ORDER.indexOf(id) < 0) { SERIES_ORDER.push(id); if (group) group.series.push(id); }
+            n.c.forEach(function (c) {
+                var g = group;
+                if (id === ROOT_NODE) { g = { id: c, title: db.nodes[c].t, series: [] }; GROUPS.push(g); }
+                walk(c, g);
+            });
+        })(ROOT_NODE, null);
+        GROUPS = GROUPS.filter(function (g) { return g.series.length; });
         db.problems.forEach(function (p) {
             PROB[p.id] = p;
             (BY_OLY[p.oid] = BY_OLY[p.oid] || []).push(p);

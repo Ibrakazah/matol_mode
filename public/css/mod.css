@@ -195,3 +195,40 @@ a.year-cell:hover { text-decoration: none; border-color: var(--accent); }
 [data-theme="dark"] .navbar-default .navbar-toggle { border-color: #444; }
 [data-theme="dark"] .navbar-default .navbar-toggle:hover { background: #2a2d33; }
 [data-theme="dark"] hr { border-color: var(--border); }
+
+/* dropdown "Ещё" */
+.navbar-default .dropdown-menu { background: var(--card); border-color: var(--border); }
+.navbar-default .dropdown-menu > li > a { color: var(--text); }
+.navbar-default .dropdown-menu > li > a:hover, .navbar-default .dropdown-menu > li.active > a { background: var(--pill); color: var(--accent); }
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover { background: var(--pill); color: var(--text); }
+@media (max-width: 767px) { .navbar-default .navbar-nav .open .dropdown-menu > li > a { color: var(--text); } }
+
+/* side feeds, news, books, rating */
+.side-feed { font-size: 13px; }
+.feed-row { padding: 6px 0; border-bottom: 1px solid var(--border); }
+.feed-row:last-of-type { border-bottom: 0; margin-bottom: 6px; }
+.feed-row .cnt, .cnt { color: var(--muted); font-size: 11px; }
+.chip.kind-announce { background: transparent; border-color: rgba(26, 143, 204, .4); color: var(--accent); }
+.chip.kind-news { background: transparent; border-color: var(--border); color: var(--muted); }
+.article { line-height: 1.6; overflow-x: auto; }
+.article img { max-width: 100%; height: auto; }
+.article table { max-width: 100%; }
+.book { display: flex; gap: 14px; align-items: flex-start; }
+.book img { width: 90px; border-radius: 4px; flex-shrink: 0; }
+.book p { margin: 6px 0; font-size: 13px; }
+.rating td, .rating th { font-size: 13px; }
+.table > thead > tr > th, .table > tbody > tr > td { border-color: var(--border); }
+.seg-select { max-width: 320px; background: var(--card); color: var(--text); border-color: var(--border); }
+
+/* personal notes */
+.note-area { background: var(--card); color: var(--text); border-color: var(--border); font-size: 14px; }
+.note-preview:not(:empty) { margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--border); font-size: 14px; }
+.tb.has-note { border-color: var(--ok); }
+
+/* print an olympiad: statements only */
+@media print {
+    body { padding-top: 0; background: #fff; color: #000; }
+    #topmenu, .mod-footer, .breadcrumb, .toolbar, .panel-x, .chips, .p-marks, .pager-row, .page-sub, .kbd-hint, .section-title { display: none !important; }
+    .card { border: 0; padding: 0; margin-bottom: 18px; }
+    .stmt { font-size: 13pt; }
+}

@@ -41,11 +41,24 @@
                 <li data-nav="problems"><a href="#/problems">Задачи</a></li>
                 <li data-nav="theory"><a href="#/theory">Теория</a></li>
                 <li data-nav="skills"><a href="#/skills">Теоремы</a></li>
-                <li data-nav="authors"><a href="#/authors">Авторы</a></li>
                 <li data-nav="marked"><a href="#/marked">Мои задачи</a></li>
+                <li class="dropdown" id="more-menu">
+                    <a href="#" class="dropdown-toggle" data-dropdown>Ещё <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li data-nav="news"><a href="#/news">Новости и объявления</a></li>
+                        <li data-nav="recent"><a href="#/recent">Последние обсуждения</a></li>
+                        <li data-nav="info"><a href="#/info">Об олимпиадах</a></li>
+                        <li data-nav="books"><a href="#/books">Книги</a></li>
+                        <li data-nav="authors"><a href="#/authors">Авторы задач</a></li>
+                        <li data-nav="rating"><a href="#/rating">Рейтинг</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="https://matol.kz" target="_blank" rel="noopener">matol.kz ↗</a></li>
+                    </ul>
+                </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#/random" title="Случайная нерешённая задача">🎲</a></li>
+                <li><a href="#" id="lang-toggle" title="Язык условий: русский / қазақша">Рус</a></li>
                 <li><a href="#" id="theme-toggle" title="Тёмная / светлая тема">🌓</a></li>
             </ul>
             <form class="navbar-form navbar-right" id="nav-search" role="search">
