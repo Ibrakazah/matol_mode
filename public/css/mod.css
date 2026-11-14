@@ -232,3 +232,13 @@ a.year-cell:hover { text-decoration: none; border-color: var(--accent); }
     .card { border: 0; padding: 0; margin-bottom: 18px; }
     .stmt { font-size: 13pt; }
 }
+
+/* sequences section */
+.seq-tabs { margin: 0 0 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.seq-tabs .chip { text-decoration: none; }
+.seq-tabs .chip.active { background: var(--accent); color: #fff; }
+.seq-note table { width: 100%; margin: 10px 0 16px; border-collapse: collapse; font-size: 14px; }
+.seq-note th, .seq-note td { border: 1px solid var(--border, #ddd); padding: 6px 8px; vertical-align: top; }
+.seq-note details { margin: 6px 0 14px; border-left: 3px solid var(--accent); padding: 4px 12px; background: rgba(127,127,127,.06); border-radius: 4px; }
+.seq-note summary { cursor: pointer; font-weight: 600; color: var(--accent); }
+.seq-note details[open] summary { margin-bottom: 6px; }

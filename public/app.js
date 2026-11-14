@@ -392,6 +392,7 @@
         });
         h += '</div>';
         h += '<div class="section-title">Учиться</div><div class="grid">' +
+            '<a class="tile" href="#/seq"><b>🔢 Последовательности</b><span>приёмы, разборы, тренировочные задачи и задачи олимпиад</span></a>' +
             '<a class="tile" href="#/theory"><b>📘 Теория</b><span>конспекты по 40 темам с задачами по возрастанию сложности</span></a>' +
             '<a class="tile" href="#/skills"><b>🧩 Теоремы и приёмы</b><span>все теоремы из решений и задачи на них</span></a>' +
             '<a class="tile" href="#/info"><b>ℹ️ Об олимпиадах</b><span>правила и этапы олимпиад</span></a>' +
@@ -806,6 +807,54 @@
     }
 
 
+    // ---------- sequences section ----------
+    function seqNoteHtml(note) {
+        return md(note).replace(/\[\[(m[\w\-.]+)\]\]/g, function (_, pid) {
+            return PROB[pid] ? '<a href="#/p/' + pid + '">' + esc(olyName(OLY[PROB[pid].oid])) + ', №' + esc(PROB[pid].num) + '</a>' : pid;
+        });
+    }
+    function pageSeq(id) {
+        loadJson('seq').then(function (sq) {
+            if (!id) {
+                setTitle('Последовательности');
+                var h = crumbs([['Главная', '#/'], ['Последовательности', '']]);
+                h += '<div class="page-title"><h2>Последовательности и наборы чисел</h2></div>';
+                h += '<div class="grid">' + sq.sections.map(function (t) {
+                    var s = t.problems.filter(function (p) { return isSolved(p.id); }).length;
+                    return '<a class="tile" href="#/seq/' + t.id + '"><b>' + esc(t.title) + '</b><span>' + esc(t.short) + '<br>' +
+                        t.problems.length + ' олимп. задач' + (s ? ' · решено ' + s : '') + '</span></a>';
+                }).join('') + '</div>';
+                h += '<div class="card theory-note seq-note">' + seqNoteHtml(sq.intro) + '</div>';
+                app.innerHTML = h;
+                typeset(app);
+                return;
+            }
+            var i = sq.sections.map(function (t) { return t.id; }).indexOf(id), t = sq.sections[i];
+            if (!t) return notFound();
+            setTitle(t.title);
+            var h = crumbs([['Главная', '#/'], ['Последовательности', '#/seq'], [t.title, '']]);
+            h += '<div class="page-title"><h2>' + esc(t.title) + '</h2></div>';
+            h += '<div class="seq-tabs">' + sq.sections.map(function (x) {
+                return '<a class="chip' + (x.id === id ? ' active' : '') + '" href="#/seq/' + x.id + '">' + esc(x.title) + '</a>';
+            }).join(' ') + '</div>';
+            h += '<div class="card theory-note seq-note">' + seqNoteHtml(t.note) + '</div>';
+            var ps = t.problems.filter(function (p) { return PROB[p.id]; });
+            h += '<div class="section-title">Задачи олимпиад — от лёгких к сложным (' + ps.length + ')</div>';
+            var cur = null, out = '';
+            ps.forEach(function (p) {
+                var d = p.diff || 0;
+                if (d !== cur) { cur = d; out += '<div class="px-title" style="margin-top:12px;color:var(--accent)">' + (d ? 'Сложность ' + d : 'Сложность не указана') + '</div>'; }
+                out += listRow(PROB[p.id]);
+            });
+            h += '<div class="card">' + (out || '<span class="text-muted">Пока нет задач.</span>') + '</div>';
+            var nx = sq.sections[i + 1];
+            if (nx) h += '<p style="margin-top:14px"><a class="btn btn-default" href="#/seq/' + nx.id + '">Дальше: ' + esc(nx.title) + ' →</a></p>';
+            app.innerHTML = h;
+            typeset(app);
+        });
+    }
+
+
     // ---------- matol content: info, news, books, rating, recent discussions ----------
     var jsonCache = {};
     function loadJson(name) {
@@ -952,6 +1001,7 @@
         else if (sec === 'skills') pageSkills();
         else if (sec === 'authors') pageAuthors();
         else if (sec === 'author') pageAuthor(parts[1]);
+        else if (sec === 'seq') pageSeq(parts[1]);
         else if (sec === 'theory') { if (parts[1]) pageTheoryTopic(parts[1]); else pageTheory(); }
         else if (sec === 'random') pageRandom(f);
         else if (sec === 'marked') pageMarked(f);
