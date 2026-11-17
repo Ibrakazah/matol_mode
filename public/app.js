@@ -392,6 +392,7 @@
         });
         h += '</div>';
         h += '<div class="section-title">Учиться</div><div class="grid">' +
+            '<a class="tile" href="#/goal"><b>🎯 Подготовка к области</b><span>план на 7 недель по темам + 3 пробника с таймером</span></a>' +
             '<a class="tile" href="#/seq"><b>🔢 Последовательности</b><span>приёмы, разборы, тренировочные задачи и задачи олимпиад</span></a>' +
             '<a class="tile" href="#/theory"><b>📘 Теория</b><span>конспекты по 40 темам с задачами по возрастанию сложности</span></a>' +
             '<a class="tile" href="#/skills"><b>🧩 Теоремы и приёмы</b><span>все теоремы из решений и задачи на них</span></a>' +
@@ -855,6 +856,113 @@
     }
 
 
+    // ---------- prep plan for the regional olympiad + mock exams ----------
+    var MONTHS = { 'ноя': 10, 'дек': 11, 'янв': 0 };
+    function prepDate(str, end) {
+        var a = str.split(' '), m = MONTHS[a[1]], y = m === 0 ? 2027 : 2026;
+        return new Date(y, m, +a[0] + (end ? 1 : 0));
+    }
+    function prepRows(ids) {
+        return ids.filter(function (i) { return PROB[i]; }).map(function (i) { return listRow(PROB[i]); }).join('');
+    }
+    function pageGoal() {
+        loadJson('prep').then(function (pr) {
+            setTitle('Подготовка к области');
+            var now = new Date(), all = 0, done = 0;
+            var h = crumbs([['Главная', '#/'], ['Подготовка к области', '']]);
+            h += '<div class="page-title"><h2>Подготовка к области · 11 класс</h2></div>';
+            h += '<div class="card"><b>Что дают на области (10–11 кл., ' + pr.nrecent + ' задач за 2012–2026)</b>' +
+                '<table class="prep-stats">' + pr.units.slice().sort(function (a, b) { return b.freq - a.freq; }).map(function (u) {
+                    return '<tr><td>' + esc(u.title) + '</td><td><div class="prep-bar" style="width:' + (u.freq * 3) + 'px"></div> ' + u.freq + '%</td></tr>';
+                }).join('') + '</table><span class="cnt">Задача может относиться к нескольким темам, поэтому сумма больше 100%. В план взяты только задачи, решения которых прошли проверку.</span></div>';
+            pr.units.forEach(function (u) { u.main.concat(u.extra).forEach(function (i) { all++; if (isSolved(i)) done++; }); });
+            h += '<div class="card"><b>Как заниматься.</b> Каждый день 2–3 часа: 30 минут — конспект темы, потом задачи. ' +
+                'Сначала «Основные» (их надо решить все), потом «Дополнительно». На задачу даёшь себе 30–40 минут без подсказок, ' +
+                'потом открываешь подсказки по одной, решение — в последнюю очередь. Нерешённую задачу отметь ⭐ и вернись к ней через 3–4 дня. ' +
+                'Геометрия чередуется с остальным, потому что на области в каждом варианте две геометрии.' +
+                '<div class="prep-progress"><div style="width:' + (all ? Math.round(100 * done / all) : 0) + '%"></div></div>' +
+                '<span class="cnt">решено ' + done + ' из ' + all + ' задач плана</span></div>';
+            pr.units.forEach(function (u, k) {
+                var a = prepDate(u.start), b = prepDate(u.end, true), cur = now >= a && now < b, past = now >= b;
+                var ids = u.main.concat(u.extra), s = ids.filter(isSolved).length;
+                h += '<details class="card prep-unit' + (cur ? ' current' : '') + '"' + (cur ? ' open' : '') + '><summary>' +
+                    '<span class="prep-dates">' + esc(u.start) + ' – ' + esc(u.end) + '</span> <b>' + (k + 1) + '. ' + esc(u.title) + '</b>' +
+                    (cur ? ' <span class="chip active">сейчас</span>' : '') +
+                    ' <span class="cnt">' + s + '/' + ids.length + (past && s < u.main.length ? ' · есть хвосты' : '') + '</span></summary>';
+                h += '<p>' + esc(u.focus) + ' <span class="cnt">Встречалось на области 10–11 кл. (2012–2026): ~' + u.freq + '% задач.</span></p><p><b>Теория на сайте:</b> ' +
+                    u.theory.map(function (t) { return '<a href="#/theory/' + t + '">' + t + '</a>'; }).join(' · ') +
+                    (u.seq.length ? ' · <a href="#/seq/' + u.seq[0] + '">раздел «Последовательности»</a>' : '') + '</p>' +
+                    (u.materials.length ? '<p><b>Что почитать:</b></p><ul class="prep-mat">' + u.materials.map(function (m) { return '<li>' + esc(m) + '</li>'; }).join('') + '</ul>' : '');
+                h += '<div class="px-title">Основные (' + u.main.length + ')</div>' + prepRows(u.main);
+                h += '<div class="px-title" style="margin-top:10px">Дополнительно (' + u.extra.length + ')</div>' + prepRows(u.extra) + '</details>';
+            });
+            h += '<div class="section-title">Пробники — настоящие варианты области, 4 часа</div><div class="grid">' +
+                pr.mocks.map(function (m) {
+                    var st = lsGet('mm-mock-' + m.oid, null);
+                    return '<a class="tile" href="#/mock/' + m.oid + '"><b>' + esc(olyName(OLY[m.oid])) + '</b><span>' + esc(m.when) +
+                        (st && st.done ? ' · сдан: ' + st.score + '/6' : st ? ' · идёт' : ' · не открывай заранее!') + '</span></a>';
+                }).join('') + '</div>';
+            h += '<p class="text-muted" style="margin-top:10px">Эти три варианта специально не попали в задачи плана. Пиши их в тишине, с таймером, без подсказок. После — разбери каждую нерешённую задачу.</p>';
+            app.innerHTML = h;
+            typeset(app);
+            // the theory links show ids; replace with titles once theory is loaded
+            loadTheory().then(function (th) {
+                th.forEach(function (t) {
+                    Array.prototype.forEach.call(app.querySelectorAll('a[href="#/theory/' + t.id + '"]'), function (a) { a.textContent = t.title; });
+                });
+            });
+        });
+    }
+    var mockTimer = null;
+    function pageMock(oid) {
+        oid = +oid;
+        var o = OLY[oid], ps = BY_OLY[oid];
+        if (!o || !ps) return notFound();
+        setTitle('Пробник · ' + olyName(o));
+        var key = 'mm-mock-' + oid, st = lsGet(key, null);
+        var h = crumbs([['Главная', '#/'], ['Подготовка к области', '#/goal'], ['Пробник', '']]);
+        h += '<div class="page-title"><h2>Пробник: ' + esc(olyName(o)) + '</h2></div>';
+        if (!st) {
+            h += '<div class="card">6 задач, 4 часа. Подсказки и решения закрыты до конца. Таймер продолжит идти, даже если закрыть страницу.' +
+                '<p style="margin-top:12px"><button class="btn btn-primary" id="mock-start">Начать — 4:00:00</button></p></div>';
+        } else if (!st.done) {
+            h += '<div class="card mock-bar"><span id="mock-left" class="mock-left"></span> <button class="btn btn-default btn-sm" id="mock-finish">Сдать досрочно</button></div>';
+            ps.forEach(function (p) { h += '<div class="card"><div class="stmt"><b>Задача №' + esc(p.num) + '.</b> ' + p.st + '</div></div>'; });
+        } else {
+            h += '<div class="card">Пробник сдан. Решено: <b>' + st.score + ' из 6</b>. Теперь открой каждую задачу: даже решённую — сравни своё решение с разбором.</div>';
+            h += '<div class="card">' + ps.map(listRow).join('') + '</div>';
+            h += '<p><button class="btn btn-default btn-sm" id="mock-reset">Сбросить пробник</button></p>';
+        }
+        app.innerHTML = h;
+        typeset(app);
+        clearInterval(mockTimer);
+        var btn = document.getElementById('mock-start');
+        if (btn) btn.onclick = function () { lsSet(key, { start: Date.now() }); pageMock(oid); };
+        var rs = document.getElementById('mock-reset');
+        if (rs) rs.onclick = function () { if (confirm('Сбросить результат пробника?')) { try { localStorage.removeItem(key); } catch (e) {} pageMock(oid); } };
+        function finish() {
+            clearInterval(mockTimer);
+            var n = prompt('Сколько задач ты решил полностью (0–6)?', '0');
+            var score = Math.max(0, Math.min(6, parseInt(n, 10) || 0));
+            lsSet(key, { start: st.start, done: true, score: score });
+            pageMock(oid);
+        }
+        var fb = document.getElementById('mock-finish');
+        if (fb) {
+            fb.onclick = function () { if (confirm('Сдать пробник?')) finish(); };
+            var tick = function () {
+                var left = st.start + 4 * 3600 * 1000 - Date.now(), el = document.getElementById('mock-left');
+                if (!el) { clearInterval(mockTimer); return; }
+                if (left <= 0) { el.textContent = 'Время вышло'; clearInterval(mockTimer); finish(); return; }
+                var s = Math.floor(left / 1000);
+                el.textContent = '⏱ ' + Math.floor(s / 3600) + ':' + ('0' + Math.floor(s / 60) % 60).slice(-2) + ':' + ('0' + s % 60).slice(-2);
+            };
+            tick();
+            mockTimer = setInterval(tick, 1000);
+        }
+    }
+
+
     // ---------- matol content: info, news, books, rating, recent discussions ----------
     var jsonCache = {};
     function loadJson(name) {
@@ -1001,6 +1109,8 @@
         else if (sec === 'skills') pageSkills();
         else if (sec === 'authors') pageAuthors();
         else if (sec === 'author') pageAuthor(parts[1]);
+        else if (sec === 'goal') pageGoal();
+        else if (sec === 'mock') pageMock(parts[1]);
         else if (sec === 'seq') pageSeq(parts[1]);
         else if (sec === 'theory') { if (parts[1]) pageTheoryTopic(parts[1]); else pageTheory(); }
         else if (sec === 'random') pageRandom(f);
