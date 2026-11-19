@@ -259,3 +259,14 @@ a.year-cell:hover { text-decoration: none; border-color: var(--accent); }
 .prep-stats td:last-child { white-space: nowrap; width: 40%; }
 .prep-bar { display: inline-block; height: 10px; background: var(--accent); border-radius: 3px; vertical-align: middle; }
 .prep-mat { margin: 0 0 10px 18px; padding: 0; }
+
+/* Тематические сборники */
+.collection-problem h3 { margin-top: 0; font-size: 20px; }
+.collection-problem details { margin-top: 8px; border-top: 1px solid var(--border); padding-top: 8px; }
+.collection-problem summary { cursor: pointer; color: var(--accent); }
+.collection-problem details[open] summary { margin-bottom: 8px; }
+.collection-problem mjx-container[display="true"] { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+
+.collection-filters { display: flex; flex-wrap: wrap; gap: 10px; align-items: end; }
+.collection-filters label { margin: 0; flex: 1 1 155px; min-width: 0; }
+.collection-filters select { margin-top: 4px; }

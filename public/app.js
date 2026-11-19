@@ -392,6 +392,7 @@
         });
         h += '</div>';
         h += '<div class="section-title">Учиться</div><div class="grid">' +
+            '<a class="tile" href="#/collections"><b>Сборник задач</b><span>тематические подборки с подсказками и решениями</span></a>' +
             '<a class="tile" href="#/goal"><b>🎯 Подготовка к области</b><span>план на 7 недель по темам + 3 пробника с таймером</span></a>' +
             '<a class="tile" href="#/seq"><b>🔢 Последовательности</b><span>приёмы, разборы, тренировочные задачи и задачи олимпиад</span></a>' +
             '<a class="tile" href="#/theory"><b>📘 Теория</b><span>конспекты по 40 темам с задачами по возрастанию сложности</span></a>' +
@@ -808,6 +809,110 @@
     }
 
 
+    // ---------- problem collections ----------
+    function pageCollections(id) {
+        var hash = location.hash;
+        var trail = [['Главная', '#/'], ['Сборник', id ? '#/collections' : '']];
+        setTitle('Сборник задач');
+        app.innerHTML = crumbs(trail) + '<p class="text-muted">Загрузка сборника…</p>';
+
+        loadJson('collections').then(function (collections) {
+            if (location.hash !== hash) return;
+            if (!id) {
+                app.innerHTML = crumbs(trail) + '<div class="page-title"><h2>Сборник задач</h2></div><div class="grid">' +
+                    collections.map(function (topic) {
+                        return '<a class="tile" href="#/collections/' + esc(topic.id) + '"><b>' + esc(topic.title) +
+                            '</b><span>' + esc(topic.description) + '</span></a>';
+                    }).join('') + '</div>';
+                return;
+            }
+
+            var topic = collections.find(function (entry) { return entry.id === id; });
+            if (!topic) return notFound();
+            setTitle(topic.title);
+            trail.push([topic.title, '']);
+            var h = crumbs(trail) + '<div class="page-title"><h2>' + esc(topic.title) + '</h2><div class="page-sub">' +
+                esc(topic.description) + '</div></div>';
+            if (topic.training) {
+                h += '<details class="card"><summary>Как тренироваться к Респе и IMO</summary><p>' +
+                    esc(topic.training) + '</p><a href="#/node/13">Задачи финала Респы</a></details>';
+            }
+            var problems = [];
+            topic.levels.forEach(function (level, index) {
+                level.problems.forEach(function (problem) {
+                    problems.push({ problem: problem, level: index, number: problems.length + 1 });
+                });
+            });
+            var methods = Array.from(new Set(problems.flatMap(function (entry) {
+                return entry.problem.methods;
+            }))).sort(function (a, b) { return a.localeCompare(b, 'ru'); });
+            h += '<form class="card collection-filters" id="collection-filters" aria-label="Фильтры сборника">' +
+                collectionSelect('level', 'Уровень', [['', 'Все уровни']].concat(topic.levels.map(function (level, index) {
+                    return [index, level.title];
+                }))) +
+                collectionSelect('method', 'Приём', [['', 'Все приёмы']].concat(methods.map(function (method) {
+                    return [method, method];
+                }))) +
+                collectionSelect('source', 'Источник', [['', 'Все источники'], ['practice', 'Тренировочные'], ['olympiad', 'Олимпиадные']]) +
+                collectionSelect('sort', 'Порядок', [['asc', 'От простых к сложным'], ['desc', 'От сложных к простым'], ['title', 'По названию']]) +
+                '<button type="reset" class="btn btn-default">Сбросить</button></form>' +
+                '<p class="cnt" id="collection-count" role="status"></p><div id="collection-results"></div>';
+            app.innerHTML = h;
+
+            var filters = document.getElementById('collection-filters');
+            var results = document.getElementById('collection-results');
+            var count = document.getElementById('collection-count');
+            function updateResults() {
+                var selected = new FormData(filters);
+                var filtered = problems.filter(function (entry) {
+                    return (!selected.get('level') || selected.get('level') === String(entry.level)) &&
+                        (!selected.get('method') || entry.problem.methods.includes(selected.get('method'))) &&
+                        (!selected.get('source') || selected.get('source') === (entry.problem.source ? 'olympiad' : 'practice'));
+                });
+                if (selected.get('sort') === 'desc') filtered.reverse();
+                if (selected.get('sort') === 'title') filtered.sort(function (a, b) {
+                    return a.problem.title.localeCompare(b.problem.title, 'ru');
+                });
+                count.textContent = 'Показано задач: ' + filtered.length + ' из ' + problems.length;
+                if (window.MathJax && MathJax.typesetClear) MathJax.typesetClear([results]);
+                results.innerHTML = filtered.map(function (entry) {
+                    return collectionProblem(entry, topic.levels[entry.level]);
+                }).join('') || '<p>По выбранным фильтрам задач нет.</p>';
+                if (filtered.length) typeset(results);
+            }
+            filters.addEventListener('change', updateResults);
+            filters.addEventListener('reset', function () { setTimeout(updateResults, 0); });
+            updateResults();
+        }).catch(function () {
+            delete jsonCache.collections;
+            if (location.hash === hash) {
+                app.innerHTML = crumbs(trail) + '<p class="text-danger" role="alert">Не удалось загрузить сборник. Обновите страницу.</p>';
+            }
+        });
+    }
+
+    function collectionSelect(name, label, options) {
+        return '<label>' + esc(label) + '<select class="form-control" name="' + esc(name) + '">' +
+            options.map(function (option) {
+                return '<option value="' + esc(option[0]) + '">' + esc(option[1]) + '</option>';
+            }).join('') + '</select></label>';
+    }
+
+    function collectionProblem(entry, level) {
+        var problem = entry.problem;
+        var source = problem.source
+            ? '<a href="' + esc(problem.source.url) + '">' + esc(problem.source.title) + '</a>'
+            : 'Тренировочная задача';
+        return '<article class="card collection-problem"><h3>№ ' + entry.number + '. ' + esc(problem.title) + '</h3>' +
+            '<p class="cnt">' + esc(level.title.replace(/^\d+\. /, '')) + ' · ' + source + '</p>' +
+            md(problem.statement) +
+            '<details><summary>Подсказка</summary>' + md(problem.hint) + '</details>' +
+            '<details><summary>Решение</summary><p><strong>Идея решения.</strong> ' + esc(problem.approach) + '</p><p class="cnt">' + problem.methods.map(esc).join(' · ') + '</p>' +
+            md(problem.solution) + '</details>' +
+            (problem.alternative ? '<details><summary>Другой путь: ' + esc(problem.alternative.title) + '</summary>' +
+                md(problem.alternative.solution) + '</details>' : '') + '</article>';
+    }
+
     // ---------- sequences section ----------
     function seqNoteHtml(note) {
         return md(note).replace(/\[\[(m[\w\-.]+)\]\]/g, function (_, pid) {
@@ -1112,6 +1217,7 @@
         else if (sec === 'goal') pageGoal();
         else if (sec === 'mock') pageMock(parts[1]);
         else if (sec === 'seq') pageSeq(parts[1]);
+        else if (sec === 'collections' && parts.length <= 2) pageCollections(parts[1]);
         else if (sec === 'theory') { if (parts[1]) pageTheoryTopic(parts[1]); else pageTheory(); }
         else if (sec === 'random') pageRandom(f);
         else if (sec === 'marked') pageMarked(f);
