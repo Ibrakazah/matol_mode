@@ -765,6 +765,8 @@
         loadTheory().then(function (th) {
             var h = crumbs([['Главная', '#/'], ['Теория', '']]);
             h += '<p class="text-muted">Конспекты по темам: основные факты, признаки «когда это применять», типичные ошибки и задачи из базы от лёгких к сложным. Конспекты написаны ИИ — важные утверждения перепроверяй.</p>';
+            h += '<div class="grid"><a class="tile" href="#/collections/functional-equations"><b>Функциональные уравнения</b>' +
+                '<span>Коши, Йенсен, пределы и задачи по каждому приёму</span></a></div>';
             ['algebra', 'number_theory', 'combinatorics', 'geometry'].forEach(function (a) {
                 var items = th.filter(function (t) { return t.area === a; });
                 if (!items.length) return;
@@ -837,6 +839,14 @@
                 h += '<details class="card"><summary>Как тренироваться к Респе и IMO</summary><p>' +
                     esc(topic.training) + '</p><a href="#/node/13">Задачи финала Респы</a></details>';
             }
+            if (topic.theory && topic.theory.length) {
+                h += '<section id="collection-theory" aria-labelledby="collection-theory-title"><h3 id="collection-theory-title">Теория и примеры</h3>' +
+                    topic.theory.map(function (lesson) {
+                        return '<details class="card collection-lesson"><summary>' + esc(lesson.title) + '</summary>' +
+                            md(lesson.body) + '<button type="button" class="btn btn-default btn-sm" data-collection-method="' +
+                            esc(lesson.method) + '">К задачам по этому приёму</button></details>';
+                    }).join('') + '</section>';
+            }
             var problems = [];
             topic.levels.forEach(function (level, index) {
                 level.problems.forEach(function (problem) {
@@ -846,7 +856,8 @@
             var methods = Array.from(new Set(problems.flatMap(function (entry) {
                 return entry.problem.methods;
             }))).sort(function (a, b) { return a.localeCompare(b, 'ru'); });
-            h += '<form class="card collection-filters" id="collection-filters" aria-label="Фильтры сборника">' +
+            h += '<h3>Задачи</h3><p class="text-muted">Сложность по шкале от 1 до 10 — ориентир по этому сборнику.</p>' +
+                '<form class="card collection-filters" id="collection-filters" aria-label="Фильтры сборника">' +
                 collectionSelect('level', 'Уровень', [['', 'Все уровни']].concat(topic.levels.map(function (level, index) {
                     return [index, level.title];
                 }))) +
@@ -862,27 +873,43 @@
             var filters = document.getElementById('collection-filters');
             var results = document.getElementById('collection-results');
             var count = document.getElementById('collection-count');
-            function updateResults() {
+            function updateResults(mathRoot) {
                 var selected = new FormData(filters);
                 var filtered = problems.filter(function (entry) {
                     return (!selected.get('level') || selected.get('level') === String(entry.level)) &&
                         (!selected.get('method') || entry.problem.methods.includes(selected.get('method'))) &&
                         (!selected.get('source') || selected.get('source') === (entry.problem.source ? 'olympiad' : 'practice'));
                 });
-                if (selected.get('sort') === 'desc') filtered.reverse();
-                if (selected.get('sort') === 'title') filtered.sort(function (a, b) {
-                    return a.problem.title.localeCompare(b.problem.title, 'ru');
+                var sort = selected.get('sort');
+                filtered.sort(function (a, b) {
+                    if (sort === 'title') return a.problem.title.localeCompare(b.problem.title, 'ru');
+                    var difference = (a.problem.difficulty || a.level) - (b.problem.difficulty || b.level);
+                    return (sort === 'desc' ? -difference : difference) || a.number - b.number;
                 });
                 count.textContent = 'Показано задач: ' + filtered.length + ' из ' + problems.length;
                 if (window.MathJax && MathJax.typesetClear) MathJax.typesetClear([results]);
                 results.innerHTML = filtered.map(function (entry) {
                     return collectionProblem(entry, topic.levels[entry.level]);
                 }).join('') || '<p>По выбранным фильтрам задач нет.</p>';
-                if (filtered.length) typeset(results);
+                if (mathRoot || filtered.length) typeset(mathRoot || results);
             }
-            filters.addEventListener('change', updateResults);
+            var theory = document.getElementById('collection-theory');
+            if (theory) {
+                theory.addEventListener('click', function (event) {
+                    var button = event.target.closest('[data-collection-method]');
+                    if (!button) return;
+                    filters.elements.namedItem('level').value = '';
+                    filters.elements.namedItem('source').value = '';
+                    filters.elements.namedItem('sort').value = 'asc';
+                    filters.elements.namedItem('method').value = button.dataset.collectionMethod;
+                    updateResults();
+                    filters.scrollIntoView({ block: 'center' });
+                    filters.elements.namedItem('method').focus({ preventScroll: true });
+                });
+            }
+            filters.addEventListener('change', function () { updateResults(); });
             filters.addEventListener('reset', function () { setTimeout(updateResults, 0); });
-            updateResults();
+            updateResults(app);
         }).catch(function () {
             delete jsonCache.collections;
             if (location.hash === hash) {
@@ -904,7 +931,8 @@
             ? '<a href="' + esc(problem.source.url) + '">' + esc(problem.source.title) + '</a>'
             : 'Тренировочная задача';
         return '<article class="card collection-problem"><h3>№ ' + entry.number + '. ' + esc(problem.title) + '</h3>' +
-            '<p class="cnt">' + esc(level.title.replace(/^\d+\. /, '')) + ' · ' + source + '</p>' +
+            '<p class="cnt">' + esc(level.title.replace(/^\d+\. /, '')) +
+            (problem.difficulty ? ' · Сложность ' + esc(problem.difficulty) + '/10' : '') + ' · ' + source + '</p>' +
             md(problem.statement) +
             '<details><summary>Подсказка</summary>' + md(problem.hint) + '</details>' +
             '<details><summary>Решение</summary><p><strong>Идея решения.</strong> ' + esc(problem.approach) + '</p><p class="cnt">' + problem.methods.map(esc).join(' · ') + '</p>' +

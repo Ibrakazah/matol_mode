@@ -270,3 +270,7 @@ a.year-cell:hover { text-decoration: none; border-color: var(--accent); }
 .collection-filters { display: flex; flex-wrap: wrap; gap: 10px; align-items: end; }
 .collection-filters label { margin: 0; flex: 1 1 155px; min-width: 0; }
 .collection-filters select { margin-top: 4px; }
+
+.collection-lesson summary { cursor: pointer; font-weight: 600; }
+.collection-lesson[open] summary { margin-bottom: 12px; }
+.collection-lesson mjx-container[display="true"] { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
